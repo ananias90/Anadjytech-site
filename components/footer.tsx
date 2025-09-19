@@ -29,10 +29,10 @@ export function Footer() {
               connected.
             </p>
             {/* Subscribe Form */}
-<form
-  onSubmit={(e) => {
+            <form
+  onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Merci pour votre abonnement 🚀");
+    alert("Thank you for subscribing! 🎉");
   }}
   className="flex flex-col sm:flex-row items-center gap-3 mt-4"
 >
@@ -49,6 +49,7 @@ export function Footer() {
     Subscribe
   </button>
 </form>
+
 
           </div>
 
