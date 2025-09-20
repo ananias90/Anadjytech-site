@@ -28,6 +28,29 @@ export function Footer() {
               Your go-to destination for the latest and smartest tech gadgets that make your daily life easier and more
               connected.
             </p>
+            {/* Subscribe Form */}
+            <form
+  onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert("Thank you for subscribing! 🎉");
+  }}
+  className="flex flex-col sm:flex-row items-center gap-3 mt-4"
+>
+  <input
+    type="email"
+    required
+    placeholder="Enter your email"
+    className="px-4 py-2 rounded-md text-black w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <button
+    type="submit"
+    className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-md text-white font-medium transition"
+  >
+    Subscribe
+  </button>
+</form>
+
+
           </div>
 
           {/* Quick Links Column */}
