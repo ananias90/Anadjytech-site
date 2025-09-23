@@ -84,17 +84,39 @@ export function Footer() {
 
           {/* Support Column */}
           <div>
-            {/* LEGAL column */}
-<div className="mt-10 md:mt-0">
-  <h4 className="text-sm font-semibold mb-3">Legal</h4>
-  <ul className="space-y-2 text-sm text-[#f1f1f1]/80">
-    <li><Link href="/affiliate-disclosure" className="hover:underline">Affiliate Disclosure</Link></li>
-    <li><Link href="/privacy" className="hover:underline">Privacy Policy</Link></li>
-    <li><Link href="/cookies" className="hover:underline">Cookie Policy</Link></li>
-    <li><Link href="/terms" className="hover:underline">Terms &amp; Conditions</Link></li>
-  </ul>
-</div>
-
+            <h4 className="font-semibold mb-4 text-white">Support</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                >
+                  FAQ
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shipping"
+                  className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                >
+                  Shipping Info
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/returns"
+                  className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                >
+                  Returns
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </Link>
+              </li>
+              <li>
+                <span className="text-[#f1f1f1]">24/7 Customer Support</span>
+              </li>
+            </ul>
           </div>
 
           {/* Follow Us Column */}
@@ -102,14 +124,13 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-white">Follow Us</h4>
             <div className="mb-4">
               <a
-  href="mailto:contact@anadjytech.com"
-  aria-label="Send us an email"
-  className="flex items-center gap-2 text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out text-sm"
->
-  <Mail className="w-4 h-4" />
-  <span>contact@anadjytech.com</span>
-</a>
-
+                href="mailto:contact@anadjytech.com"
+                className="flex items-center gap-2 text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out text-sm"
+                aria-label="Send us an email"
+              >
+                <Mail className="w-4 h-4" />
+                <span>contact@anadjytech.com</span>
+              </a>
             </div>
             <div className="flex items-start gap-4">
               <a
