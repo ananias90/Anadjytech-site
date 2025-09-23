@@ -102,11 +102,14 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-white">Follow Us</h4>
             <div className="mb-4">
               <a
-                href="mailto:contact@anadjytech.com"
-                className="flex items-center gap-2 text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out text-sm"
-                <Mail className="w-4 h-4" />
-                <span>contact@anadjytech.com</span>
-              </a>
+  href="mailto:contact@anadjytech.com"
+  aria-label="Send us an email"
+  className="flex items-center gap-2 text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out text-sm"
+>
+  <Mail className="w-4 h-4" />
+  <span>contact@anadjytech.com</span>
+</a>
+
             </div>
             <div className="flex items-start gap-4">
               <a
