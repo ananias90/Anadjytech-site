@@ -1,6 +1,14 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import BlogArticle from "@/components/blog/blog-article"
+// Helpers anti-crash
+type SlugParam = string | string[] | undefined;
+
+const normalizeSlug = (s: SlugParam) =>
+  Array.isArray(s) ? s.join("/") : (s ?? "");
+
+const safeSplit = (v: string | undefined | null, sep: string) =>
+  typeof v === "string" ? v.split(sep) : [];
 
 const articles = {
   "remote-work-accessories-2025": {
