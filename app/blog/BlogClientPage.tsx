@@ -9,23 +9,23 @@ import { Button } from "@/components/ui/button"
 import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar"
 
 const blogPosts = [
-  {
-    id: 20,
-    slug: "remote-work-accessories-2025",
-    title: "Remote Work Accessories 2025: Tools for a Smarter Home Office",
-    excerpt: "Discover the must-have accessories to boost productivity and comfort while working remotely in 2025.",
-    category: "Guides",
-    difficulty: "Beginner",
-    tags: ["USB-C", "Smart Home"],
-    author: "AnadjyTech Editorial",
-    publishedAt: "2025-09-19",
-    readMins: 9,
-    image: "/images/blog/remote-work-accessories-2025/thumb.jpg",
-    alt: "Modern home office setup with ergonomic accessories including standing desk, monitor, and productivity tools",
-    published: true,
-    featured: false,
-    hidden: false,
-  },
+  
+    {
+  id: 20,
+  slug: "remote-work-accessories-2025",
+  title: "Remote Work Accessories 2025: Tools for a Smarter Home Office",
+  excerpt:
+    "Must-have home-office accessories to boost comfort and productivity—no prices shown on site.",
+  category: "Guides",
+  difficulty: "Beginner",
+  tags: ["Smart Home", "USB-C"],
+  author: "AnadjyTech Editorial",
+  publishedAt: "2025-09-18",
+  readMins: 9,
+  image: "/images/blog/remote-work-accessories-2025/thumb.jpg", // optionnel
+  alt: "Home office accessories on a desk",
+},
+
   {
     id: 19,
     slug: "ai-gadgets-2025",
