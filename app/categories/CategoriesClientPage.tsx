@@ -3,13 +3,13 @@
 import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
-import Footer from "@/components/footer"
-import Newsletter from "@/components/newsletter"
-import FiltersSidebar from "@/components/FiltersSidebar"
-import MobileCTA from "@/components/MobileCTA"
+import Footer from "../../components/footer"
+import Newsletter from "../../components/newsletter"
+import FiltersSidebar from "../../components/FiltersSidebar"
+import MobileCTA from "../../components/MobileCTA"
 import { ChevronRight, Usb, Home, Headphones, Briefcase, Smartphone, Gamepad2, Grid3X3, List } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import SiteHeader from "@/components/site-header"
+import { Button } from "../../components/ui/button"
+import SiteHeader from "../../components/site-header"
 
 const sampleProducts = [
   {
