@@ -1,4 +1,5 @@
 "use client"
+import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar";
 
 import { useState, useMemo, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
