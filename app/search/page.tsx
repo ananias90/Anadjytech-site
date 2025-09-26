@@ -1,4 +1,5 @@
 "use client"
+import SiteHeader from "@/components/site-header";
 
 import { Suspense } from "react"
 import SiteHeader from "@/components/site-header"
