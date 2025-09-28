@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Button } from "../../components/ui/button"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion"
 
 export const metadata: Metadata = {
   title: "Best USB-C Hubs 2025 – Top Picks for Every Budget",
