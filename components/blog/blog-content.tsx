@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, User, ChevronLeft, ChevronRight, Truck, RotateCcw, Shield, Star, Search, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "../../components/ui/button"
 import { useState, useMemo } from "react"
 
 export default function BlogContent() {
