@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 import * as React from "react";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
