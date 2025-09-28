@@ -1,12 +1,13 @@
-"use client"
+"use client";
+
 import { Button } from "./ui/button"
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Slider } from "@/components/ui/slider"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Checkbox } from "./ui/checkbox"
+import { Slider } from "./ui/slider"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
 import { Filter, Star, X } from "lucide-react"
+
 
 interface FiltersSidebarProps {
   categories: { name: string; count: number }[]
