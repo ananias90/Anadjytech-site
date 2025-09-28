@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import BlogArticle from "@/components/blog/blog-article"
+import BlogArticle from "../../components/blog/blog-article"
 // Helpers anti-crash
 type SlugParam = string | string[] | undefined;
 
