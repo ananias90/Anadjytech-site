@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-
 import * as React from "react";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type ButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> & {
   variant?: "default" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
+  asChild?: boolean; // <-- supporte <Button asChild>...</Button>
+  children?: React.ReactNode;
 };
 
 const base =
@@ -22,13 +22,18 @@ const sizes: Record<NonNullable<ButtonProps["size"]>, string> = {
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className = "", variant = "default", size = "md", ...props }, ref) => {
+  ({ className = "", variant = "default", size = "md", asChild = false, children, ...props }, ref) => {
+    const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
+
+    if (asChild) {
+      // ne pas passer "asChild" au DOM; on applique juste les classes au wrapper
+      return <span className={classes}>{children}</span>;
+    }
+
     return (
-      <button
-        ref={ref}
-        className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
-        {...props}
-      />
+      <button ref={ref} className={classes} {...props}>
+        {children}
+      </button>
     );
   }
 );
