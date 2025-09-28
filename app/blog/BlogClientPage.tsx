@@ -1,13 +1,16 @@
-"use client"
-import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar";
+"use client";
 
-import { useState, useMemo, Suspense } from "react"
-import { useSearchParams } from "next/navigation"
-import Image from "next/image"
-import Link from "next/link"
-import { Calendar, User, ChevronLeft, ChevronRight, Truck, RotateCcw, Shield, Star, Search } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar"
+import BlogFiltersSidebar from "../components/blog/BlogFiltersSidebar";
+import BlogProse from "../components/blog/BlogProse";
+import BlogContent from "../components/blog/blog-content";
+
+import { useState, useMemo, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { Calendar, User, ChevronLeft, ChevronRight, Truck, RotateCcw, Shield, Star, Search } from "lucide-react";
+import { Button } from "../components/ui/button";
+
 
 const blogPosts = [
   
