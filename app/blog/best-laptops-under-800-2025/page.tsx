@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import BlogArticle from "@/components/blog/blog-article"
+import BlogArticle from "../../components/blog/blog-article"
 
 export const metadata: Metadata = {
   title: "Best Laptops Under $800 (2025) | AnadjyTech — The smart way to tech",
