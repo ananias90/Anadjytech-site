@@ -1,6 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "../ui/button"
+
 import { Truck, RotateCcw, Shield, Star, ChevronDown, Users, Award, Heart, Leaf, Zap, CheckCircle } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
