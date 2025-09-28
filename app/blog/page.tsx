@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
-import SiteHeader from "@/components/site-header"
-import BlogClientPage from "./BlogClientPage"
-import Newsletter from "@/components/newsletter"
-import Footer from "@/components/footer"
-import MobileCTA from "@/components/MobileCTA"
+import SiteHeader from "../components/header
+import BlogClientPage from "./BlogClientPage";
+import Newsletter from "../components/newsletter";
+import Footer from "../components/footer";
+import MobileCTA from "../components/MobileCTA";
 
 export const metadata: Metadata = {
   title: "Tech & Gadgets Blog | AnadjyTech — The smart way to tech",
