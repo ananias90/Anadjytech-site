@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Button } from "../../components/ui/button"
-import { Badge } from "../../components/ui/badge"
 import { X, Filter } from "lucide-react"
+import { Badge } from "../ui/badge"
+import Button from "../ui/button"
 
 interface FilterOption {
   name: string

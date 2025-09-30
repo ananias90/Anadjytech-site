@@ -10,7 +10,7 @@ interface MobileCTAProps {
   className?: string
 }
 
-export default function MobileCTA({ text = "Shop Now", href = "/categories", className = "" }: MobileCTAProps) {
+const  MobileCTA = ({ text = "Shop Now", href = "/categories", className = "" }: MobileCTAProps) => {
   return (
     <div className={`fixed bottom-4 left-4 right-4 z-50 lg:hidden ${className}`}>
       <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg">
@@ -22,3 +22,5 @@ export default function MobileCTA({ text = "Shop Now", href = "/categories", cla
     </div>
   )
 }
+
+export default MobileCTA;

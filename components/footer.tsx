@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react"
 
-export function Footer() {
+const Footer = () => {
   return (
     <footer className="bg-[#002147] text-[#f1f1f1] py-10">
       <div className="container mx-auto px-4">

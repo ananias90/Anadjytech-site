@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Calendar, User, Clock } from "lucide-react"
-import { Button } from "../../components/ui/button"
-import { Badge } from "../../components/ui/badge"
-import { Card, CardContent } from "../../components/ui/card"
-import { Newsletter } from "../../components/newsletter"
-import { Footer } from "../../components/footer"
+import Footer from "@/components/footer"
+import Newsletter from "@/components/newsletter"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import Button from "@/components/ui/button"
+
 
 export const metadata: Metadata = {
   title: "Smart Home Gadgets 2025 – Must-Have Devices for a Connected Life",

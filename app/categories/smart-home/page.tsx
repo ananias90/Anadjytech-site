@@ -1,6 +1,7 @@
+import Footer from "@/components/footer"
+import Newsletter from "@/components/newsletter"
 import type { Metadata } from "next"
-import { Newsletter } from "@/components/newsletter"
-import { Footer as FooterComponent } from "@/components/footer"
+
 
 export const metadata: Metadata = {
   title: "Smart Home Essentials - AnadjyTech",
@@ -453,7 +454,7 @@ export default function SmartHomePage() {
       <Newsletter />
 
       {/* Footer */}
-      <FooterComponent />
+      <Footer />
     </div>
   )
 }

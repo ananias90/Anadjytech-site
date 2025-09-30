@@ -1,7 +1,8 @@
+import BlogArticleComponent from "@/components/blog/blog-article"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 import type { Metadata } from "next"
-import Header from "../../components/header"
-import Footer from "../../components/footer"
-import BlogArticle from "../../components/blog/blog-article"
+
 
 export const metadata: Metadata = {
   title: "Wireless Earbuds with ANC: Top Picks for 2025 | AnadjyTech",
@@ -151,7 +152,7 @@ export default function WirelessEarbudsANCPage() {
 
       <div className="min-h-screen bg-white">
         <Header />
-        <BlogArticle post={articleData} />
+        <BlogArticleComponent post={articleData} />
         <Footer />
       </div>
     </>

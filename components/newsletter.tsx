@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { CheckCircle, AlertCircle } from "lucide-react"
 import { useState } from "react"
 
-export function Newsletter() {
+const Newsletter = () => {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [message, setMessage] = useState("")

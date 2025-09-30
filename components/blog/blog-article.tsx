@@ -4,15 +4,14 @@ import { Calendar, User, Clock, ChevronRight } from "lucide-react"
 import { Badge } from "../ui/badge";
 
 import BlogProse, { KeyTakeaways, ProsSection, ConsSection } from "./BlogProse"
-import type { BlogArticle } from "../../lib/blog-articles"
 
 interface BlogArticleProps {
-  post: BlogArticle
+  post: any
 }
 
 export default function BlogArticleComponent({ post }: BlogArticleProps) {
   // Parse content into sections
-  const contentSections = post.content.split("\n\n")
+  const contentSections = post.content?.split("\n\n") || []
 
   return (
     <article className="min-h-screen bg-white dark:bg-gray-900">
@@ -103,13 +102,13 @@ export default function BlogArticleComponent({ post }: BlogArticleProps) {
         <BlogProse>
           {/* Main Content */}
           <div className="mb-12">
-            {contentSections.map((section, index) => {
+            {contentSections.map((section:any, index:any) => {
               // Skip empty sections
               if (!section.trim()) return null
 
               return (
                 <div key={index} className="mb-6">
-                  {section.split("\n").map((paragraph, pIndex) => {
+                  {section.split("\n").map((paragraph:any, pIndex:any) => {
                     if (!paragraph.trim()) return null
 
                     // Handle headings
@@ -136,7 +135,7 @@ export default function BlogArticleComponent({ post }: BlogArticleProps) {
         {post.keyTakeaways && post.keyTakeaways.length > 0 && (
           <KeyTakeaways>
             <ul className="space-y-2">
-              {post.keyTakeaways.map((takeaway, index) => (
+              {post.keyTakeaways.map((takeaway:any, index:any) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                   <span>{takeaway}</span>
@@ -151,7 +150,7 @@ export default function BlogArticleComponent({ post }: BlogArticleProps) {
           {post.pros && post.pros.length > 0 && (
             <ProsSection>
               <ul className="space-y-2">
-                {post.pros.map((pro, index) => (
+                {post.pros.map((pro:any, index:any) => (
                   <li key={index} className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                     <span>{pro}</span>
@@ -164,7 +163,7 @@ export default function BlogArticleComponent({ post }: BlogArticleProps) {
           {post.cons && post.cons.length > 0 && (
             <ConsSection>
               <ul className="space-y-2">
-                {post.cons.map((con, index) => (
+                {post.cons.map((con:any, index:any) => (
                   <li key={index} className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
                     <span>{con}</span>
@@ -180,7 +179,7 @@ export default function BlogArticleComponent({ post }: BlogArticleProps) {
           <div className="border-t border-gray-200 dark:border-gray-700 pt-8">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
+              {post.tags.map((tag:any) => (
                 <Badge key={tag} variant="outline" className="text-sm">
                   {tag}
                 </Badge>
