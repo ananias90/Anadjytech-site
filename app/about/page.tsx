@@ -1,5 +1,3 @@
-import { Button } from "../ui/button"
-
 import SiteHeader from "../../components/header"                
 import AboutContent from "../../components/about/about-content"
 import Newsletter from "../../components/newsletter"

@@ -10,6 +10,7 @@ import MobileCTA from "../../components/MobileCTA"
 import { ChevronRight, Usb, Home, Headphones, Briefcase, Smartphone, Gamepad2, Grid3X3, List } from "lucide-react"
 import { Button } from "../../components/ui/button"
 import SiteHeader from "../../components/site-header"
+import Link from "next/link"
 
 const sampleProducts = [
   {
@@ -172,9 +173,9 @@ export default function CategoriesClientPage() {
       <section className="bg-gradient-to-br from-blue-900/98 via-blue-800/95 to-blue-700/92 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center space-x-2 text-blue-100 mb-8" aria-label="Breadcrumb">
-            <a href="/" className="hover:text-white transition-colors">
+            <Link href="/" className="hover:text-white transition-colors">
               Home
-            </a>
+            </Link>
             <ChevronRight className="h-4 w-4" aria-hidden="true" />
             <span className="text-white" aria-current="page">
               Categories
@@ -242,13 +243,13 @@ export default function CategoriesClientPage() {
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-3">{category.title}</h3>
                       <p className="text-gray-600 mb-6">{category.description}</p>
-                      <a
+                      <Link
                         href={category.href}
                         className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                         aria-label={`Explore ${category.title} category`}
                       >
                         Explore
-                      </a>
+                      </Link>
                     </div>
                   )
                 })}
@@ -280,14 +281,14 @@ export default function CategoriesClientPage() {
                       {product.category} • {product.brand}
                     </p>
                     <div className="flex items-center justify-between">
-                      <a
+                      <Link
                         href={product.amazonUrl}
                         target="_blank"
                         rel="noreferrer nofollow sponsored noopener"
                         className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"
                       >
                         Check price on Amazon
-                      </a>
+                      </Link>
                       <div className="flex items-center gap-1" aria-label={`Rating: ${product.rating} out of 5 stars`}>
                         <span className="text-yellow-400" aria-hidden="true">
                           ★

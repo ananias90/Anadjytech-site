@@ -6,6 +6,7 @@ import Newsletter from "@/components/newsletter"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Button from "@/components/ui/button"
+import Image from "next/image"
 
 
 export const metadata: Metadata = {
@@ -169,7 +170,7 @@ export default function SmartHomeGadgets2025() {
             {/* Smart Thermostat */}
             <Card className="overflow-hidden">
               <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <img src="/smart-thermostat.jpg" alt="Smart Thermostat" className="w-full h-full object-cover" />
+                <Image priority unoptimized width={300} height={300} src="/smart-thermostat.jpg" alt="Smart Thermostat" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">Smart Thermostat</h3>
@@ -206,7 +207,7 @@ export default function SmartHomeGadgets2025() {
             {/* Wi-Fi Smart Plug */}
             <Card className="overflow-hidden">
               <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <img src="/smart-plug.jpg" alt="Wi-Fi Smart Plug" className="w-full h-full object-cover" />
+                <Image priority unoptimized width={300} height={300} src="/smart-plug.jpg" alt="Wi-Fi Smart Plug" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">Wi-Fi Smart Plug</h3>
@@ -243,7 +244,7 @@ export default function SmartHomeGadgets2025() {
             {/* Smart Security Camera */}
             <Card className="overflow-hidden">
               <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <img
+                <Image priority unoptimized width={300} height={300}
                   src="/smart-security-camera.jpg"
                   alt="Smart Security Camera"
                   className="w-full h-full object-cover"
@@ -283,7 +284,7 @@ export default function SmartHomeGadgets2025() {
             {/* Voice Assistant Speaker */}
             <Card className="overflow-hidden">
               <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <img
+                <Image priority unoptimized width={300} height={300}
                   src="/voice-assistant-speaker.jpg"
                   alt="Voice Assistant Speaker"
                   className="w-full h-full object-cover"
@@ -324,7 +325,7 @@ export default function SmartHomeGadgets2025() {
             {/* Smart Light Bulbs */}
             <Card className="overflow-hidden">
               <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <img src="/smart-light-bulbs.jpg" alt="Smart Light Bulbs" className="w-full h-full object-cover" />
+                <Image priority unoptimized width={300} height={300} src="/smart-light-bulbs.jpg" alt="Smart Light Bulbs" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">Smart Light Bulbs</h3>
@@ -360,7 +361,7 @@ export default function SmartHomeGadgets2025() {
             {/* Smart Door Lock */}
             <Card className="overflow-hidden">
               <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                <img src="/smart-door-lock.jpg" alt="Smart Door Lock" className="w-full h-full object-cover" />
+                <Image priority unoptimized width={300} height={300} src="/smart-door-lock.jpg" alt="Smart Door Lock" className="w-full h-full object-cover" />
               </div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3">Smart Door Lock</h3>

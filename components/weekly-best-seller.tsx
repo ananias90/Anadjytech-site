@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
+import Image from "next/image"
 
 export default function WeeklyBestSeller() {
   const bestSellers = [
@@ -50,7 +51,7 @@ export default function WeeklyBestSeller() {
             >
               <CardContent className="p-6">
                 <div className="relative mb-6">
-                  <img
+                  <Image priority  unoptimized width={300} height={300}
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full h-64 object-cover rounded-lg"

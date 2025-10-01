@@ -33,7 +33,7 @@ const Footer = () => {
 
           {/* Quick Links Column */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
+            <h3 className="font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -85,7 +85,7 @@ const Footer = () => {
 
           {/* Support Column */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Support</h4>
+            <h3 className="font-semibold mb-4 text-white">Support</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -122,7 +122,7 @@ const Footer = () => {
 
           {/* Follow Us Column */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Follow Us</h4>
+            <h3 className="font-semibold mb-4 text-white">Follow Us</h3>
             <div className="mb-4">
               <a
                 href="mailto:contact@anadjytech.com"

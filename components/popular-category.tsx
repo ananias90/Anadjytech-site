@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function PopularCategory() {
   const products = [
@@ -62,7 +63,7 @@ export default function PopularCategory() {
               className="bg-gray-50 rounded-lg p-3 sm:p-6 text-center hover:shadow-md transition-shadow"
             >
               <div className="mb-3 sm:mb-4">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   className="w-12 h-12 sm:w-20 sm:h-20 mx-auto object-contain"

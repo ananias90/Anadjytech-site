@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function FeaturedRows() {
@@ -40,14 +41,18 @@ export default function FeaturedRows() {
               data-card
             >
               <div className="aspect-video mb-4 overflow-hidden rounded-lg bg-gray-100">
-                <img
+                <Image
+                  priority
+                  unoptimized
+                  width={400}
+                  height={400}
                   src={card.image || "/placeholder.svg"}
                   alt={card.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{card.title}</h3>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">{card.title}</h2>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">{card.description}</p>
 
               <Link href={card.href}>

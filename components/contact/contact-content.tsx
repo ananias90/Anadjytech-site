@@ -109,10 +109,10 @@ export default function ContactContent() {
       {/* Toast Notification */}
       {showToast && (
         <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
-          <img src="/icons/check-circle.svg" alt="Check Circle" className="w-5 h-5" />
+          <Image  priority unoptimized width={300} height={300} src="/icons/check-circle.svg" alt="Check Circle" className="w-5 h-5" />
           <span>{toastMessage}</span>
           <button onClick={() => setShowToast(false)} className="ml-2">
-            <img src="/icons/x.svg" alt="Close" className="w-4 h-4" />
+            <Image  priority unoptimized width={300} height={300} src="/icons/x.svg" alt="Close" className="w-4 h-4" />
           </button>
         </div>
       )}
@@ -246,7 +246,7 @@ export default function ContactContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-[#0A67FF] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <img src="/icons/mail.svg" alt="Mail" className="w-8 h-8 text-[#0A67FF]" />
+                <Image  priority unoptimized width={300} height={300} src="/icons/mail.svg" alt="Mail" className="w-8 h-8 text-[#0A67FF]" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Email Support</h3>
               <a
@@ -260,7 +260,7 @@ export default function ContactContent() {
 
             <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-[#0A67FF] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <img src="/icons/phone.svg" alt="Phone" className="w-8 h-8 text-[#0A67FF]" />
+                <Image  priority unoptimized width={300} height={300} src="/icons/phone.svg" alt="Phone" className="w-8 h-8 text-[#0A67FF]" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Phone Support</h3>
               <a href="tel:+19549515873" className="text-[#0A67FF] hover:text-blue-700 transition-colors font-medium">
@@ -271,7 +271,7 @@ export default function ContactContent() {
 
             <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-[#0A67FF] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <img src="/icons/clock.svg" alt="Clock" className="w-8 h-8 text-[#0A67FF]" />
+                <Image  priority unoptimized width={300} height={300} src="/icons/clock.svg" alt="Clock" className="w-8 h-8 text-[#0A67FF]" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Business Hours</h3>
               <p className="text-gray-600 font-medium">Mon–Fri, 9:00–18:00</p>
@@ -280,7 +280,7 @@ export default function ContactContent() {
 
             <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-[#0A67FF] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <img src="/icons/map-pin.svg" alt="Map Pin" className="w-8 h-8 text-[#0A67FF]" />
+                <Image  priority unoptimized width={300} height={300} src="/icons/map-pin.svg" alt="Map Pin" className="w-8 h-8 text-[#0A67FF]" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Location</h3>
               <p className="text-gray-600 font-medium">Based in Miami, Florida</p>
@@ -289,7 +289,7 @@ export default function ContactContent() {
 
             <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-[#0A67FF] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <img src="/icons/help-circle.svg" alt="Help Circle" className="w-8 h-8 text-[#0A67FF]" />
+                <Image  priority unoptimized width={300} height={300} src="/icons/help-circle.svg" alt="Help Circle" className="w-8 h-8 text-[#0A67FF]" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">FAQ</h3>
               <a href="/about#faq" className="text-[#0A67FF] hover:text-blue-700 transition-colors font-medium">
@@ -302,7 +302,7 @@ export default function ContactContent() {
 
             <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
               <div className="w-16 h-16 bg-[#0A67FF] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <img src="/icons/rotate-cw.svg" alt="Rotate CW" className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                <Image  priority unoptimized width={300} height={300} src="/icons/rotate-cw.svg" alt="Rotate CW" className="w-8 h-8 text-gray-400 mx-auto mb-2" />
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Returns</h3>
               <a
@@ -477,7 +477,7 @@ export default function ContactContent() {
                     Attachment (optional, up to 5 MB)
                   </label>
                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#0A67FF] transition-colors">
-                    <img src="/icons/upload.svg" alt="Upload" className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                    <Image  priority unoptimized width={300} height={300} src="/icons/upload.svg" alt="Upload" className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                     <p className="text-sm text-gray-600">Click to upload or drag and drop</p>
                     <p className="text-xs text-gray-500 mt-1">PNG, JPG, PDF up to 5MB</p>
                   </div>

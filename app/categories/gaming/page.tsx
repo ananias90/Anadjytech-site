@@ -2,12 +2,13 @@ import type { Metadata } from "next"
 import { ChevronRight, Plus, Minus } from "lucide-react"
 import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
+import Image from "next/image"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Gaming Tech Gear – Best Gaming Accessories | AnadjyTech",
   description:
     "Discover the best gaming tech gear on AnadjyTech: gaming mice, mechanical keyboards, headsets, monitors, stream decks, and gaming chairs for the ultimate setup.",
-  canonical: "https://www.anadjytech.com/categories/gaming",
   openGraph: {
     title: "Gaming Tech Gear – Best Gaming Accessories | AnadjyTech",
     description:
@@ -43,13 +44,13 @@ export default function GamingPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="flex items-center space-x-2 text-sm mb-8">
-            <a href="/" className="text-blue-200 hover:text-white transition-colors">
+            <Link href="/" className="text-blue-200 hover:text-white transition-colors">
               Home
-            </a>
+            </Link>
             <ChevronRight className="h-4 w-4 text-blue-300" />
-            <a href="/categories" className="text-blue-200 hover:text-white transition-colors">
+            <Link href="/categories" className="text-blue-200 hover:text-white transition-colors">
               Categories
-            </a>
+            </Link>
             <ChevronRight className="h-4 w-4 text-blue-300" />
             <span className="text-white">Gaming Tech</span>
           </nav>
@@ -70,7 +71,7 @@ export default function GamingPage() {
             {/* Razer Gaming Mouse */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop"
                   alt="Razer Gaming Mouse"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -85,18 +86,18 @@ export default function GamingPage() {
                 <div className="space-y-3 mt-auto">
                   <p className="text-2xl font-bold text-blue-600">$79.99</p>
                   <div className="flex gap-2">
-                    <a
+                    <Link
                       href="https://amazon.com"
                       className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
                     >
                       Buy on Amazon
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/blog/gaming-mouse-guide"
                       className="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -105,7 +106,7 @@ export default function GamingPage() {
             {/* Corsair Mechanical Keyboard */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=400&fit=crop"
                   alt="Corsair Mechanical Keyboard"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -120,18 +121,18 @@ export default function GamingPage() {
                 <div className="space-y-3 mt-auto">
                   <p className="text-2xl font-bold text-blue-600">$149.99</p>
                   <div className="flex gap-2">
-                    <a
+                    <Link
                       href="https://amazon.com"
                       className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
                     >
                       Buy on Amazon
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/blog/mechanical-keyboards"
                       className="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -140,7 +141,7 @@ export default function GamingPage() {
             {/* HyperX Gaming Headset */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1599669454699-248893623440?w=400&h=400&fit=crop"
                   alt="HyperX Gaming Headset"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -155,18 +156,18 @@ export default function GamingPage() {
                 <div className="space-y-3 mt-auto">
                   <p className="text-2xl font-bold text-blue-600">$99.99</p>
                   <div className="flex gap-2">
-                    <a
+                    <Link
                       href="https://amazon.com"
                       className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
                     >
                       Buy on Amazon
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/blog/gaming-headsets"
                       className="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -175,7 +176,7 @@ export default function GamingPage() {
             {/* Elgato Stream Deck */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=400&h=400&fit=crop"
                   alt="Elgato Stream Deck"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -190,18 +191,18 @@ export default function GamingPage() {
                 <div className="space-y-3 mt-auto">
                   <p className="text-2xl font-bold text-blue-600">$149.99</p>
                   <div className="flex gap-2">
-                    <a
+                    <Link
                       href="https://amazon.com"
                       className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
                     >
                       Buy on Amazon
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/blog/streaming-setup"
                       className="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -210,7 +211,7 @@ export default function GamingPage() {
             {/* ASUS Gaming Monitor */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop"
                   alt="ASUS Gaming Monitor"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -225,18 +226,18 @@ export default function GamingPage() {
                 <div className="space-y-3 mt-auto">
                   <p className="text-2xl font-bold text-blue-600">$299.99</p>
                   <div className="flex gap-2">
-                    <a
+                    <Link
                       href="https://amazon.com"
                       className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
                     >
                       Buy on Amazon
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/blog/gaming-monitors"
                       className="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -245,7 +246,7 @@ export default function GamingPage() {
             {/* Gaming Chair */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=400&fit=crop"
                   alt="Gaming Chair"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -260,18 +261,18 @@ export default function GamingPage() {
                 <div className="space-y-3 mt-auto">
                   <p className="text-2xl font-bold text-blue-600">$249.99</p>
                   <div className="flex gap-2">
-                    <a
+                    <Link
                       href="https://amazon.com"
                       className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
                     >
                       Buy on Amazon
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="/blog/gaming-chairs"
                       className="flex-1 border border-blue-600 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
