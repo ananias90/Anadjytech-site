@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <div className="min-h-screen pb-20 bg-red-500 lg:pb-0">
+    <div className="min-h-screen pb-20 lg:pb-0">
       <SiteHeader />
       <Hero />
       <FeatureBar />

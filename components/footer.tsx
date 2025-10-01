@@ -85,38 +85,45 @@ const Footer = () => {
 
           {/* Support Column */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Support</h3>
+            <h3 className="font-semibold mb-4 text-white">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/faq"
+                  href="/affiliate-disclosure"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
                 >
-                  FAQ
+                  Affiliate Disclosure
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/shipping"
+                  href="/privacy"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
                 >
-                  Shipping Info
+                  Privacy Policy
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/returns"
+                  href="/cookies"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
                 >
-                  Returns
+                  Cookie Policy
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               </li>
               <li>
-                <span className="text-[#f1f1f1]">24/7 Customer Support</span>
+                <Link
+                  href="/terms"
+                  className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                >
+                  Terms & Conditions
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </Link>
               </li>
+              
             </ul>
           </div>
 
