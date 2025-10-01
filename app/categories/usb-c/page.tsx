@@ -76,6 +76,7 @@ export default function UsbCCategoriesPage() {
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
+                    unoptimized
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
                     loading="lazy"

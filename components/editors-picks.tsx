@@ -76,6 +76,7 @@ export default function EditorsPicks() {
               {/* Product Image */}
               <div className="h-48 mb-4 rounded-xl overflow-hidden bg-gray-100 relative">
                 <Image
+                  unoptimized
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   fill

@@ -102,6 +102,7 @@ export default function AudioCategoryPage() {
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
+                    unoptimized
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     fill

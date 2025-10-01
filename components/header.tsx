@@ -275,6 +275,7 @@ export default function Header() {
                   height={90}
                   className="h-16 sm:h-20 lg:h-24 w-auto object-contain"
                   priority
+                  unoptimized
                 />
               </div>
             </Link>

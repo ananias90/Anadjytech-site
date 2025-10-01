@@ -244,6 +244,8 @@ export default function AboutContent() {
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ananias.jpg-BFowHCx1H10WEDpf6rUZdrHt64tlxA.jpeg"
                   alt="Portrait of Ananias Cerlus"
                   width={300}
+                  unoptimized
+                  priority
                   height={300}
                   className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] rounded-full object-cover"
                 />
@@ -261,6 +263,8 @@ export default function AboutContent() {
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rozie%20saintima.jpg-nO5uexSX4R1dqMwrXK9wwe3dQDHR60.jpeg"
                   alt="Portrait of Rozie Saintima"
                   width={300}
+                  unoptimized
+                  priority
                   height={300}
                   className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] rounded-full object-cover"
                 />
@@ -279,6 +283,8 @@ export default function AboutContent() {
                   alt="Portrait of Davi Johnley"
                   width={300}
                   height={300}
+                  priority
+                  unoptimized
                   className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] rounded-full object-cover"
                 />
               </div>

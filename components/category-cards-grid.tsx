@@ -62,6 +62,7 @@ export default function CategoryCardsGrid() {
                   src={category.image || "/placeholder.svg"}
                   alt={category.name}
                   fill
+                  unoptimized
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   loading="lazy"
                 />

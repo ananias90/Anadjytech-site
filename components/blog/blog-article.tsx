@@ -90,6 +90,7 @@ export default function BlogArticleComponent({ post }: BlogArticleProps) {
             src={post.image || "/placeholder.svg"}
             alt={post.title}
             fill
+            unoptimized
             className="object-cover"
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"

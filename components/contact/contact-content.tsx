@@ -129,6 +129,7 @@ export default function ContactContent() {
             src="/about-hero-blue-soft-828x600.webp"
             alt=""
             width={828}
+            unoptimized
             height={600}
             className="absolute inset-0 w-full h-full object-cover object-center lg:hidden"
             loading="lazy"
@@ -139,6 +140,7 @@ export default function ContactContent() {
             src="/about-hero-blue-soft-1366x700.webp"
             alt=""
             width={1366}
+            unoptimized
             height={700}
             className="absolute inset-0 w-full h-full object-cover object-center hidden lg:block xl:hidden"
             loading="lazy"
@@ -149,6 +151,7 @@ export default function ContactContent() {
             src="/about-hero-blue-soft-1920x900.webp"
             alt=""
             width={1920}
+            unoptimized
             height={900}
             className="absolute inset-0 w-full h-full object-cover object-center hidden xl:block"
             priority

@@ -160,6 +160,7 @@ export default function NewArrivalsCarousel() {
                         alt={product.name}
                         width={400}
                         height={300}
+                        unoptimized
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                         decoding="async"

@@ -509,6 +509,7 @@ const SiteHeader = () =>{
                   alt="AnadjyTech Logo"
                   width={300}
                   height={120}
+                  unoptimized
                   className="h-20 lg:h-24 w-auto object-contain"
                   priority
                   style={{ background: "transparent" }}

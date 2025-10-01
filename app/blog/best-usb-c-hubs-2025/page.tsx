@@ -136,6 +136,8 @@ export default function BestUsbcHubs2025Page() {
             {/* Image d'illustration en haut */}
             <div className="relative max-w-2xl mx-auto mb-8">
               <Image
+                priority
+                unoptimized
                 src="/modern-usb-c-hubs-collection-on-desk.jpg"
                 alt="Best USB-C Hubs 2025"
                 width={600}
@@ -187,7 +189,7 @@ export default function BestUsbcHubs2025Page() {
                 >
                   {/* Image */}
                   <div className="aspect-video relative">
-                    <Image src={hub.image || "/placeholder.svg"} alt={hub.name} fill className="object-cover" />
+                    <Image priority unoptimized src={hub.image || "/placeholder.svg"} alt={hub.name} fill className="object-cover" />
                   </div>
                   <div className="p-6">
                     {/* Nom du produit */}

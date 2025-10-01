@@ -108,6 +108,7 @@ function BlogClientPageContent() {
             src="/blog-hero-mobile.webp"
             alt="Tech gadgets and devices arranged on a modern desk"
             fill
+            unoptimized
             className="object-cover object-center lg:hidden"
             loading="lazy"
             aria-hidden="true"
@@ -117,6 +118,7 @@ function BlogClientPageContent() {
             src="/blog-hero-tablet.webp"
             alt="Tech gadgets and devices arranged on a modern desk"
             fill
+            unoptimized
             className="object-cover object-center hidden lg:block xl:hidden"
             loading="lazy"
             aria-hidden="true"
@@ -126,8 +128,9 @@ function BlogClientPageContent() {
             src="/blog-hero-desktop.webp"
             alt="Tech gadgets and devices arranged on a modern desk"
             fill
-            className="object-cover object-center hidden xl:block"
             priority
+            unoptimized
+            className="object-cover object-center hidden xl:block"
             aria-hidden="true"
             sizes="(min-width: 1280px) 100vw, 0vw"
           />
@@ -231,6 +234,7 @@ function BlogClientPageContent() {
                                 src={featuredPost.image || "/placeholder.svg"}
                                 alt={featuredPost.alt || `Featured article: ${featuredPost.title}`}
                                 fill
+                                unoptimized
                                 className="object-cover"
                                 loading="lazy"
                                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -289,6 +293,7 @@ function BlogClientPageContent() {
                                   src={post.image || "/placeholder.svg"}
                                   alt={post.alt || `Article: ${post.title}`}
                                   fill
+                                  unoptimized
                                   className="object-cover"
                                   loading="lazy"
                                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -269,6 +269,7 @@ export default function CategoriesClientPage() {
                         src={product.image || "/placeholder.svg"}
                         alt={`${product.name} - ${product.brand} product image`}
                         fill
+                        unoptimized
                         className="object-cover rounded-lg"
                         loading="lazy"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

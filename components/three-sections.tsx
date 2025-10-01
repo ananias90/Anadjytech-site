@@ -16,7 +16,7 @@ export default function ThreeSections() {
           {/* Fresh Tech Drops Section */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative h-48">
-              <Image src="/latest-tech-gadgets.png" alt="Fresh Tech Drops" fill className="object-cover" />
+              <Image src="/latest-tech-gadgets.png" priority unoptimized alt="Fresh Tech Drops" fill className="object-cover" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold text-gray-800 mb-3">Fresh Tech Drops</h3>
@@ -32,7 +32,7 @@ export default function ThreeSections() {
           {/* Trending Now Section */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative h-48">
-              <Image src="/popular-tech-gadgets.png" alt="Trending Now" fill className="object-cover" />
+              <Image src="/popular-tech-gadgets.png" priority unoptimized alt="Trending Now" fill className="object-cover" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold text-gray-800 mb-3">Trending Now</h3>
@@ -48,7 +48,7 @@ export default function ThreeSections() {
           {/* Hot Deals Section */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="relative h-48">
-              <Image src="/placeholder-xd5fe.png" alt="Hot Deals" fill className="object-cover" />
+              <Image src="/placeholder-xd5fe.png" alt="Hot Deals" priority unoptimized fill className="object-cover" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold text-gray-800 mb-3">Hot Deals</h3>

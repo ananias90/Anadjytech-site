@@ -13,6 +13,7 @@ const Footer = () => {
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_anadjytech_white-E7BD4LO2QLCrovY9N5TIF9mYV7HPJt.png"
               alt="AnadjyTech Logo"
               width={300}
+              unoptimized
               height={100}
               className="h-[70px] md:h-[100px] w-auto object-contain mb-4"
               style={{

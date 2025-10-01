@@ -266,6 +266,7 @@ export function HeaderSearch({ isMobile = false }: HeaderSearchProps) {
                         alt={product.title}
                         width={40}
                         height={40}
+                        unoptimized
                         className="rounded object-cover"
                         loading="lazy"
                       />

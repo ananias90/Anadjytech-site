@@ -455,6 +455,7 @@ export default function BlogContent() {
             src="/blog-hero-mobile.webp"
             alt=""
             fill
+            unoptimized
             className="object-cover object-center lg:hidden"
             loading="lazy"
             aria-hidden="true"
@@ -464,6 +465,7 @@ export default function BlogContent() {
           <Image
             src="/blog-hero-tablet.webp"
             alt=""
+            unoptimized
             fill
             className="object-cover object-center hidden lg:block xl:hidden"
             loading="lazy"
@@ -477,6 +479,7 @@ export default function BlogContent() {
             fill
             className="object-cover object-center hidden xl:block"
             priority
+            unoptimized
             aria-hidden="true"
             sizes="(min-width: 1280px) 100vw, 0vw"
           />
@@ -622,6 +625,7 @@ export default function BlogContent() {
                           src={featuredPost.image || "/placeholder.svg"}
                           alt={featuredPost.alt || featuredPost.title}
                           fill
+                          unoptimized
                           className="object-cover"
                         />
                         <div className="absolute top-4 left-4">
@@ -678,6 +682,8 @@ export default function BlogContent() {
                           <Image
                             src={post.image || "/placeholder.svg"}
                             alt={post.alt || post.title}
+                            unoptimized
+                            priority
                             fill
                             className="object-cover"
                           />

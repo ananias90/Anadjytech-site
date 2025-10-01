@@ -246,6 +246,7 @@ export function SearchResults() {
                       src={product.image || "/placeholder.svg"}
                       alt={product.title}
                       fill
+                      unoptimized
                       className="object-cover"
                       loading="lazy"
                     />
