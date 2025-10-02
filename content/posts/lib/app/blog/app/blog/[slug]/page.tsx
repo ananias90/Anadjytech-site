@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { marked } from "marked";
-import { getAllSlugs, getPostBySlug } from "../../../lib/posts";
 import Link from "next/link";
+import Image from "next/image";
+import { getAllSlugs, getPostBySlug } from "@/content/posts/lib/posts";
 
 export const revalidate = 60 * 60 * 24; // ISR: 24h
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
-  return slugs.map(slug => ({ slug }));
+  return slugs.map((slug: any) => ({ slug }));
 }
 
 type Props = { params: { slug: string } };
@@ -51,7 +52,7 @@ export default function BlogPost({ params }: Props) {
       <p className="text-sm text-slate-500">{new Date(post.date).toLocaleDateString()}</p>
       {post.cover && (
         // On passera à next/image plus tard
-        <img src={post.cover} alt="" style={{ marginTop: 12, borderRadius: 12 }} />
+        <Image priority  unoptimized width={300} height={300} src={post.cover} alt="" style={{ marginTop: 12, borderRadius: 12 }} />
       )}
       <article className="mt-6" dangerouslySetInnerHTML={{ __html: html }} />
     </main>

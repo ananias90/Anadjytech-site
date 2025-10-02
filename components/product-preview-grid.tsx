@@ -4,6 +4,7 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 import { setSearchCallback } from "./site-header"
+import Image from "next/image"
 
 export default function ProductPreviewGrid() {
   const [showToast, setShowToast] = useState(false)
@@ -155,7 +156,7 @@ export default function ProductPreviewGrid() {
                     rel="nofollow noopener noreferrer"
                     onClick={(e) => handleProductClick(e, product.url)}
                   >
-                    <img
+                    <Image  unoptimized width={300} height={300}
                       src={product.image || "/placeholder.svg"}
                       alt={product.name}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 cursor-pointer"

@@ -6,7 +6,7 @@ import { Button } from "./ui/button"
 import Link from "next/link"
 import { ShoppingBag, Mail } from "lucide-react"
 
-export default function MobileCTA() {
+const  MobileCTA = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white border-t border-gray-200 shadow-lg">
       <div className="flex gap-2 p-4">
@@ -30,3 +30,5 @@ export default function MobileCTA() {
     </div>
   )
 }
+
+export default MobileCTA;

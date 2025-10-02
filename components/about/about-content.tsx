@@ -19,7 +19,7 @@ export default function AboutContent() {
       {/* Hero Section */}
       <section className="relative min-h-[440px] lg:min-h-[520px] py-16 sm:py-20 overflow-hidden bg-[#4472C4]">
         <div className="absolute inset-0">
-          <img src="/modern-tech-company-office-with-gadgets-and-innova.jpg" alt="" className="w-full h-full object-cover" />
+          <Image priority  unoptimized width={900} height={900} src="/modern-tech-company-office-with-gadgets-and-innova.jpg" alt="" className="w-full h-full object-cover" />
         </div>
 
         {/* Dark Blue Overlay - Responsive opacity (34-36% mobile, 38-40% desktop) */}
@@ -71,7 +71,7 @@ export default function AboutContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="text-left">
                 <div className="aspect-video mb-6 overflow-hidden rounded-lg bg-gray-100">
-                  <img src="/team-mission-smart-tech-simple-guidance.jpg" alt="Our Mission" className="w-full h-full object-cover" />
+                  <Image priority  unoptimized width={300} height={300} src="/team-mission-smart-tech-simple-guidance.jpg" alt="Our Mission" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
@@ -80,7 +80,7 @@ export default function AboutContent() {
               </div>
               <div className="text-left">
                 <div className="aspect-video mb-6 overflow-hidden rounded-lg bg-gray-100">
-                  <img src="/company-growth-timeline-2019-to-2025-global-expans.jpg" alt="Our Story" className="w-full h-full object-cover" />
+                  <Image priority  unoptimized width={300} height={300} src="/company-growth-timeline-2019-to-2025-global-expans.jpg" alt="Our Story" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Story</h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
@@ -156,7 +156,7 @@ export default function AboutContent() {
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">Our Values</h2>
             <div className="max-w-2xl mx-auto mb-8">
-              <img src="/company-values-customer-first-reliability-accessib.jpg" alt="Our Values" className="w-full h-auto rounded-lg shadow-md" />
+              <Image priority  unoptimized width={300} height={300} src="/company-values-customer-first-reliability-accessib.jpg" alt="Our Values" className="w-full h-auto rounded-lg shadow-md" />
             </div>
           </div>
 
@@ -244,6 +244,8 @@ export default function AboutContent() {
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ananias.jpg-BFowHCx1H10WEDpf6rUZdrHt64tlxA.jpeg"
                   alt="Portrait of Ananias Cerlus"
                   width={300}
+                  unoptimized
+                  priority
                   height={300}
                   className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] rounded-full object-cover"
                 />
@@ -261,6 +263,8 @@ export default function AboutContent() {
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rozie%20saintima.jpg-nO5uexSX4R1dqMwrXK9wwe3dQDHR60.jpeg"
                   alt="Portrait of Rozie Saintima"
                   width={300}
+                  unoptimized
+                  priority
                   height={300}
                   className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] rounded-full object-cover"
                 />
@@ -279,6 +283,8 @@ export default function AboutContent() {
                   alt="Portrait of Davi Johnley"
                   width={300}
                   height={300}
+                  priority
+                  unoptimized
                   className="w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] rounded-full object-cover"
                 />
               </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Hero() {
@@ -169,7 +170,7 @@ export default function Hero() {
             <div className="w-60 sm:w-80 h-60 sm:h-80 relative group cursor-pointer">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-                  <img
+                  <Image  unoptimized width={300} height={300}
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image_intro-WlxzrB3vuNCHtKyAcb9THtwZiesfE7.png"
                     alt="Tech Gadgets Gift Box"
                     className="w-48 sm:w-64 h-48 sm:h-64 object-contain drop-shadow-2xl transition-all duration-500 group-hover:drop-shadow-3xl"

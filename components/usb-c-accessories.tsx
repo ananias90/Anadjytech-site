@@ -82,6 +82,7 @@ export default function UsbcAccessories() {
                   height={300}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   loading="lazy"
+                  unoptimized
                   decoding="async"
                 />
               </div>

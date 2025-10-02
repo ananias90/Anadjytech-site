@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
 
 export default function TradingProducts() {
   const products = [
@@ -47,7 +48,7 @@ export default function TradingProducts() {
             <Card key={product.id} className="group hover:shadow-lg transition-shadow duration-300">
               <CardContent className="p-3 sm:p-4">
                 <div className="relative mb-3 sm:mb-4">
-                  <img
+                  <Image priority  unoptimized width={300} height={300}
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full h-36 sm:h-48 object-cover rounded-lg"

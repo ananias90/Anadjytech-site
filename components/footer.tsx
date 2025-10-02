@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react"
 
-export function Footer() {
+const Footer = () => {
   return (
     <footer className="bg-[#002147] text-[#f1f1f1] py-10">
       <div className="container mx-auto px-4">
@@ -13,6 +13,7 @@ export function Footer() {
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_anadjytech_white-E7BD4LO2QLCrovY9N5TIF9mYV7HPJt.png"
               alt="AnadjyTech Logo"
               width={300}
+              unoptimized
               height={100}
               className="h-[70px] md:h-[100px] w-auto object-contain mb-4"
               style={{
@@ -32,7 +33,7 @@ export function Footer() {
 
           {/* Quick Links Column */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
+            <h3 className="font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -84,44 +85,51 @@ export function Footer() {
 
           {/* Support Column */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Support</h4>
+            <h3 className="font-semibold mb-4 text-white">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/faq"
+                  href="/affiliate-disclosure"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
                 >
-                  FAQ
+                  Affiliate Disclosure
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/shipping"
+                  href="/privacy"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
                 >
-                  Shipping Info
+                  Privacy Policy
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/returns"
+                  href="/cookies"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
                 >
-                  Returns
+                  Cookie Policy
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               </li>
               <li>
-                <span className="text-[#f1f1f1]">24/7 Customer Support</span>
+                <Link
+                  href="/terms"
+                  className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                >
+                  Terms & Conditions
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </Link>
               </li>
+              
             </ul>
           </div>
 
           {/* Follow Us Column */}
           <div>
-            <h4 className="font-semibold mb-4 text-white">Follow Us</h4>
+            <h3 className="font-semibold mb-4 text-white">Follow Us</h3>
             <div className="mb-4">
               <a
                 href="mailto:contact@anadjytech.com"

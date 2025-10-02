@@ -1,6 +1,8 @@
+import Footer from "@/components/footer"
+import Newsletter from "@/components/newsletter"
 import type { Metadata } from "next"
-import { Newsletter } from "@/components/newsletter"
-import { Footer as FooterComponent } from "@/components/footer"
+import Image from "next/image"
+
 
 export const metadata: Metadata = {
   title: "Smart Home Essentials - AnadjyTech",
@@ -50,7 +52,7 @@ export default function SmartHomePage() {
             {/* TP-Link Smart Plug */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1510552776732-01acc9a4c8da"
                   alt="TP-Link Smart Plug"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -89,7 +91,7 @@ export default function SmartHomePage() {
             {/* Philips Hue Smart Bulb */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1584277260161-ec72a24c61b0"
                   alt="Philips Hue Smart Bulb"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -128,7 +130,7 @@ export default function SmartHomePage() {
             {/* Ring Doorbell */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1588269845583-4f3b6b6c2f1b"
                   alt="Ring Doorbell"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -167,7 +169,7 @@ export default function SmartHomePage() {
             {/* Indoor Camera */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620"
                   alt="Indoor Smart Camera"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -206,7 +208,7 @@ export default function SmartHomePage() {
             {/* Nest Thermostat */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1606813908780-f8a6f3df0f6c"
                   alt="Nest Thermostat"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -245,7 +247,7 @@ export default function SmartHomePage() {
             {/* Smart Light Strip */}
             <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image  unoptimized width={300} height={300}
                   src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64"
                   alt="Smart Light Strip"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
@@ -453,7 +455,7 @@ export default function SmartHomePage() {
       <Newsletter />
 
       {/* Footer */}
-      <FooterComponent />
+      <Footer />
     </div>
   )
 }

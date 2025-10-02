@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { CheckCircle, Zap, Star, Clock, Gift, Facebook, Twitter, Instagram } from "lucide-react"
+import Image from "next/image"
 
 export default function NewsletterContent() {
   const [email, setEmail] = useState("")
@@ -94,7 +95,7 @@ export default function NewsletterContent() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#1E90FF] via-[#4169E1] to-[#0066CC] py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <img src="/futuristic-tech-newsletter-hero-background-with-ga.jpg" alt="" className="w-full h-full object-cover" />
+          <Image priority unoptimized width={300} height={300} src="/futuristic-tech-newsletter-hero-background-with-ga.jpg" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-blue-600/5 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -208,7 +209,7 @@ export default function NewsletterContent() {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="aspect-video mb-4 overflow-hidden rounded-lg bg-gray-100">
-                  <img
+                  <Image priority unoptimized width={300} height={300}
                     src={benefit.image || "/placeholder.svg"}
                     alt={benefit.title}
                     className="w-full h-full object-cover"
@@ -229,7 +230,7 @@ export default function NewsletterContent() {
       {/* Limited-Time Offer Banner */}
       <section className="py-16 bg-gradient-to-r from-[#1E90FF] to-[#4169E1] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <img src="/free-pdf-guide-tech-gadgets-2025-promotional-banne.jpg" alt="" className="w-full h-full object-cover" />
+          <Image priority unoptimized width={300} height={300} src="/free-pdf-guide-tech-gadgets-2025-promotional-banne.jpg" alt="" className="w-full h-full object-cover" />
         </div>
 
         <div className="container mx-auto px-4 text-center">
@@ -276,7 +277,7 @@ export default function NewsletterContent() {
                 <p className="text-gray-700 mb-6 text-lg italic leading-relaxed">"{testimonial.quote}"</p>
 
                 <div className="flex items-center gap-4">
-                  <img
+                  <Image priority unoptimized width={300} height={300}
                     src={testimonial.avatar || "/placeholder.svg"}
                     alt={testimonial.author}
                     className="w-12 h-12 rounded-full object-cover"

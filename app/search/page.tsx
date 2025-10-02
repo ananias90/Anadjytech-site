@@ -2,7 +2,6 @@
 import SiteHeader from "@/components/site-header";
 
 import { Suspense } from "react"
-import SiteHeader from "@/components/site-header"
 import Footer from "@/components/footer"
 import Newsletter from "@/components/newsletter"
 import MobileCTA from "@/components/MobileCTA"

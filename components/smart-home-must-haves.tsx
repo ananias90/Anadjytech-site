@@ -79,6 +79,7 @@ export default function SmartHomeMustHaves() {
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   width={400}
+                  unoptimized
                   height={300}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   loading="lazy"

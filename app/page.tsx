@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function HomePage() {
+export default function page() {
   return (
     <div className="min-h-screen pb-20 lg:pb-0">
       <SiteHeader />

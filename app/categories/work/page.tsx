@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react"
 import SiteHeader from "@/components/site-header"
 import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Work & Study Essentials - Productivity Tech | AnadjyTech",
@@ -146,7 +147,7 @@ export default function WorkStudyPage() {
                 className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col"
               >
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image  unoptimized width={300} height={300}
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"

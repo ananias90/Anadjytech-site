@@ -76,6 +76,7 @@ export default function CategoriesContent() {
           <Image
             src="/blog-hero-mobile.webp"
             alt=""
+            unoptimized
             fill
             className="object-cover object-center lg:hidden"
             loading="lazy"
@@ -86,6 +87,7 @@ export default function CategoriesContent() {
             src="/blog-hero-tablet.webp"
             alt=""
             fill
+            unoptimized
             className="object-cover object-center hidden lg:block xl:hidden"
             loading="lazy"
             aria-hidden="true"
@@ -94,6 +96,7 @@ export default function CategoriesContent() {
           <Image
             src="/blog-hero-desktop.webp"
             alt=""
+            unoptimized
             fill
             className="object-cover object-center hidden xl:block"
             priority
@@ -153,7 +156,7 @@ export default function CategoriesContent() {
       <section className="bg-white py-12 sm:py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {categories.map((category, index) => {
+            {categories.map((category:any, index) => {
               const IconComponent = category.icon
               return (
                 <div
@@ -167,6 +170,7 @@ export default function CategoriesContent() {
                           src={category.customImage || "/placeholder.svg"}
                           alt={category.title}
                           width={80}
+                          unoptimized
                           height={80}
                           className="w-full h-full object-cover rounded-full"
                         />
