@@ -5,9 +5,9 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="container mx-auto px-4 py-10 prose prose-invert">
+    <main className="prose mx-auto px-4 py-10">
       <h1>Terms of Service</h1>
-      <p>Last updated: {new Date().toISOString().split("T")[0]}</p>
+      <p><strong>Last updated:</strong> {new Date().toISOString().split("T")[0]}</p>
       <h2>1. Who we are</h2>
       <p>AnadjyTech provides product guides and recommendations. We link to retailers and may earn commissions from qualifying purchases.</p>
       <h2>2. No warranties</h2>
