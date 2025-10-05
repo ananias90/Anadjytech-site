@@ -84,7 +84,7 @@ export default function GamingPage() {
                   High-precision gaming mouse with customizable RGB lighting and programmable buttons.
                 </p>
                 <div className="space-y-3 mt-auto">
-                  <p className="text-2xl font-bold text-blue-600">$79.99</p>
+                  {/* <p className="text-2xl font-bold text-blue-600">$79.99</p> */}
                   <div className="flex gap-2">
                     <Link
                       href="https://amazon.com"
@@ -119,7 +119,7 @@ export default function GamingPage() {
                   Premium mechanical gaming keyboard with Cherry MX switches and per-key RGB lighting.
                 </p>
                 <div className="space-y-3 mt-auto">
-                  <p className="text-2xl font-bold text-blue-600">$149.99</p>
+                  {/* <p className="text-2xl font-bold text-blue-600">$149.99</p> */}
                   <div className="flex gap-2">
                     <Link
                       href="https://amazon.com"
@@ -154,7 +154,7 @@ export default function GamingPage() {
                   Professional gaming headset with 7.1 surround sound and noise-cancelling microphone.
                 </p>
                 <div className="space-y-3 mt-auto">
-                  <p className="text-2xl font-bold text-blue-600">$99.99</p>
+                  {/* <p className="text-2xl font-bold text-blue-600">$99.99</p> */}
                   <div className="flex gap-2">
                     <Link
                       href="https://amazon.com"
@@ -189,7 +189,7 @@ export default function GamingPage() {
                   15-key LCD control deck for streamers with customizable buttons and instant actions.
                 </p>
                 <div className="space-y-3 mt-auto">
-                  <p className="text-2xl font-bold text-blue-600">$149.99</p>
+                  {/* <p className="text-2xl font-bold text-blue-600">$149.99</p> */}
                   <div className="flex gap-2">
                     <Link
                       href="https://amazon.com"
@@ -224,7 +224,7 @@ export default function GamingPage() {
                   27-inch 144Hz gaming monitor with 1ms response time and G-Sync compatibility.
                 </p>
                 <div className="space-y-3 mt-auto">
-                  <p className="text-2xl font-bold text-blue-600">$299.99</p>
+                  {/* <p className="text-2xl font-bold text-blue-600">$299.99</p> */}
                   <div className="flex gap-2">
                     <Link
                       href="https://amazon.com"
@@ -259,7 +259,7 @@ export default function GamingPage() {
                   Ergonomic gaming chair with lumbar support, adjustable armrests, and premium materials.
                 </p>
                 <div className="space-y-3 mt-auto">
-                  <p className="text-2xl font-bold text-blue-600">$249.99</p>
+                  {/* <p className="text-2xl font-bold text-blue-600">$249.99</p> */}
                   <div className="flex gap-2">
                     <Link
                       href="https://amazon.com"
@@ -295,7 +295,7 @@ export default function GamingPage() {
                     <th className="px-6 py-4 text-left font-semibold">Product</th>
                     <th className="px-6 py-4 text-left font-semibold">Key Features</th>
                     <th className="px-6 py-4 text-left font-semibold">Performance</th>
-                    <th className="px-6 py-4 text-left font-semibold">Price</th>
+                    {/* <th className="px-6 py-4 text-left font-semibold">Price</th> */}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -303,19 +303,19 @@ export default function GamingPage() {
                     <td className="px-6 py-4 font-medium text-gray-900">Razer Gaming Mouse</td>
                     <td className="px-6 py-4 text-gray-600">RGB Lighting, Programmable Buttons</td>
                     <td className="px-6 py-4 text-gray-600">20,000 DPI, 1ms Response</td>
-                    <td className="px-6 py-4 font-bold text-blue-600">$79.99</td>
+                    {/* <td className="px-6 py-4 font-bold text-blue-600">$79.99</td> */}
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-6 py-4 font-medium text-gray-900">HyperX Gaming Headset</td>
                     <td className="px-6 py-4 text-gray-600">7.1 Surround, Noise-Cancelling Mic</td>
                     <td className="px-6 py-4 text-gray-600">50mm Drivers, Memory Foam</td>
-                    <td className="px-6 py-4 font-bold text-blue-600">$99.99</td>
+                    {/* <td className="px-6 py-4 font-bold text-blue-600">$99.99</td> */}
                   </tr>
                   <tr className="hover:bg-gray-50">
                     <td className="px-6 py-4 font-medium text-gray-900">ASUS Gaming Monitor</td>
                     <td className="px-6 py-4 text-gray-600">144Hz, G-Sync Compatible</td>
                     <td className="px-6 py-4 text-gray-600">27-inch, 1ms Response Time</td>
-                    <td className="px-6 py-4 font-bold text-blue-600">$299.99</td>
+                    {/* <td className="px-6 py-4 font-bold text-blue-600">$299.99</td> */}
                   </tr>
                 </tbody>
               </table>
@@ -347,9 +347,9 @@ export default function GamingPage() {
                 <div>
                   <span className="font-medium">Performance:</span> 50mm Drivers, Memory Foam
                 </div>
-                <div>
+                {/* <div>
                   <span className="font-medium">Price:</span> <span className="font-bold text-blue-600">$99.99</span>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="bg-white rounded-2xl shadow-md p-6">
@@ -361,9 +361,9 @@ export default function GamingPage() {
                 <div>
                   <span className="font-medium">Performance:</span> 27-inch, 1ms Response Time
                 </div>
-                <div>
+                {/* <div>
                   <span className="font-medium">Price:</span> <span className="font-bold text-blue-600">$299.99</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

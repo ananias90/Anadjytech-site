@@ -70,7 +70,7 @@ export default function SmartHomePage() {
                   <li>• Energy monitoring</li>
                   <li>• Timer & scheduling</li>
                 </ul>
-                <div className="text-2xl font-bold text-[#0066cc] mb-4">$12.99</div>
+                {/* <div className="text-2xl font-bold text-[#0066cc] mb-4">$12.99</div> */}
                 <div className="flex gap-2 mt-auto">
                   <a
                     href="#"
@@ -109,7 +109,7 @@ export default function SmartHomePage() {
                   <li>• Voice control compatible</li>
                   <li>• 25,000 hour lifespan</li>
                 </ul>
-                <div className="text-2xl font-bold text-[#0066cc] mb-4">$49.99</div>
+                {/* <div className="text-2xl font-bold text-[#0066cc] mb-4">$49.99</div> */}
                 <div className="flex gap-2 mt-auto">
                   <a
                     href="#"
@@ -148,7 +148,7 @@ export default function SmartHomePage() {
                   <li>• Motion detection alerts</li>
                   <li>• Night vision</li>
                 </ul>
-                <div className="text-2xl font-bold text-[#0066cc] mb-4">$99.99</div>
+                {/* <div className="text-2xl font-bold text-[#0066cc] mb-4">$99.99</div> */}
                 <div className="flex gap-2 mt-auto">
                   <a
                     href="#"
@@ -187,7 +187,7 @@ export default function SmartHomePage() {
                   <li>• Cloud & local storage</li>
                   <li>• Two-way audio</li>
                 </ul>
-                <div className="text-2xl font-bold text-[#0066cc] mb-4">$49.99</div>
+                {/* <div className="text-2xl font-bold text-[#0066cc] mb-4">$49.99</div> */}
                 <div className="flex gap-2 mt-auto">
                   <a
                     href="#"
@@ -226,7 +226,7 @@ export default function SmartHomePage() {
                   <li>• Energy usage reports</li>
                   <li>• Voice control support</li>
                 </ul>
-                <div className="text-2xl font-bold text-[#0066cc] mb-4">$249.99</div>
+                {/* <div className="text-2xl font-bold text-[#0066cc] mb-4">$249.99</div> */}
                 <div className="flex gap-2 mt-auto">
                   <a
                     href="#"
@@ -265,7 +265,7 @@ export default function SmartHomePage() {
                   <li>• Cuttable & extendable</li>
                   <li>• Easy adhesive mounting</li>
                 </ul>
-                <div className="text-2xl font-bold text-[#0066cc] mb-4">$24.99</div>
+                {/* <div className="text-2xl font-bold text-[#0066cc] mb-4">$24.99</div> */}
                 <div className="flex gap-2 mt-auto">
                   <a
                     href="#"
@@ -300,7 +300,7 @@ export default function SmartHomePage() {
                   <th className="px-6 py-4 text-left font-semibold">Voice Control</th>
                   <th className="px-6 py-4 text-left font-semibold">WiFi</th>
                   <th className="px-6 py-4 text-left font-semibold">App Control</th>
-                  <th className="px-6 py-4 text-left font-semibold">Price</th>
+                  {/* <th className="px-6 py-4 text-left font-semibold">Price</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -309,21 +309,21 @@ export default function SmartHomePage() {
                   <td className="px-6 py-4 text-green-600">✓ All assistants</td>
                   <td className="px-6 py-4 text-green-600">✓ 2.4/5GHz</td>
                   <td className="px-6 py-4 text-green-600">✓ Full control</td>
-                  <td className="px-6 py-4 font-bold text-[#0066cc]">$49.99</td>
+                  {/* <td className="px-6 py-4 font-bold text-[#0066cc]">$49.99</td> */}
                 </tr>
                 <tr className="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
                   <td className="px-6 py-4 font-medium text-gray-900">Ring Doorbell</td>
                   <td className="px-6 py-4 text-green-600">✓ Alexa, Google</td>
                   <td className="px-6 py-4 text-green-600">✓ 2.4GHz</td>
                   <td className="px-6 py-4 text-green-600">✓ iOS/Android</td>
-                  <td className="px-6 py-4 font-bold text-[#0066cc]">$99.99</td>
+                  {/* <td className="px-6 py-4 font-bold text-[#0066cc]">$99.99</td> */}
                 </tr>
                 <tr className="hover:bg-gray-50">
                   <td className="px-6 py-4 font-medium text-gray-900">Nest Thermostat</td>
                   <td className="px-6 py-4 text-green-600">✓ Voice commands</td>
                   <td className="px-6 py-4 text-green-600">✓ Stable connection</td>
                   <td className="px-6 py-4 text-green-600">✓ Smart scheduling</td>
-                  <td className="px-6 py-4 font-bold text-[#0066cc]">$249.99</td>
+                  {/* <td className="px-6 py-4 font-bold text-[#0066cc]">$249.99</td> */}
                 </tr>
               </tbody>
             </table>
@@ -346,10 +346,10 @@ export default function SmartHomePage() {
                   <span className="text-gray-600">App Control:</span>
                   <span className="text-green-600">✓ Full control</span>
                 </div>
-                <div className="flex justify-between font-bold">
+                {/* <div className="flex justify-between font-bold">
                   <span className="text-gray-900">Price:</span>
                   <span className="text-[#0066cc]">$49.99</span>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -368,10 +368,10 @@ export default function SmartHomePage() {
                   <span className="text-gray-600">App Control:</span>
                   <span className="text-green-600">✓ iOS/Android</span>
                 </div>
-                <div className="flex justify-between font-bold">
+                {/* <div className="flex justify-between font-bold">
                   <span className="text-gray-900">Price:</span>
                   <span className="text-[#0066cc]">$99.99</span>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -390,10 +390,10 @@ export default function SmartHomePage() {
                   <span className="text-gray-600">App Control:</span>
                   <span className="text-green-600">✓ Smart scheduling</span>
                 </div>
-                <div className="flex justify-between font-bold">
+                {/* <div className="flex justify-between font-bold">
                   <span className="text-gray-900">Price:</span>
                   <span className="text-[#0066cc]">$249.99</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

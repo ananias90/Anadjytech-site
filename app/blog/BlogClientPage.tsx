@@ -8,6 +8,8 @@ import { Calendar, User, ChevronLeft, ChevronRight, Truck, RotateCcw, Shield, St
 import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar";
 import Button from "@/components/ui/button";
 import { blogPosts } from "@/content/blogPost";
+import { allPosts } from 'contentlayer/generated';
+
 
 
 
@@ -36,7 +38,7 @@ function BlogClientPageContent() {
 
   // Filter posts based on URL parameters
   const filteredPosts = useMemo(() => {
-    let filtered = blogPosts.filter((post) => post.published && !post.hidden)
+    let filtered = allPosts.filter((post) => post.published && !post.hidden)
 
     const topics = searchParams.get("topic")?.split(",") || []
     const difficulties = searchParams.get("level")?.split(",") || []
@@ -232,7 +234,7 @@ function BlogClientPageContent() {
                             <div className="md:w-1/2 relative h-64 md:h-80">
                               <Image
                                 src={featuredPost.image || "/placeholder.svg"}
-                                alt={featuredPost.alt || `Featured article: ${featuredPost.title}`}
+                                alt={`Featured article: ${featuredPost.title}`}
                                 fill
                                 unoptimized
                                 className="object-cover"
@@ -291,7 +293,7 @@ function BlogClientPageContent() {
                               <div className="relative aspect-video">
                                 <Image
                                   src={post.image || "/placeholder.svg"}
-                                  alt={post.alt || `Article: ${post.title}`}
+                                  alt={`Article: ${post.title}`}
                                   fill
                                   unoptimized
                                   className="object-cover"
@@ -312,10 +314,10 @@ function BlogClientPageContent() {
                               <div className="p-6 flex-1 flex flex-col">
                                 <div className="flex items-center justify-between mb-3">
                                   <div className="flex items-center gap-2 text-xs text-gray-500">
-                                    <User className="w-3 h-3" aria-hidden="true" />
+                                    <User className="w-3 h-3  flex-shrink-0" aria-hidden="true" />
                                     <span>{post.author}</span>
                                     <span aria-hidden="true">•</span>
-                                    <Calendar className="w-3 h-3" aria-hidden="true" />
+                                    <Calendar className="w-3 h-3  flex-shrink-0" aria-hidden="true" />
                                     <time dateTime={post.publishedAt}>
                                       {new Date(post.publishedAt).toLocaleDateString()}
                                     </time>

@@ -97,14 +97,14 @@ export default function UsbCCategoriesPage() {
                     </ul>
                   </div>
 
-                  <div className="flex items-center justify-between mb-4">
+                  {/* <div className="flex items-center justify-between mb-4">
                     <span className="text-2xl font-bold text-blue-600">{product.price}</span>
                     <div className="flex items-center text-yellow-400">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="flex gap-3 mt-auto">
                     <a
@@ -148,7 +148,7 @@ export default function UsbCCategoriesPage() {
                     <th className="px-6 py-4 text-left font-semibold">Key Feature</th>
                     <th className="px-6 py-4 text-left font-semibold">Performance</th>
                     <th className="px-6 py-4 text-left font-semibold">Special Feature</th>
-                    <th className="px-6 py-4 text-left font-semibold">Price</th>
+                    {/* <th className="px-6 py-4 text-left font-semibold">Price</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -158,7 +158,7 @@ export default function UsbCCategoriesPage() {
                       <td className="px-6 py-4 text-gray-600">{item.feature1}</td>
                       <td className="px-6 py-4 text-gray-600">{item.feature2}</td>
                       <td className="px-6 py-4 text-gray-600">{item.feature3}</td>
-                      <td className="px-6 py-4 font-bold text-blue-600">{item.price}</td>
+                      {/* <td className="px-6 py-4 font-bold text-blue-600">{item.price}</td> */}
                     </tr>
                   ))}
                 </tbody>
