@@ -11,6 +11,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  webpack: (config) => {
+    // Suppress only Contentlayer/webpack parsing warnings on Windows
+    config.infrastructureLogging = {
+      level: 'error',
+    }
+    return config
+  },
 }
 
 export default withContentlayer(nextConfig)
