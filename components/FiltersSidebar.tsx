@@ -167,7 +167,7 @@ export default function FiltersSidebar({
                 </button>
               </div>
             ))}
-            {(currentPriceRange[0] !== priceRange[0] || currentPriceRange[1] !== priceRange[1]) && (
+            {/* {(currentPriceRange[0] !== priceRange[0] || currentPriceRange[1] !== priceRange[1]) && (
               <div className="flex items-center gap-1 bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">
                 <span>
                   Price: ${currentPriceRange[0]}-${currentPriceRange[1]}
@@ -180,7 +180,7 @@ export default function FiltersSidebar({
                   <X className="w-3 h-3" />
                 </button>
               </div>
-            )}
+            )} */}
             {minRating > 0 && (
               <div className="flex items-center gap-1 bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
                 <span>Rating: {minRating}+ stars</span>
@@ -219,7 +219,7 @@ export default function FiltersSidebar({
       </div>
 
       {/* Price Range Filter */}
-      <div>
+      {/* <div>
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Price Range</h3>
         <div className="px-2">
           <Slider
@@ -236,7 +236,7 @@ export default function FiltersSidebar({
             <span>${currentPriceRange[1]}</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Brands Filter */}
       <div>

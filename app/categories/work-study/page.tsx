@@ -86,7 +86,7 @@ export default function WorkStudyPage() {
                   </div>
 
                   <div className="flex items-center justify-between mt-auto">
-                    <span className="text-2xl font-bold text-blue-600">{product.price}</span>
+                    {/* <span className="text-2xl font-bold text-blue-600">{product.price}</span> */}
                     <a
                       href={product.amazonUrl}
                       target="_blank"
@@ -149,7 +149,7 @@ export default function WorkStudyPage() {
             {comparisonItems.map((item, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.name}</h3>
-                <p className="text-xl font-bold text-blue-600 mb-4">{item.price}</p>
+                {/* <p className="text-xl font-bold text-blue-600 mb-4">{item.price}</p> */}
                 <div className="space-y-2">
                   {Object.entries(item.features).map(([feature, value], featureIndex) => (
                     <div key={featureIndex} className="flex justify-between">

@@ -159,7 +159,7 @@ export default function WorkStudyPage() {
                   <p className="text-gray-600 mb-4 flex-1">{product.description}</p>
 
                   <div className="flex items-center justify-between mt-auto">
-                    <span className="text-2xl font-bold text-blue-600">{product.price}</span>
+                    {/* <span className="text-2xl font-bold text-blue-600">{product.price}</span> */}
                     <a
                       href={product.amazonUrl}
                       target="_blank"
@@ -188,7 +188,7 @@ export default function WorkStudyPage() {
                 <tr className="bg-blue-600 text-white">
                   <th className="p-4 text-left font-semibold">Product</th>
                   <th className="p-4 text-center font-semibold">Key Feature</th>
-                  <th className="p-4 text-center font-semibold">Price</th>
+                  {/* <th className="p-4 text-center font-semibold">Price</th> */}
                   <th className="p-4 text-center font-semibold">Buy</th>
                 </tr>
               </thead>
@@ -197,7 +197,7 @@ export default function WorkStudyPage() {
                   <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                     <td className="p-4 font-medium text-gray-900">{item.name}</td>
                     <td className="p-4 text-center text-gray-700">{item.keyFeature}</td>
-                    <td className="p-4 text-center font-bold text-blue-600">{item.price}</td>
+                    {/* <td className="p-4 text-center font-bold text-blue-600">{item.price}</td> */}
                     <td className="p-4 text-center">
                       <a
                         href={item.buyLink}
@@ -221,7 +221,7 @@ export default function WorkStudyPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.name}</h3>
                 <p className="text-gray-600 mb-2">{item.keyFeature}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-blue-600">{item.price}</span>
+                  {/* <span className="text-xl font-bold text-blue-600">{item.price}</span> */}
                   <a
                     href={item.buyLink}
                     target="_blank"

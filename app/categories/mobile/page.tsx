@@ -170,7 +170,7 @@ const MobilePage = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
                 <p className="text-gray-600 mb-4">{product.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-blue-600">{product.price}</span>
+                  {/* <span className="text-2xl font-bold text-blue-600">{product.price}</span> */}
                   <button className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                     Buy on Amazon
                   </button>
@@ -195,7 +195,7 @@ const MobilePage = () => {
                   <th className="border border-gray-200 px-6 py-4 text-left font-semibold text-gray-900">Capacity</th>
                   <th className="border border-gray-200 px-6 py-4 text-left font-semibold text-gray-900">Charging</th>
                   <th className="border border-gray-200 px-6 py-4 text-left font-semibold text-gray-900">Wireless</th>
-                  <th className="border border-gray-200 px-6 py-4 text-left font-semibold text-gray-900">Price</th>
+                  {/* <th className="border border-gray-200 px-6 py-4 text-left font-semibold text-gray-900">Price</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -205,7 +205,7 @@ const MobilePage = () => {
                     <td className="border border-gray-200 px-6 py-4 text-gray-600">{item.capacity}</td>
                     <td className="border border-gray-200 px-6 py-4 text-gray-600">{item.charging}</td>
                     <td className="border border-gray-200 px-6 py-4 text-gray-600">{item.wireless}</td>
-                    <td className="border border-gray-200 px-6 py-4 font-semibold text-blue-600">{item.price}</td>
+                    {/* <td className="border border-gray-200 px-6 py-4 font-semibold text-blue-600">{item.price}</td> */}
                   </tr>
                 ))}
               </tbody>
@@ -230,10 +230,10 @@ const MobilePage = () => {
                     <span className="text-gray-600">Wireless:</span>
                     <span className="font-medium">{item.wireless}</span>
                   </div>
-                  <div className="flex justify-between">
+                  {/* <div className="flex justify-between">
                     <span className="text-gray-600">Price:</span>
                     <span className="font-semibold text-blue-600">{item.price}</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}

@@ -7,6 +7,7 @@ import MobileCTA from "@/components/MobileCTA";
 import BlogClientPage from "./BlogClientPage";
 
 
+
 export const metadata: Metadata = {
   title: "Tech & Gadgets Blog | AnadjyTech — The smart way to tech",
   description: "Latest tech trends, reviews, and how-tos for smart decisions.",
@@ -33,7 +34,6 @@ export default function BlogPage() {
       </Suspense>
       <Newsletter />
       <Footer />
-
       <MobileCTA />
     </div>
   )
