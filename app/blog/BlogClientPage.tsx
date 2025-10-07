@@ -45,8 +45,10 @@ function BlogClientPageContent() {
     const tags = searchParams.get("tag")?.split(",") || []
     const search = searchParams.get("search")
 
+
     if (topics.length > 0) {
-      filtered = filtered.filter((post) => topics.includes(post.category))
+      
+      filtered = filtered.filter((post) => topics.includes(post.title.toLowerCase()) || topics.includes(post.category.toLowerCase()))
     }
 
     if (difficulties.length > 0) {
@@ -350,7 +352,7 @@ function BlogClientPageContent() {
                           size="sm"
                           onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                           disabled={currentPage === 1}
-                          className="flex items-center gap-1 border-[#0A67FF] text-[#0A67FF] hover:bg-[#0A67FF] hover:text-white rounded-lg bg-transparent disabled:opacity-50"
+                          className="flex items-center gap-1 border-[#0A67FF] !text-[#0A67FF] hover:bg-[#0A67FF] hover:text-white rounded-lg bg-transparent disabled:opacity-50"
                           aria-label="Go to previous page"
                         >
                           <ChevronLeft className="w-4 h-4" aria-hidden="true" />
@@ -367,7 +369,7 @@ function BlogClientPageContent() {
                                 className={
                                   currentPage === page
                                     ? "bg-[#0A67FF] text-white hover:bg-blue-700 rounded-lg"
-                                    : "border-gray-300 hover:border-[#0A67FF] hover:text-[#0A67FF] rounded-lg bg-transparent text-gray-700"
+                                    : "border-gray-300 hover:border-[#0A67FF] hover:text-[#0A67FF] rounded-lg bg-transparent !text-gray-700"
                                 }
                                 variant={currentPage === page ? "default" : "outline"}
                                 aria-label={`Go to page ${page}`}
@@ -379,14 +381,14 @@ function BlogClientPageContent() {
                           })}
                           {totalPages > 5 && (
                             <>
-                              <span className="px-2 py-1 text-gray-500" aria-hidden="true">
+                              <span className="px-2 py-1 !text-gray-500" aria-hidden="true">
                                 ...
                               </span>
                               <Button
                                 variant="outline"
                                 size="sm"
                                 onClick={() => handlePageChange(totalPages)}
-                                className="border-gray-300 hover:border-[#0A67FF] hover:text-[#0A67FF] rounded-lg bg-transparent text-gray-700"
+                                className="border-gray-300 hover:border-[#0A67FF] hover:text-[#0A67FF] rounded-lg bg-transparent !text-gray-700"
                                 aria-label={`Go to page ${totalPages}`}
                               >
                                 {totalPages}
@@ -399,7 +401,7 @@ function BlogClientPageContent() {
                           size="sm"
                           onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                           disabled={currentPage === totalPages}
-                          className="flex items-center gap-1 border-[#0A67FF] text-[#0A67FF] hover:bg-[#0A67FF] hover:text-white rounded-lg bg-transparent disabled:opacity-50"
+                          className="flex items-center gap-1 border-[#0A67FF] !text-[#0A67FF] hover:bg-[#0A67FF] hover:text-white rounded-lg bg-transparent disabled:opacity-50"
                           aria-label="Go to next page"
                         >
                           Next
