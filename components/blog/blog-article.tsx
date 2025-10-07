@@ -40,8 +40,6 @@ const components = {
 export default function BlogArticle({ post }: any) {
   const MDXContent = useMDXComponent(post.content)
 
-  console.log("Helooooooooooooooooo")
-
   return (
     <article className="min-h-screen bg-white dark:bg-gray-900">
       {/* Breadcrumb */}
@@ -110,7 +108,7 @@ export default function BlogArticle({ post }: any) {
       {post.image && (
         <div className="relative h-64 sm:h-80 lg:h-96 mb-12">
           <Image
-            src={post.image}
+            src={post.image || "/placeholder.svg"}
             alt={post.title}
             fill
             unoptimized
