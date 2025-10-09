@@ -1,21 +1,17 @@
 "use client";
 
-import { useState, useMemo, Suspense } from "react"
-import { useSearchParams } from "next/navigation"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, User, ChevronLeft, ChevronRight, Truck, RotateCcw, Shield, Star, Search } from "lucide-react"
 import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar";
 import Button from "@/components/ui/button";
-import { blogPosts } from "@/content/blogPost";
 import { allPosts } from 'contentlayer/generated';
+import InputSearch from "./input-search";
 
 
+export default function BlogClientPage({ filteredPosts }: any) {
 
-
-function BlogClientPageContent() {
-  const searchParams = useSearchParams()
-  const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 9
 
@@ -36,60 +32,12 @@ function BlogClientPageContent() {
     ],
   }
 
-  // Filter posts based on URL parameters
-  const filteredPosts = useMemo(() => {
-    let filtered = allPosts.filter((post) => post.published && !post.hidden)
-
-    const topics = searchParams.get("topic")?.split(",") || []
-    const difficulties = searchParams.get("level")?.split(",") || []
-    const tags = searchParams.get("tag")?.split(",") || []
-    const search = searchParams.get("search")
-
-
-    if (topics.length > 0) {
-      
-      filtered = filtered.filter((post) => topics.includes(post.title.toLowerCase()) || topics.includes(post.category.toLowerCase()))
-    }
-
-    if (difficulties.length > 0) {
-      filtered = filtered.filter((post) => difficulties.includes(post.difficulty))
-    }
-
-    if (tags.length > 0) {
-      filtered = filtered.filter((post) => post.tags.some((tag) => tags.includes(tag)))
-    }
-
-    if (search) {
-      const query = search.toLowerCase()
-      filtered = filtered.filter(
-        (post) =>
-          post.title.toLowerCase().includes(query) ||
-          post.excerpt.toLowerCase().includes(query) ||
-          post.category.toLowerCase().includes(query) ||
-          post.author.toLowerCase().includes(query),
-      )
-    }
-
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase()
-      filtered = filtered.filter(
-        (post) =>
-          post.title.toLowerCase().includes(query) ||
-          post.excerpt.toLowerCase().includes(query) ||
-          post.category.toLowerCase().includes(query) ||
-          post.author.toLowerCase().includes(query),
-      )
-    }
-
-    return filtered
-  }, [searchParams, searchQuery])
-
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
   const startIndex = (currentPage - 1) * postsPerPage
   const paginatedPosts = filteredPosts.slice(startIndex, startIndex + postsPerPage)
 
   const featuredPost = filteredPosts[0] || null
-  const gridPosts = paginatedPosts.filter((post) => post.id !== featuredPost?.id)
+  const gridPosts = paginatedPosts.filter((post: any) => post.id !== featuredPost?.id)
 
   const isNewPost = (publishedAt: string) => {
     const publishDate = new Date(publishedAt)
@@ -191,26 +139,12 @@ function BlogClientPageContent() {
             <div className="flex-1">
               {/* Search Bar */}
               <div className="mb-6">
-                <div className="relative">
-                  <Search
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"
-                    aria-hidden="true"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Search articles..."
-                    value={searchQuery}
-                    onChange={(e) => {
-                      setSearchQuery(e.target.value)
-                      setCurrentPage(1)
-                    }}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0A67FF] focus:border-transparent outline-none"
-                    aria-label="Search blog articles"
-                  />
-                </div>
+                <InputSearch
+                  setCurrentPage={setCurrentPage}
+                />
                 <div className="flex items-center justify-between mt-4">
                   <p className="text-gray-600" aria-live="polite">
-                    Showing {filteredPosts.length} of {blogPosts.length} posts
+                    Showing {gridPosts.length} of {allPosts.length} posts
                   </p>
                 </div>
               </div>
@@ -287,20 +221,21 @@ function BlogClientPageContent() {
                       <div className="mb-12">
                         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 text-center">Latest Posts</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                          {gridPosts.map((post) => (
+                          {gridPosts.map((post: any) => (
                             <article
                               key={post.id}
                               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col focus-within:ring-2 focus-within:ring-[#0A67FF]"
                             >
                               <div className="relative aspect-video">
                                 <Image
-                                  src={post.image || "/placeholder.svg"}
-                                  alt={`Article: ${post.title}`}
-                                  fill
-                                  unoptimized
-                                  className="object-cover"
+                                  src={post.image || post.thumbnail ||  "/placeholder.svg"}
+                                  alt={post.alt || `${post.title} thumbnail`}
+                                  width={1200}
+                                  height={675}
+                                  className="object-cover w-full h-auto"
                                   loading="lazy"
                                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  priority={false}
                                 />
                                 <div className="absolute top-4 right-4 flex gap-2">
                                   <span className="bg-[#0A67FF] text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -417,13 +352,5 @@ function BlogClientPageContent() {
         </div>
       </section>
     </main>
-  )
-}
-
-export default function BlogClientPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <BlogClientPageContent />
-    </Suspense>
   )
 }
