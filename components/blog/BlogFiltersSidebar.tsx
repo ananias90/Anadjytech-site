@@ -120,7 +120,7 @@ export default function BlogFiltersSidebar({ topics, difficulties, tags }: BlogF
                 onClick={clearAllFilters}
                 variant="ghost"
                 size="sm"
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="text-white bg-red-500 !p-2 text-xs rounded-lg"
               >
                 <X className="w-4 h-4 mr-1" />
                 Clear

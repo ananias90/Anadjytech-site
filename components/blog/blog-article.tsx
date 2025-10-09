@@ -105,18 +105,20 @@ export default function BlogArticle({ post }: any) {
       </header>
 
       {/* Hero Image */}
-      {post.image && (
-        <div className="relative h-64 sm:h-80 lg:h-96 mb-12">
+      {post.hero && (
+        <div className="relative flex justify-center mb-12">
           <Image
-            src={post.image || "/placeholder.svg"}
-            alt={post.title}
-            fill
-            unoptimized
-            className="object-cover"
+            src={post.hero || '/placeholder.svg'}
+            alt={post.alt || `${post.title} hero image`}
+            width={1600}
+            height={900}
             priority
+            className="object-cover"
+            sizes="(max-width:768px) 100vw, (max-width:1200px) 80vw, 1200px"
           />
         </div>
       )}
+
 
       {/* Actual Article */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
