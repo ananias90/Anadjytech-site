@@ -4,6 +4,7 @@ import SiteHeader from "@/components/site-header"
 import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
 import Image from "next/image"
+import { workComparisonItems, workFaqs, workProducts } from "@/data"
 
 export const metadata: Metadata = {
   title: "Work & Study Essentials - Productivity Tech | AnadjyTech",
@@ -23,90 +24,7 @@ export const metadata: Metadata = {
 }
 
 export default function WorkStudyPage() {
-  const products = [
-    {
-      name: "Logitech MX Master 3S Mouse",
-      price: "$99",
-      image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
-      description:
-        "Advanced wireless mouse with precision tracking and customizable buttons for enhanced productivity.",
-      amazonUrl: "https://amazon.com/dp/B09HM94VDS",
-    },
-    {
-      name: "Keychron K2 Mechanical Keyboard",
-      price: "$89",
-      image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
-      description: "Compact 75% mechanical keyboard with hot-swappable switches and wireless connectivity.",
-      amazonUrl: "https://amazon.com/dp/B08CNBQZPX",
-    },
-    {
-      name: 'Dell Ultrasharp 27" Monitor',
-      price: "$299",
-      image: "https://images.unsplash.com/photo-1527443224154-27b2c045efd7?w=400&h=300&fit=crop",
-      description: "27-inch 4K IPS monitor with USB-C connectivity and height-adjustable stand for optimal viewing.",
-      amazonUrl: "https://amazon.com/dp/B08CZLBR5V",
-    },
-    {
-      name: "Anker USB-C Docking Station",
-      price: "$129",
-      image: "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=400&h=300&fit=crop",
-      description: "13-in-1 USB-C hub with dual 4K HDMI, USB 3.0 ports, and 100W power delivery for laptops.",
-      amazonUrl: "https://amazon.com/dp/B087219P5J",
-    },
-    {
-      name: "Samsung Portable SSD T7 (1TB)",
-      price: "$89",
-      image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=300&fit=crop",
-      description: "Ultra-fast portable SSD with 1TB storage, USB-C 3.2 connectivity, and compact aluminum design.",
-      amazonUrl: "https://amazon.com/dp/B08GTYFC37",
-    },
-    {
-      name: "Ergonomic Office Chair",
-      price: "$199",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
-      description: "Adjustable ergonomic chair with lumbar support, breathable mesh, and 360-degree swivel base.",
-      amazonUrl: "https://amazon.com/dp/B07TYMQZPX",
-    },
-  ]
-
-  const comparisonItems = [
-    {
-      name: "Logitech MX Master 3S",
-      keyFeature: "4000 DPI precision tracking",
-      price: "$99",
-      buyLink: "https://amazon.com/dp/B09HM94VDS",
-    },
-    {
-      name: "Keychron K2",
-      keyFeature: "Hot-swappable switches",
-      price: "$89",
-      buyLink: "https://amazon.com/dp/B08CNBQZPX",
-    },
-    {
-      name: "Dell Monitor",
-      keyFeature: "4K IPS display with USB-C",
-      price: "$299",
-      buyLink: "https://amazon.com/dp/B08CZLBR5V",
-    },
-  ]
-
-  const faqs = [
-    {
-      question: "Do ergonomic chairs really improve productivity?",
-      answer:
-        "Yes, ergonomic chairs reduce physical strain and discomfort, allowing you to focus better and work longer without fatigue. Proper posture support can significantly boost concentration and overall work performance.",
-    },
-    {
-      question: "What is the advantage of a mechanical keyboard?",
-      answer:
-        "Mechanical keyboards offer tactile feedback, durability, and customization options. They provide better typing accuracy, faster response times, and can last much longer than membrane keyboards, making them ideal for heavy typing work.",
-    },
-    {
-      question: "How much storage is enough for study/work?",
-      answer:
-        "For most users, 1TB provides ample space for documents, projects, and applications. Students and professionals working with large files like videos or datasets may need 2TB or more, but 1TB is a solid starting point.",
-    },
-  ]
+  
 
   return (
     <div className="min-h-screen">
@@ -141,7 +59,7 @@ export default function WorkStudyPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
+            {workProducts.map((product, index) => (
               <div
                 key={index}
                 className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col"
@@ -193,7 +111,7 @@ export default function WorkStudyPage() {
                 </tr>
               </thead>
               <tbody>
-                {comparisonItems.map((item, index) => (
+                {workComparisonItems.map((item, index) => (
                   <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                     <td className="p-4 font-medium text-gray-900">{item.name}</td>
                     <td className="p-4 text-center text-gray-700">{item.keyFeature}</td>
@@ -216,7 +134,7 @@ export default function WorkStudyPage() {
 
           {/* Mobile Cards */}
           <div className="md:hidden space-y-6">
-            {comparisonItems.map((item, index) => (
+            {workComparisonItems.map((item, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.name}</h3>
                 <p className="text-gray-600 mb-2">{item.keyFeature}</p>
@@ -242,7 +160,7 @@ export default function WorkStudyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
           <div className="space-y-6">
-            {faqs.map((faq, index) => (
+            {workFaqs.map((faq, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-md p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>

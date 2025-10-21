@@ -4,28 +4,24 @@ import { Facebook, Twitter, Instagram, Mail } from "lucide-react"
 
 const Footer = () => {
   return (
-    <footer className="bg-[#002147] text-[#f1f1f1] py-10">
+    <footer className="bg-[#002147] text-[#f1f1f1] py-10" role="contentinfo" aria-label="Site footer">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10">
           {/* Branding Column */}
-          <div>
+          <div className="">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_anadjytech_white-E7BD4LO2QLCrovY9N5TIF9mYV7HPJt.png"
-              alt="AnadjyTech Logo"
+              src="/images/footer-logo.png"
+              alt="AnadjyTech Logo - The smart way to tech"
               width={300}
-              unoptimized
               height={100}
-              className="h-[70px] md:h-[100px] w-auto object-contain mb-4"
-              style={{
-                background: "transparent",
-                border: "none",
-                padding: 0,
-                boxShadow: "none",
-              }}
+              className="h-[70px] md:h-[140px] w-auto object-contain bg-transparent border-0 p-0 shadow-none"
               priority
+              aria-label="AnadjyTech company logo"
             />
-            <p className="text-white font-medium mb-3 text-lg">The smart way to tech</p>
-            <p className="text-[#f1f1f1] text-sm">
+            <p className="text-white font-medium mb-3 text-lg" aria-label="Company tagline">
+              The smart way to tech
+            </p>
+            <p className="text-[#f1f1f1] text-sm" aria-label="Company description">
               Your go-to destination for the latest and smartest tech gadgets that make your daily life easier and more
               connected.
             </p>
@@ -33,12 +29,15 @@ const Footer = () => {
 
           {/* Quick Links Column */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="font-semibold mb-4 text-white" id="quick-links-heading">
+              Quick Links
+            </h3>
+            <ul className="space-y-2 text-sm" aria-labelledby="quick-links-heading">
               <li>
                 <Link
                   href="/"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Navigate to home page"
                 >
                   Home
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -48,6 +47,7 @@ const Footer = () => {
                 <Link
                   href="/categories"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Browse product categories"
                 >
                   Categories
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -57,6 +57,7 @@ const Footer = () => {
                 <Link
                   href="/blog"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Read our blog articles"
                 >
                   Blog
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -66,6 +67,7 @@ const Footer = () => {
                 <Link
                   href="/about"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Learn more about AnadjyTech"
                 >
                   About Us
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -75,6 +77,7 @@ const Footer = () => {
                 <Link
                   href="/contact"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Contact AnadjyTech support"
                 >
                   Contact
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -83,14 +86,17 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Support Column */}
+          {/* Legal Column */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Legal</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="font-semibold mb-4 text-white" id="legal-heading">
+              Legal
+            </h3>
+            <ul className="space-y-2 text-sm" aria-labelledby="legal-heading">
               <li>
                 <Link
                   href="/affiliate-disclosure"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="View affiliate disclosure information"
                 >
                   Affiliate Disclosure
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -100,6 +106,7 @@ const Footer = () => {
                 <Link
                   href="/privacy"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Read our privacy policy"
                 >
                   Privacy Policy
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -109,6 +116,7 @@ const Footer = () => {
                 <Link
                   href="/cookies"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Learn about our cookie policy"
                 >
                   Cookie Policy
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -118,63 +126,67 @@ const Footer = () => {
                 <Link
                   href="/terms"
                   className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="Review terms and conditions"
                 >
                   Terms & Conditions
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 </Link>
               </li>
-              
             </ul>
           </div>
 
           {/* Follow Us Column */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Follow Us</h3>
+            <h3 className="font-semibold mb-4 text-white" id="follow-us-heading">
+              Follow Us
+            </h3>
             <div className="mb-4">
-              <a
+              <Link
                 href="mailto:contact@anadjytech.com"
                 className="flex items-center gap-2 text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out text-sm"
-                aria-label="Send us an email"
+                aria-label="Send email to contact@anadjytech.com"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4" aria-hidden="true" />
                 <span>contact@anadjytech.com</span>
-              </a>
+              </Link>
             </div>
-            <div className="flex items-start gap-4">
-              <a
+            <div className="flex items-start gap-4" aria-labelledby="follow-us-heading">
+              <Link
                 href="https://x.com/AnadjyTech"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out cursor-pointer"
-                aria-label="Follow us on X (Twitter)"
+                aria-label="Follow AnadjyTech on X (Twitter) - Opens in new window"
               >
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a
+                <Twitter className="w-6 h-6" aria-hidden="true" />
+              </Link>
+              <Link
                 href="https://www.instagram.com/anadjytech/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out cursor-pointer"
-                aria-label="Follow us on Instagram"
+                aria-label="Follow AnadjyTech on Instagram - Opens in new window"
               >
-                <Instagram className="w-6 h-6" />
-              </a>
-              <a
+                <Instagram className="w-6 h-6" aria-hidden="true" />
+              </Link>
+              <Link
                 href="https://www.facebook.com/profile.php?id=61573915410639"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out cursor-pointer"
-                aria-label="Follow us on Facebook"
+                aria-label="Follow AnadjyTech on Facebook - Opens in new window"
               >
-                <Facebook className="w-6 h-6" />
-              </a>
+                <Facebook className="w-6 h-6" aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-600 mt-8 pt-6 text-center text-sm text-[#f1f1f1]">
-          <p>&copy; 2025 AnadjyTech. All rights reserved.</p>
-          <p className="mt-2 text-xs text-[#555] opacity-75">
+          <p aria-label="Copyright information">
+            &copy; 2025 AnadjyTech. All rights reserved.
+          </p>
+          <p className="mt-2 text-xs text-[#555] opacity-75" aria-label="Amazon affiliate disclosure">
             As an Amazon Associate, we may earn commissions from qualifying purchases.
           </p>
         </div>

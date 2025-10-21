@@ -1,35 +1,9 @@
 import { Button } from "@/components/ui/button"
+import { featuredCards } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function FeaturedRows() {
-  const featuredCards = [
-    {
-      title: "Latest Innovations",
-      description: "Discover cutting-edge gadgets that just dropped.",
-      buttonText: "Explore New Tech",
-      href: "/categories?category=new-arrivals",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Flux_Dev_Minimalistic_futuristic_flat_lay_of_the_latest_tech_g_3.jpg-N2zFu4xSbQ3TfQqwJUsaHY7BqPKdHI.jpeg",
-    },
-    {
-      title: "Customer Favorites",
-      description: "Top-rated picks loved by our community.",
-      buttonText: "Shop Top Picks",
-      href: "/categories?category=best-sellers",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Flux_Dev_Minimalistic_futuristic_illustration_of_bestselling_g_0.jpg-JCwnUwtvXxNnLKgFaa5QEVIXp8GeIm.jpeg",
-    },
-    {
-      title: "Exclusive Deals",
-      description: "Limited-time savings on premium tech.",
-      buttonText: "Grab Deals",
-      href: "/categories?category=deals",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lucid_Origin_Minimalistic_futuristic_promotional_banner_with_b_1%20%281%29.jpg-NrZI8sk9OMxygUz8RZUhpyDkTLawkr.jpeg",
-    },
-  ]
-
   return (
     <section className="py-12 bg-gray-50" data-reveal>
       <div className="container mx-auto px-4">
@@ -40,23 +14,33 @@ export default function FeaturedRows() {
               className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden p-6"
               data-card
             >
-              <div className="aspect-video mb-4 overflow-hidden rounded-lg bg-gray-100">
+              {/* Image Container */}
+              <div className="relative aspect-video mb-4 overflow-hidden rounded-lg bg-gray-100">
                 <Image
-                  priority
-                  unoptimized
-                  width={400}
-                  height={400}
                   src={card.image || "/placeholder.svg"}
-                  alt={card.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  alt={card.title ? `${card.title} image` : "Featured product image"}
+                  fill
+                  priority
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                  className="object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
 
+              {/* Title */}
               <h2 className="text-xl font-bold text-gray-900 mb-2">{card.title}</h2>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{card.description}</p>
 
-              <Link href={card.href}>
-                <Button className="w-full bg-[#0A67FF] hover:bg-blue-500 text-white font-medium py-2.5 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-blue-300">
+              {/* Description */}
+              <p className="text-gray-700 mb-4 text-sm leading-relaxed">
+                {card.description}
+              </p>
+
+              {/* Accessible Button */}
+              <Link href={card.href} aria-label={`Read more about ${card.title}`}>
+                <Button
+                  aria-label={`Read more about ${card.title}`}
+                  className="w-full bg-[#0A67FF] hover:bg-blue-600 text-white font-semibold py-2.5 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-blue-300 focus:ring-offset-2"
+                >
                   {card.buttonText}
                 </Button>
               </Link>

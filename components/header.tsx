@@ -184,9 +184,8 @@ function SearchInput({
             <div
               key={suggestion}
               id={`suggestion-${index}`}
-              className={`px-4 py-3 cursor-pointer hover:bg-gray-50 border-b border-gray-100 last:border-b-0 ${
-                index === activeIndex ? "bg-blue-50 text-blue-600" : "text-gray-700"
-              }`}
+              className={`px-4 py-3 cursor-pointer hover:bg-gray-50 border-b border-gray-100 last:border-b-0 ${index === activeIndex ? "bg-blue-50 text-blue-600" : "text-gray-700"
+                }`}
               role="option"
               aria-selected={index === activeIndex}
               onMouseDown={(e) => e.preventDefault()}
@@ -228,15 +227,30 @@ export default function Header() {
             <div className="flex items-center gap-2 flex-1 justify-end">
               <span className="mr-2 text-white font-medium">Follow us:</span>
               <div className="flex gap-2">
-                <a
+                <Link
                   href="https://www.facebook.com/profile.php?id=61573915410639"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className=""
                 >
                   <Facebook className="w-4 h-4 text-white hover:text-blue-200 cursor-pointer" />
-                </a>
-                <Twitter className="w-4 h-4 text-white hover:text-blue-200 cursor-pointer" />
-                <Instagram className="w-4 h-4 text-white hover:text-blue-200 cursor-pointer" />
+                </Link>
+                <Link
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Twitter className="w-4 h-4 text-white hover:text-blue-200 cursor-pointer" />
+                </Link>
+
+                <Link
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram className="w-4 h-4 text-white hover:text-blue-200 cursor-pointer" />
+                </Link>
+
               </div>
             </div>
           </div>
@@ -288,25 +302,25 @@ export default function Header() {
             </div>
 
             {/* Mobile menu button */}
-            <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)} data-nav-toggle>
+            <button aria-label="Cancel" className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)} data-nav-toggle>
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8 flex-shrink-0">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
+              <Link href="/" aria-label="Home" className="text-gray-700 hover:text-blue-600 font-medium">
                 Home
               </Link>
-              <Link href="/categories" className="text-gray-700 hover:text-blue-600 font-medium">
+              <Link href="/categories" aria-label="Categories" className="text-gray-700 hover:text-blue-600 font-medium">
                 Categories
               </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-blue-600 font-medium">
+              <Link href="/blog" aria-label="Blog" className="text-gray-700 hover:text-blue-600 font-medium">
                 Blog
               </Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium">
+              <Link href="/about" aria-label="About Us" className="text-gray-700 hover:text-blue-600 font-medium">
                 About Us
               </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium">
+              <Link href="/contact" aria-label="Contact" className="text-gray-700 hover:text-blue-600 font-medium">
                 Contact
               </Link>
             </nav>
@@ -316,19 +330,19 @@ export default function Header() {
           {isMenuOpen && (
             <div className="md:hidden mt-4 pb-4 border-t border-gray-200" data-nav>
               <nav className="flex flex-col gap-4 pt-4">
-                <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium py-2">
+                <Link href="/" aria-label="Home" className="text-gray-700 hover:text-blue-600 font-medium py-2">
                   Home
                 </Link>
-                <Link href="/categories" className="text-gray-700 hover:text-blue-600 font-medium py-2">
+                <Link href="/categories" aria-label="Categories" className="text-gray-700 hover:text-blue-600 font-medium py-2">
                   Categories
                 </Link>
-                <Link href="/blog" className="text-gray-700 hover:text-blue-600 font-medium py-2">
+                <Link href="/blog" aria-label="Blog" className="text-gray-700 hover:text-blue-600 font-medium py-2">
                   Blog
                 </Link>
-                <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium py-2">
+                <Link href="/about" aria-label="About Us" className="text-gray-700 hover:text-blue-600 font-medium py-2">
                   About Us
                 </Link>
-                <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium py-2">
+                <Link href="/contact" aria-label="Contact" className="text-gray-700 hover:text-blue-600 font-medium py-2">
                   Contact
                 </Link>
                 <div className="mt-2">

@@ -234,9 +234,8 @@ function SearchInput({
                 <button
                   key={`recent-${index}`}
                   id={`suggestion-${index}`}
-                  className={`suggestion-item w-full text-left px-4 py-2 text-gray-700 text-sm transition-colors duration-150 ${
-                    selectedSuggestionIndex === index ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
-                  }`}
+                  className={`suggestion-item w-full text-left px-4 py-2 text-gray-700 text-sm transition-colors duration-150 ${selectedSuggestionIndex === index ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
+                    }`}
                   onClick={() => handleSuggestionClick(search)}
                   role="option"
                   aria-selected={selectedSuggestionIndex === index}
@@ -269,9 +268,8 @@ function SearchInput({
                 <button
                   key={`suggestion-${index}`}
                   id={`suggestion-${adjustedIndex}`}
-                  className={`suggestion-item w-full text-left px-4 py-2 text-gray-700 text-sm transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg ${
-                    selectedSuggestionIndex === adjustedIndex ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
-                  }`}
+                  className={`suggestion-item w-full text-left px-4 py-2 text-gray-700 text-sm transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg ${selectedSuggestionIndex === adjustedIndex ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
+                    }`}
                   data-value={suggestion.toLowerCase()}
                   onClick={() => handleSuggestionClick(suggestion.toLowerCase())}
                   role="option"
@@ -287,7 +285,7 @@ function SearchInput({
   )
 }
 
-const SiteHeader = () =>{
+const SiteHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
@@ -335,14 +333,14 @@ const SiteHeader = () =>{
           background: "#0B5FE0",
         }}
       >
-        <div className="mx-auto max-w-screen-2xl px-3 md:px-4 py-1 md:py-1.5">
+        <div className="mx-auto max-w-screen-2xl px-3 md:px-4 pty-1 md:py-1.5">
           {/* Desktop layout */}
-          <div className="hidden md:flex items-center justify-between gap-3">
+          <div className="hidden md:flex items-center  justify-between gap-3">
             {/* Left: Email */}
             <div className="flex items-center gap-2">
-              <a
+              <Link
                 href="mailto:contact@anadjytech.com"
-                className="flex items-center gap-2 text-sm font-medium hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-white/40 rounded px-1"
+                className="flex items-center gap-2 text-sm font-medium hover:opacity-80 transition-all focus:outline-none focus:ring-2 focus:ring-white/40 rounded px-1"
                 aria-label="Send us an email"
                 style={{ color: "#ffffff !important" }}
               >
@@ -350,7 +348,7 @@ const SiteHeader = () =>{
                 <span style={{ color: "#ffffff !important", backgroundColor: "transparent !important" }}>
                   contact@anadjytech.com
                 </span>
-              </a>
+              </Link>
             </div>
 
             {/* Center: Nouveau bandeau sobre */}
@@ -365,64 +363,46 @@ const SiteHeader = () =>{
 
             {/* Right: 3 icônes sociales seulement */}
             <div className="flex items-center gap-1">
-              <a
+              <Link
                 href="https://x.com/AnadjyTech"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/40 transition-opacity"
+                className=" h-8 w-8 flex justify-center items-center rounded-full hover:bg-[#ffffff4f] focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
                 aria-label="Follow us on X (Twitter)"
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+
               >
-                <TwitterIcon className="w-4 h-4 text-white"  />
-              </a>
-              <a
+                <TwitterIcon className="w-4 h-4 text-white" />
+              </Link>
+              <Link
                 href="https://www.instagram.com/anadjytech/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/40 transition-opacity"
-                aria-label="Follow us on Instagram"
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+                aria-label="Visit our Instagram page"
+                className=" h-8 w-8 flex justify-center items-center rounded-full hover:bg-[#ffffff4f] focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
+
               >
-                <InstagramIcon className="w-4 h-4 text-white"  />
-              </a>
-              <a
+                <InstagramIcon className="w-4 h-4 text-white" />
+              </Link>
+              <Link
                 href="https://www.facebook.com/profile.php?id=61573915410639"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/40 transition-opacity"
+                className=" h-8 w-8 flex justify-center items-center rounded-full hover:bg-[#ffffff4f] focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
                 aria-label="Follow us on Facebook"
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+
               >
-                <FacebookIcon className="w-4 h-4 text-white"  />
-              </a>
+                <FacebookIcon className="w-4 h-4 text-white" />
+              </Link>
             </div>
           </div>
 
           {/* Mobile layout */}
-          <div className="md:hidden flex flex-wrap items-center justify-between gap-3">
+          <div className="md:hidden flex flex-wrap items-center pt-1 justify-between gap-0.5">
             {/* Email - order 1 */}
             <div className="order-1 flex items-center gap-2">
-              <a
+              <Link
                 href="mailto:contact@anadjytech.com"
-                className="flex items-center gap-2 text-xs font-medium hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-white/40 rounded px-1"
+                className="flex items-center gap-2 text-xs font-medium hover:opacity-80 transition-all focus:outline-none focus:ring-2 focus:ring-white/40 rounded px-1"
                 aria-label="Send us an email"
                 style={{ color: "#ffffff !important" }}
               >
@@ -430,63 +410,45 @@ const SiteHeader = () =>{
                 <span style={{ color: "#ffffff !important", backgroundColor: "transparent !important" }}>
                   contact@anadjytech.com
                 </span>
-              </a>
+              </Link>
             </div>
 
             {/* Social icons - order 3, alignées à droite */}
-            <div className="order-3 flex items-center gap-1 ml-auto">
-              <a
+            <div className="order-3 flex items-center gap-1  ml-auto">
+              <Link
                 href="https://x.com/AnadjyTech"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/40 transition-opacity"
+                className=" h-8 w-8 flex justify-center items-center rounded-full hover:bg-[#ffffff4f] focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
                 aria-label="Follow us on X (Twitter)"
-                style={{
-                  width: "32px",
-                  height: "32px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+
               >
                 <TwitterIcon className="w-3 h-3 text-white" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://www.instagram.com/anadjytech/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/40 transition-opacity"
-                aria-label="Follow us on Instagram"
-                style={{
-                  width: "32px",
-                  height: "32px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+                aria-label="Visit our Instagram page"
+                className=" h-8 w-8 flex justify-center items-center rounded-full hover:bg-[#ffffff4f] focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
+
               >
-                <InstagramIcon className="w-3 h-3 text-white"  />
-              </a>
-              <a
+                <InstagramIcon className="w-3 h-3 text-white" />
+              </Link>
+              <Link
                 href="https://www.facebook.com/profile.php?id=61573915410639"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/40 transition-opacity"
+                className=" h-8 w-8 flex justify-center items-center rounded-full hover:bg-[#ffffff4f] focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
                 aria-label="Follow us on Facebook"
-                style={{
-                  width: "32px",
-                  height: "32px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
+
               >
-                <FacebookIcon className="w-3 h-3 text-white"  />
-              </a>
+                <FacebookIcon className="w-3 h-3 text-white" />
+              </Link>
             </div>
 
             {/* Bandeau sobre - order 2, full width, centered */}
-            <div className="order-2 w-full text-center mt-1">
+            <div className="order-2 w-full text-center ">
               <span
                 className="text-xs font-medium"
                 style={{ color: "#ffffff !important", backgroundColor: "transparent !important" }}
@@ -499,18 +461,17 @@ const SiteHeader = () =>{
       </div>
 
       {/* Main header - Adjusted height and spacing for compact design */}
-      <header className="bg-white shadow-sm sticky top-0 z-[70]" style={{ height: "80px" }}>
+      <header className="bg-white shadow-sm sticky top-0 z-[70] sm:h-20 h-14" >
         <div className="container mx-auto px-6 lg:px-8 h-full">
           <div className="flex items-center justify-between gap-6 h-full">
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+            <Link href="/" aria-label="Home page" className="flex items-center gap-2 flex-shrink-0">
               <div className="relative">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_anadjytech_transparent-NESbl2XszuZcgBbDQcoPKzB3I3rcB1.png"
+                  src="/images/Logo_anadjytech_transparent.webp"
                   alt="AnadjyTech Logo"
                   width={300}
                   height={120}
-                  unoptimized
-                  className="h-20 lg:h-24 w-auto object-contain"
+                  className="h-20 lg:h-32 w-auto object-contain"
                   priority
                   style={{ background: "transparent" }}
                 />
@@ -535,19 +496,19 @@ const SiteHeader = () =>{
 
             {/* Desktop Navigation - Adjusted spacing to 20-28px */}
             <nav className="hidden md:flex items-center gap-7 flex-shrink-0">
-              <Link href="/" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
+              <Link href="/" aria-label="Home" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
                 Home
               </Link>
-              <Link href="/categories" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
+              <Link href="/categories" aria-label="Categories" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
                 Categories
               </Link>
-              <Link href="/blog" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
+              <Link href="/blog" aria-label="Blog" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
                 Blog
               </Link>
-              <Link href="/about" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
+              <Link href="/about" aria-label="About Us" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
                 About Us
               </Link>
-              <Link href="/contact" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
+              <Link href="/contact" aria-label="Contact" className="text-gray-900 hover:text-blue-600 font-medium transition-colors">
                 Contact
               </Link>
             </nav>
@@ -562,12 +523,11 @@ const SiteHeader = () =>{
             <div
               id="mobile-menu"
               ref={menuRef}
-              className={`fixed inset-x-0 bg-white shadow-2xl z-[90] md:hidden transition-all duration-300 ease-in-out ${
-                isMenuOpen
-                  ? "top-[136px] opacity-100 translate-y-0"
-                  : "top-[136px] opacity-0 -translate-y-4 pointer-events-none"
-              }`}
-              style={{ top: "136px" }} // Adjusted for both utility bar and header height
+              className={`fixed inset-x-0 bg-white shadow-2xl z-[90] md:hidden transition-all duration-300 ease-in-out ${isMenuOpen
+                ? "top-[136px] opacity-100 translate-y-0"
+                : "top-[136px] opacity-0 -translate-y-4 pointer-events-none"
+                }`}
+              style={{ top: "160px" }} // Adjusted for both utility bar and header height
               aria-hidden={!isMenuOpen}
             >
               <div className="p-4">
@@ -591,11 +551,13 @@ const SiteHeader = () =>{
                       href="/"
                       className="text-gray-800 text-lg font-medium px-2 py-2 rounded hover:bg-gray-50 transition-colors"
                       onClick={closeMenu}
+                      aria-label="Home"
                     >
                       Home
                     </Link>
                     <Link
                       href="/categories"
+                      aria-label="Categories"
                       className="text-gray-800 text-lg font-medium px-2 py-2 rounded hover:bg-gray-50 transition-colors"
                       onClick={closeMenu}
                     >
@@ -603,6 +565,7 @@ const SiteHeader = () =>{
                     </Link>
                     <Link
                       href="/blog"
+                      aria-label="Blogs"
                       className="text-gray-800 text-lg font-medium px-2 py-2 rounded hover:bg-gray-50 transition-colors"
                       onClick={closeMenu}
                     >
@@ -610,6 +573,7 @@ const SiteHeader = () =>{
                     </Link>
                     <Link
                       href="/about"
+                      aria-label="About Us"
                       className="text-gray-800 text-lg font-medium px-2 py-2 rounded hover:bg-gray-50 transition-colors"
                       onClick={closeMenu}
                     >
@@ -617,6 +581,7 @@ const SiteHeader = () =>{
                     </Link>
                     <Link
                       href="/contact"
+                      aria-label="Contact"
                       className="text-gray-800 text-lg font-medium px-2 py-2 rounded hover:bg-gray-50 transition-colors"
                       onClick={closeMenu}
                     >

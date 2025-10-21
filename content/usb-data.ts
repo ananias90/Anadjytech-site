@@ -53,7 +53,7 @@ export const products = [
     id: 6,
     name: "Portable Charger",
     description: "20,000mAh power bank with USB-C PD and wireless charging support.",
-    image: "https://images.unsplash.com/photo-1609592806596-4d8b5b5e7e0a?w=400&h=300&fit=crop",
+    image: "/images/usb.jpg",
     price: "$59.99",
     specs: ["20,000mAh Capacity", "65W USB-C PD", "Wireless Charging", "Digital Display"],
     amazonUrl: "#",

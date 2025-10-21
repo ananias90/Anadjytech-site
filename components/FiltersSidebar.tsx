@@ -132,7 +132,7 @@ export default function FiltersSidebar({
         <div>
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-gray-900">Active Filters</span>
-            <Button variant="ghost" size="sm" onClick={clearAllFilters} className="text-blue-600 hover:text-blue-700">
+            <Button aria-label="Clear all filters" variant="ghost" size="sm" onClick={clearAllFilters} className="text-blue-600 hover:text-blue-700">
               Clear All
             </Button>
           </div>

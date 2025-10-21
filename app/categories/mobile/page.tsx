@@ -4,6 +4,7 @@ import SiteHeader from "@/components/site-header"
 import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
 import Image from "next/image"
+import { mobileComparisonItems, mobileFaqs, mobileProducts } from "@/data"
 
 export const metadata: Metadata = {
   title: "Mobile & Charging Tech – Power Banks, Chargers & Cables | AnadjyTech",
@@ -39,86 +40,7 @@ export const metadata: Metadata = {
 }
 
 const MobilePage = () => {
-  const products = [
-    {
-      name: "Anker PowerCore 10000",
-      price: "$29.99",
-      image: "/anker-powercore-power-bank.jpg",
-      description: "Compact 10,000mAh power bank with fast charging technology.",
-    },
-    {
-      name: "MagSafe Charger",
-      price: "$39.99",
-      image: "/magsafe-wireless-charger.jpg",
-      description: "Official Apple MagSafe wireless charger for iPhone 12 and later.",
-    },
-    {
-      name: "USB-C Fast Cable",
-      price: "$19.99",
-      image: "/usb-c-fast-charging-cable.jpg",
-      description: "6ft USB-C to USB-C cable supporting 100W fast charging.",
-    },
-    {
-      name: "Wireless Charging Pad",
-      price: "$24.99",
-      image: "/wireless-charging-pad.png",
-      description: "Qi-certified wireless charging pad for all compatible devices.",
-    },
-    {
-      name: "Car Charger",
-      price: "$16.99",
-      image: "/car-charger-dual-usb.jpg",
-      description: "Dual-port car charger with USB-A and USB-C ports.",
-    },
-    {
-      name: "Portable Solar Charger",
-      price: "$49.99",
-      image: "/portable-solar-charger.jpg",
-      description: "Foldable solar panel charger for outdoor adventures.",
-    },
-  ]
-
-  const comparisonItems = [
-    {
-      name: "Anker PowerCore",
-      capacity: "10,000mAh",
-      charging: "18W Fast",
-      wireless: "No",
-      price: "$29.99",
-    },
-    {
-      name: "MagSafe Charger",
-      capacity: "N/A",
-      charging: "15W Wireless",
-      wireless: "Yes",
-      price: "$39.99",
-    },
-    {
-      name: "Wireless Pad",
-      capacity: "N/A",
-      charging: "10W Wireless",
-      wireless: "Yes",
-      price: "$24.99",
-    },
-  ]
-
-  const faqs = [
-    {
-      question: "How long does a power bank last?",
-      answer:
-        "A 10,000mAh power bank can typically charge most smartphones 2-3 times. Battery life depends on usage patterns and device efficiency.",
-    },
-    {
-      question: "Are wireless chargers safe?",
-      answer:
-        "Yes, Qi-certified wireless chargers are safe and include built-in protections against overheating, overcharging, and foreign object detection.",
-    },
-    {
-      question: "What's the fastest charging cable?",
-      answer:
-        "USB-C cables supporting USB Power Delivery (PD) can deliver up to 100W of power, making them the fastest charging option available.",
-    },
-  ]
+  
 
   return (
     <div className="min-h-screen">
@@ -155,7 +77,7 @@ const MobilePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Top Mobile & Charging Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
+            {mobileProducts.map((product, index) => (
               <div
                 key={index}
                 className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6"
@@ -171,7 +93,7 @@ const MobilePage = () => {
                 <p className="text-gray-600 mb-4">{product.description}</p>
                 <div className="flex items-center justify-between">
                   {/* <span className="text-2xl font-bold text-blue-600">{product.price}</span> */}
-                  <button className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                  <button aria-label={`Buy ${product.name} on Amazon`} className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                     Buy on Amazon
                   </button>
                 </div>
@@ -199,7 +121,7 @@ const MobilePage = () => {
                 </tr>
               </thead>
               <tbody>
-                {comparisonItems.map((item, index) => (
+                {mobileComparisonItems.map((item, index) => (
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="border border-gray-200 px-6 py-4 font-medium text-gray-900">{item.name}</td>
                     <td className="border border-gray-200 px-6 py-4 text-gray-600">{item.capacity}</td>
@@ -214,7 +136,7 @@ const MobilePage = () => {
 
           {/* Mobile Cards */}
           <div className="md:hidden space-y-4">
-            {comparisonItems.map((item, index) => (
+            {mobileComparisonItems.map((item, index) => (
               <div key={index} className="bg-gray-50 rounded-lg p-4">
                 <h3 className="font-semibold text-gray-900 mb-3">{item.name}</h3>
                 <div className="space-y-2 text-sm">
@@ -256,7 +178,7 @@ const MobilePage = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
           <div className="space-y-6">
-            {faqs.map((faq, index) => (
+            {mobileFaqs.map((faq, index) => (
               <div key={index} className="border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>
