@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-// import { Suspense } from "react"
+import { Suspense } from "react"
 import CategoriesClientPage from "./CategoriesClientPage"
 
 export const metadata: Metadata = {
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
 export default function CategoriesPage() {
   return (
     <div>
-    {/* // <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}> */}
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
       <CategoriesClientPage />
-    {/* // </Suspense> */}
+    </Suspense>
     </div>
   )
 }
