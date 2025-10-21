@@ -1,55 +1,8 @@
 "use client"
 
+import { smartHomeProducts } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
-
-const smartHomeProducts = [
-  {
-    id: 1,
-    name: "Smart Plug",
-    description: "Control any device remotely with voice or app.",
-    specs: ["WiFi enabled", "Voice control", "Timer function"],
-    image: "https://images.unsplash.com/photo-1510552776732-01acc9a4c8da",
-    amazonLink: "https://amazon.com/dp/example1",
-    reviewLink: "/blog",
-  },
-  {
-    id: 2,
-    name: "Smart Bulb",
-    description: "16 million colors, dimming, and scheduling.",
-    specs: ["16M colors", "Dimmable", "App control"],
-    image: "https://images.unsplash.com/photo-1584277260161-ec72a24c61b0",
-    amazonLink: "https://amazon.com/dp/example2",
-    reviewLink: "/blog",
-  },
-  {
-    id: 3,
-    name: "Smart Doorbell",
-    description: "HD video, two-way talk, motion detection.",
-    specs: ["1080p HD", "Two-way audio", "Motion alerts"],
-    image: "https://images.unsplash.com/photo-1588269845583-4f3b6b6c2f1b",
-    amazonLink: "https://amazon.com/dp/example3",
-    reviewLink: "/blog",
-  },
-  {
-    id: 4,
-    name: "Indoor Smart Camera",
-    description: "24/7 monitoring with night vision and alerts.",
-    specs: ["Night vision", "Cloud storage", "Motion tracking"],
-    image: "https://images.unsplash.com/photo-1606813908780-f8a6f3df0f6c",
-    amazonLink: "https://amazon.com/dp/example4",
-    reviewLink: "/blog",
-  },
-  {
-    id: 5,
-    name: "Smart Thermostat",
-    description: "Save energy with intelligent temperature control.",
-    specs: ["Energy saving", "Remote control", "Learning AI"],
-    image: "https://images.unsplash.com/photo-1606813908780-f8a6f3df0f6c",
-    amazonLink: "https://amazon.com/dp/example5",
-    reviewLink: "/blog",
-  },
-]
 
 export default function SmartHomeMustHaves() {
   return (
@@ -68,7 +21,7 @@ export default function SmartHomeMustHaves() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {smartHomeProducts.map((product) => (
+          {smartHomeProducts.map((product, index) => (
             <div
               key={product.id}
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
@@ -79,11 +32,11 @@ export default function SmartHomeMustHaves() {
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   width={400}
-                  unoptimized
                   height={300}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  loading="lazy"
-                  decoding="async"
+                  priority
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
@@ -105,15 +58,17 @@ export default function SmartHomeMustHaves() {
 
                 {/* Buttons */}
                 <div className="space-y-2">
-                  <a
+                  <Link
                     href={product.amazonLink}
                     target="_blank"
+                    aria-label={`Check price for ${product.name} on Amazon`}
                     rel="noreferrer nofollow sponsored noopener"
                     className="w-full bg-[#0066cc] hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 text-center block"
                   >
                     Check price on Amazon
-                  </a>
+                  </Link>
                   <Link
+                    aria-label={`Read reviews for ${product.name} on Amazon`}
                     href={product.reviewLink}
                     className="w-full border border-[#0066cc] hover:border-blue-700 text-[#0066cc] hover:text-blue-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 text-center block bg-white"
                   >

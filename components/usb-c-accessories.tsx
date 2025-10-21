@@ -1,55 +1,8 @@
 "use client"
 
+import { usbcProducts } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
-
-const usbcProducts = [
-  {
-    id: 1,
-    name: "Anker 65W GaN USB-C Charger",
-    description: "Compact fast charger for phones & laptops.",
-    specs: ["65W GaN", "Dual USB-C", "Foldable plug"],
-    image: "https://images.unsplash.com/photo-1555618568-9e1f6d6d3a3b",
-    amazonLink: "https://amazon.com/dp/example1",
-    reviewLink: "/blog",
-  },
-  {
-    id: 2,
-    name: "Baseus 8-in-1 USB-C Hub",
-    description: "Expand your laptop with HDMI, USB, SD & more.",
-    specs: ["4K HDMI", "PD 100W", "Aluminum build"],
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-    amazonLink: "https://amazon.com/dp/example2",
-    reviewLink: "/blog",
-  },
-  {
-    id: 3,
-    name: "USB-C to HDMI 4K Adapter",
-    description: "Plug-and-play to your 4K TV or monitor.",
-    specs: ["4K@60Hz", "HDR", "Aluminum shell"],
-    image: "https://images.unsplash.com/photo-1518770660439-46e3de3f3a2f",
-    amazonLink: "https://amazon.com/dp/example3",
-    reviewLink: "/blog",
-  },
-  {
-    id: 4,
-    name: "Samsung T7 Portable SSD (1TB)",
-    description: "Blazing-fast external storage.",
-    specs: ["Up to 1050MB/s", "USB-C", "Shock-resistant"],
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
-    amazonLink: "https://amazon.com/dp/example4",
-    reviewLink: "/blog",
-  },
-  {
-    id: 5,
-    name: "USB-C Fast Charging Cable (100W)",
-    description: "Durable cable for rapid charging & data.",
-    specs: ["100W PD", "Nylon-braided", "1m–2m"],
-    image: "https://images.unsplash.com/photo-1588776814546-46e3de3f3a2f",
-    amazonLink: "https://amazon.com/dp/example5",
-    reviewLink: "/blog",
-  },
-]
 
 export default function UsbcAccessories() {
   return (
@@ -82,15 +35,14 @@ export default function UsbcAccessories() {
                   height={300}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   loading="lazy"
-                  unoptimized
                   decoding="async"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
 
               {/* Product Info */}
               <div>
                 <h3 className="font-bold text-gray-900 text-lg mb-2">{product.name}</h3>
-
                 <p className="text-gray-600 mb-4">{product.description}</p>
 
                 {/* Specs */}
@@ -105,15 +57,17 @@ export default function UsbcAccessories() {
 
                 {/* Buttons */}
                 <div className="space-y-2">
-                  <a
+                  <Link
                     href={product.amazonLink}
                     target="_blank"
+                    aria-label={`Check price for ${product.name} on Amazon`}
                     rel="noreferrer nofollow sponsored noopener"
                     className="w-full bg-[#0066cc] hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 text-center block"
                   >
                     Check price on Amazon
-                  </a>
+                  </Link>
                   <Link
+                    aria-label={`Read reviews for ${product.name}`}
                     href={product.reviewLink}
                     className="w-full border border-[#0066cc] hover:border-blue-700 text-[#0066cc] hover:text-blue-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 text-center block bg-white"
                   >

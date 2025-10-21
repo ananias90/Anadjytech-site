@@ -1,55 +1,10 @@
 "use client"
 
+import { editorProducts } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
 
-const products = [
-  {
-    id: 1,
-    name: "Soundbar with Subwoofer",
-    description: "Immersive audio for your TV.",
-    specs: ["Dolby Audio", "Bluetooth 5.0", "HDMI ARC"],
-    image: "https://images.unsplash.com/photo-1587202372775-98973f5c1c72",
-    amazonUrl: "https://amazon.com/dp/example1",
-    learnMoreUrl: "/blog",
-  },
-  {
-    id: 2,
-    name: "Wireless Earbuds",
-    description: "Compact earbuds with great sound.",
-    specs: ["Noise Reduction", "Touch Control", "24h Battery"],
-    image: "https://images.unsplash.com/photo-1588421357574-87938a3861d1",
-    amazonUrl: "https://amazon.com/dp/example2",
-    learnMoreUrl: "/blog",
-  },
-  {
-    id: 3,
-    name: "Power Bank 20,000mAh",
-    description: "Portable fast-charging power.",
-    specs: ["USB-C PD 65W", "Dual Output", "LED Display"],
-    image: "https://images.unsplash.com/photo-1586015555759-3e99f9d5b1be",
-    amazonUrl: "https://amazon.com/dp/example3",
-    learnMoreUrl: "/blog",
-  },
-  {
-    id: 4,
-    name: "Wireless Charging Pad",
-    description: "Fast wireless charging for phones.",
-    specs: ["15W Qi", "Slim design", "LED indicator"],
-    image: "https://images.unsplash.com/photo-1591797442444-039f23ddcc14",
-    amazonUrl: "https://amazon.com/dp/example4",
-    learnMoreUrl: "/blog",
-  },
-  {
-    id: 5,
-    name: "Mechanical Keyboard (RGB)",
-    description: "Gaming keyboard with tactile feedback.",
-    specs: ["RGB backlight", "Hot-swappable keys", "USB-C"],
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-    amazonUrl: "https://amazon.com/dp/example5",
-    learnMoreUrl: "/blog",
-  },
-]
+
 
 export default function EditorsPicks() {
   return (
@@ -68,7 +23,7 @@ export default function EditorsPicks() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
+          {editorProducts.map((product) => (
             <div
               key={product.id}
               className="bg-white rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 p-6"
@@ -76,7 +31,6 @@ export default function EditorsPicks() {
               {/* Product Image */}
               <div className="h-48 mb-4 rounded-xl overflow-hidden bg-gray-100 relative">
                 <Image
-                  unoptimized
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   fill
@@ -107,16 +61,18 @@ export default function EditorsPicks() {
 
                 {/* Buttons */}
                 <div className="space-y-2">
-                  <a
+                  <Link
                     href={product.amazonUrl}
                     target="_blank"
+                    aria-label={`Check price for ${product.name} on Amazon`}
                     rel="noreferrer nofollow sponsored noopener"
                     className="w-full bg-[#0066cc] hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-center block"
                   >
                     Check price on Amazon
-                  </a>
+                  </Link>
                   {/* Secondary Button */}
                   <Link
+                    aria-label={`Read reviews for ${product.name} on Amazon`}
                     href={product.learnMoreUrl}
                     className="w-full border border-[#0066cc] hover:border-blue-700 text-[#0066cc] hover:text-blue-700 text-sm font-medium py-2 px-4 rounded-lg transition-colors duration-200 text-center block bg-white"
                   >

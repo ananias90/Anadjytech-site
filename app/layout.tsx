@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import ScrollToTop from "@/components/ui/scrollToTop"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,51 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <head>
-        <style>{`
-#backToTop {
-  background: #000000 !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 0 5px #000000 !important;
-  border: 3px solid #000000 !important;
-}
-#backToTop:hover {
-  background: #1a1a1a !important;
-  color: #ffffff !important;
-}
-        `}</style>
         <link rel="stylesheet" href="/assets/css/interactions.css" />
       </head>
       <body>
         {children}
-        <button
-          id="backToTop"
-          aria-label="Back to top"
-          style={{
-            position: "fixed",
-            bottom: "30px",
-            right: "30px",
-            background: "#000000",
-            color: "#ffffff",
-            border: "3px solid #000000",
-            borderRadius: "50%",
-            width: "50px",
-            height: "50px",
-            cursor: "pointer",
-            opacity: "1",
-            visibility: "visible",
-            transition: "all 0.3s ease",
-            zIndex: "9999",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "18px",
-            fontWeight: "bold",
-            boxShadow: "0 0 0 5px #000000, 0 4px 12px rgba(0,0,0,0.8)",
-            textShadow: "0 0 2px #000000",
-          }}
-        >
-          ↑
-        </button>
+        <ScrollToTop/>
         <script src="/assets/js/app.js"></script>
         <script src="/assets/js/search-autocomplete.js"></script>
       </body>

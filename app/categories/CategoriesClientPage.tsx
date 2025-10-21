@@ -11,63 +11,9 @@ import { ChevronRight, Usb, Home, Headphones, Briefcase, Smartphone, Gamepad2, G
 import { Button } from "../../components/ui/button"
 import SiteHeader from "../../components/site-header"
 import Link from "next/link"
+import { sampleProducts } from "@/data"
 
-const sampleProducts = [
-  {
-    id: 1,
-    name: "USB-C Hub 7-in-1",
-    rating: 4.5,
-    category: "USB-C Accessories",
-    brand: "Anker",
-    image: "/usb-hub.png",
-    amazonUrl: "https://amazon.com/dp/example1",
-  },
-  {
-    id: 2,
-    name: "Smart WiFi Bulb",
-    rating: 4.2,
-    category: "Smart Home",
-    brand: "Philips",
-    image: "/smart-led-light-bulb.jpg",
-    amazonUrl: "https://amazon.com/dp/example2",
-  },
-  {
-    id: 3,
-    name: "Wireless Earbuds Pro",
-    rating: 4.8,
-    category: "Audio & Entertainment",
-    brand: "Apple",
-    image: "/wireless-earbuds-in-case.jpg",
-    amazonUrl: "https://amazon.com/dp/example3",
-  },
-  {
-    id: 4,
-    name: "Mechanical Keyboard",
-    rating: 4.6,
-    category: "Work & Study",
-    brand: "Logitech",
-    image: "/mechanical-gaming-keyboard.jpg",
-    amazonUrl: "https://amazon.com/dp/example4",
-  },
-  {
-    id: 5,
-    name: "Wireless Charger Stand",
-    rating: 4.3,
-    category: "Mobile & Charging",
-    brand: "Samsung",
-    image: "/wireless-phone-charging-stand.jpg",
-    amazonUrl: "https://amazon.com/dp/example5",
-  },
-  {
-    id: 6,
-    name: "Gaming Mouse RGB",
-    rating: 4.7,
-    category: "Gaming",
-    brand: "Razer",
-    image: "/rgb-gaming-mouse.jpg",
-    amazonUrl: "https://amazon.com/dp/example6",
-  },
-]
+
 
 export default function CategoriesClientPage() {
   const searchParams = useSearchParams()

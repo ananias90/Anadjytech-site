@@ -2,33 +2,10 @@
 
 import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
+import { hubs } from "@/data"
+import Link from "next/link"
 
-const hubs = [
-  {
-    product: "Baseus 8-in-1 USB-C Hub",
-    ports: "2×USB-A, SD/TF, Ethernet",
-    powerDelivery: "100W",
-    hdmi: "4K@60Hz",
-    weight: "120g",
-    buyLink: "https://amazon.com/dp/example1",
-  },
-  {
-    product: "Anker 6-in-1 USB-C Hub",
-    ports: "2×USB-A, SD/TF",
-    powerDelivery: "85W",
-    hdmi: "4K@30Hz",
-    weight: "98g",
-    buyLink: "https://amazon.com/dp/example2",
-  },
-  {
-    product: "UGREEN 9-in-1 USB-C Hub",
-    ports: "3×USB-A, SD/TF, Ethernet",
-    powerDelivery: "100W",
-    hdmi: "4K@60Hz",
-    weight: "140g",
-    buyLink: "https://amazon.com/dp/example3",
-  },
-]
+
 
 const faqs = [
   {
@@ -92,14 +69,15 @@ export default function UsbcHubsComparison() {
                     <td className="px-6 py-4 text-sm text-gray-600">{hub.hdmi}</td>
                     <td className="px-6 py-4 text-sm text-gray-600">{hub.weight}</td>
                     <td className="px-6 py-4">
-                      <a
+                      <Link
                         href={hub.buyLink}
                         target="_blank"
+                        aria-label={`Check price for ${hub.product} on Amazon`}
                         rel="noreferrer nofollow sponsored noopener"
                         className="inline-flex items-center px-4 py-2 bg-[#0066cc] text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
                       >
                         Check price on Amazon
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -131,14 +109,15 @@ export default function UsbcHubsComparison() {
                   <span className="text-sm text-gray-900">{hub.weight}</span>
                 </div>
                 <div className="flex justify-between items-center pt-2 border-t border-gray-100">
-                  <a
+                  <Link
                     href={hub.buyLink}
                     target="_blank"
+                    aria-label={`Check price for ${hub.product} on Amazon`}
                     rel="noreferrer nofollow sponsored noopener"
                     className="w-full inline-flex items-center justify-center px-4 py-2 bg-[#0066cc] text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Check price on Amazon
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

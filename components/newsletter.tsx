@@ -35,11 +35,11 @@ const Newsletter = () => {
     <section className="py-16 bg-gradient-to-b from-[#f0f4ff] to-white" data-reveal>
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
             Get the latest tech trends & deals in your inbox
           </h2>
 
-          <p className="text-gray-600 text-lg mb-8">Join our newsletter today and get 10% off your first purchase.</p>
+          {/* <p className="text-gray-600 text-lg mb-8">Join our newsletter today and get 10% off your first purchase.</p> */}
 
           <div className="max-w-md mx-auto mb-4">
             <form onSubmit={handleSubmit} className="space-y-4" data-newsletter>
@@ -79,7 +79,7 @@ const Newsletter = () => {
             </form>
           </div>
 
-          <p className="text-gray-500 text-sm">We respect your privacy. Unsubscribe anytime.</p>
+          {/* <p className="text-gray-500 text-sm">We respect your privacy. Unsubscribe anytime.</p> */}
         </div>
       </div>
     </section>
