@@ -42,11 +42,31 @@ export async function POST(req: Request) {
     );
   }
 
-  let mailOptions;
+  // Validate required environment variables
+  const requiredEnvVars = [
+    'SMTP_HOST',
+    'SMTP_USER', 
+    'SMTP_PASS',
+    'SMTP_TO_EMAIL'
+  ];
 
-  mailOptions = {
-    from: `${email}`,
-    to: `contact@anadjytech.com`,
+  for (const envVar of requiredEnvVars) {
+    if (!process.env[envVar]) {
+      console.error(`Missing environment variable: ${envVar}`);
+      return NextResponse.json(
+        {
+          message: "Server configuration error",
+          isSuccess: false,
+        },
+        { status: 500 }
+      );
+    }
+  }
+
+  const mailOptions = {
+    from: `"${process.env.SMTP_FROM_NAME || 'AnadjyTech'}" <${process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER}>`,
+    to: process.env.SMTP_TO_EMAIL,
+    replyTo: email,
     subject: `AnadjyTech Contact - ${topic}`,
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6;">
@@ -68,6 +88,9 @@ export async function POST(req: Request) {
             <strong>Marketing Emails:</strong> ${marketing ? 'Opted In' : 'Opted Out'}
           </p>
         </div>
+        <p style="margin-top: 1rem; color: #718096; font-size: 0.875rem;">
+          This email was sent from your website contact form.
+        </p>
       </div>
     `,
   };
@@ -75,46 +98,39 @@ export async function POST(req: Request) {
   try {
     const transporter = nodemailer.createTransport({
       service: "Gmail",
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '465'),
+      secure: process.env.SMTP_SECURE === 'true',
       auth: {
-        user: 'atifhameed2002@gmail.com',
-        pass: 'hewm gdiv molg vfvx',
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
-    let isSent = false;
+    // Verify transporter configuration
+    await transporter.verify();
 
-    await transporter
-      .sendMail(mailOptions)
-      .then((info:any) => {
-        console.log("Email sent:", info.messageId);
-        isSent = true;
-      })
-      .catch((error :any) => {
-        console.log("Email not sent:", error);
-      });
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent:", info.messageId);
 
-    if (isSent) {
-      return NextResponse.json({ 
-        status: "sent",
-        message: "Email sent successfully",
-        isSuccess: true 
-      });
-    } else {
-      return NextResponse.json({ 
-        status: "error",
-        message: "Failed to send email",
-        isSuccess: false 
-      });
-    }
+    return NextResponse.json({ 
+      status: "sent",
+      message: "Email sent successfully",
+      isSuccess: true 
+    });
+
   } catch (error) {
-    console.error("Server error:", error);
+    console.error("Email sending error:", error);
+    
+    // Don't expose sensitive error details in production
+    const errorMessage = process.env.NODE_ENV === 'development' 
+      ? (error instanceof Error ? error.message : 'Unknown error')
+      : 'Failed to send email';
+
     return NextResponse.json(
       {
-        message: "Internal server error",
-        error: error instanceof Error ? error.message : 'Unknown error',
+        message: "Failed to send email",
+        error: errorMessage,
         isSuccess: false,
       },
       { status: 500 }
