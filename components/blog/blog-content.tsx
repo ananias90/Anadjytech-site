@@ -453,7 +453,7 @@ export default function BlogContent() {
           {/* Mobile Background - 828×600 WebP, lazy-loaded */}
           <Image
             src="/blog-hero-mobile.webp"
-            alt=""
+            alt="Blog Hero Mobile Background"
             fill
             unoptimized
             className="object-cover object-center lg:hidden"
@@ -464,7 +464,7 @@ export default function BlogContent() {
           {/* Tablet Background - 1366×700 WebP, lazy-loaded */}
           <Image
             src="/blog-hero-tablet.webp"
-            alt=""
+            alt="Blog Hero Tablet Background"
             unoptimized
             fill
             className="object-cover object-center hidden lg:block xl:hidden"
@@ -475,7 +475,7 @@ export default function BlogContent() {
           {/* Desktop Background - 1920×900 WebP, preloaded for performance */}
           <Image
             src="/blog-hero-desktop.webp"
-            alt=""
+            alt="Blog Hero Desktop Background"
             fill
             className="object-cover object-center hidden xl:block"
             priority
@@ -506,7 +506,7 @@ export default function BlogContent() {
       </section>
 
       {/* USP Strip */}
-      <section className="bg-[#f7f9fc] py-4 sm:py-6">
+      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
@@ -527,7 +527,7 @@ export default function BlogContent() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Category Filter Bar */}
       <section className="bg-white py-6 sm:py-8 border-b border-gray-200">

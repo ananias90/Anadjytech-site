@@ -12,7 +12,7 @@ const Hero = () => {
           {/* Mobile Background */}
           <Image
             src="/about-hero-blue-soft-828x600.webp"
-            alt=""
+            alt="Mobile Background"
             width={828}
             unoptimized
             height={600}
@@ -23,7 +23,7 @@ const Hero = () => {
           {/* Tablet Background */}
           <Image
             src="/about-hero-blue-soft-1366x700.webp"
-            alt=""
+            alt="Tablet Background"
             width={1366}
             unoptimized
             height={700}
@@ -34,7 +34,7 @@ const Hero = () => {
           {/* Desktop Background */}
           <Image
             src="/about-hero-blue-soft-1920x900.webp"
-            alt=""
+            alt="Desktop Background"
             width={1920}
             unoptimized
             height={900}

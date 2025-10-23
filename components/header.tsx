@@ -218,10 +218,10 @@ export default function Header() {
                 <span className="text-white font-medium">Email: contact@nadyjtech.com</span>
               </div>
             </div>
-            <div className="flex items-center gap-2 flex-1 justify-center">
+            <div className="sm:flex hidden items-center gap-2 flex-1 justify-center">
               <div className="flex items-center gap-2">
                 <Truck className="w-4 h-4 text-white" />
-                <span className="text-white font-medium">Free worldwide & Free return Shipping!</span>
+                <span className="text-white font-medium whitespace-nowrap">Free worldwide & Free return Shipping!</span>
               </div>
             </div>
             <div className="flex items-center gap-2 flex-1 justify-end">
@@ -261,13 +261,14 @@ export default function Header() {
               <span className="text-xs text-white font-medium">Free Shipping Worldwide!</span>
             </div>
             <div className="flex gap-2">
-              <a
+              <Link
                 href="https://www.facebook.com/profile.php?id=61573915410639"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook"
               >
                 <Facebook className="w-3 h-3 text-white hover:text-blue-200 cursor-pointer" />
-              </a>
+              </Link>
               <Twitter className="w-3 h-3 text-white hover:text-blue-200 cursor-pointer" />
               <Instagram className="w-3 h-3 text-white hover:text-blue-200 cursor-pointer" />
             </div>
@@ -276,18 +277,18 @@ export default function Header() {
       </div>
 
       {/* Main header */}
-      <header className="bg-white shadow-sm py-4" data-reveal>
-        <div className="container mx-auto px-4">
+      <header className="bg-white shadow-sm py-1" data-reveal>
+        <div className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-              <div className="relative">
+              <div className="relative ">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-13%20at%208.38.47%20PM-7KnVyCzAYMg5XiMesXUlBk5sI0q99S.jpeg"
+                  src="/images/logo-main.webp"
                   alt="AnadjyTech Logo"
                   width={300}
                   height={90}
-                  className="h-16 sm:h-20 lg:h-24 w-auto object-contain"
+                  className="h-14 lg:h-20 w-auto object-contain"
                   priority
                   unoptimized
                 />

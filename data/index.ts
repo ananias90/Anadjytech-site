@@ -260,7 +260,7 @@ export const sampleProducts = [
     rating: 4.2,
     category: "Smart Home",
     brand: "Philips",
-    image: "/smart-led-light-bulb.jpg",
+    image: "/images/bulb.jpeg",
     amazonUrl: "https://amazon.com/dp/example2",
   },
   {

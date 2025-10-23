@@ -212,7 +212,7 @@ export default function AboutContent() {
       </section>
 
       {/* USP Strip */}
-      <section className="bg-[#f7f9fc] py-4 sm:py-6">
+      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             {uspData.map((item, index) => (
@@ -220,7 +220,7 @@ export default function AboutContent() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission & Story Section */}
       <SectionContainer>

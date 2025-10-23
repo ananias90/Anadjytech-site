@@ -4,7 +4,7 @@ import type React from "react"
 
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { FacebookIcon, InstagramIcon, MailIcon, MenuIcon, SearchIcon, TwitterIcon, XIcon } from "@/public/svgs"
 
@@ -64,11 +64,14 @@ function SearchInput({
   isMobile = false,
 }: { className?: string; placeholder: string; isMobile?: boolean }) {
   const router = useRouter()
-  const [searchValue, setSearchValue] = useState("")
+  const prams = useSearchParams();
+  const [searchValue, setSearchValue] = useState(prams.get('q') || "")
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout | null>(null)
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1)
   const [recentSearches, setRecentSearches] = useState<string[]>([])
+  const suggestionsRef = useRef<HTMLDivElement>(null)
+  
 
   useEffect(() => {
     setRecentSearches(getRecentSearches())
@@ -119,16 +122,24 @@ function SearchInput({
     setSelectedSuggestionIndex(-1)
   }
 
-  const handleInputBlur = () => {
+  const handleInputBlur = (e: React.FocusEvent) => {
+    // Check if the blur is going to a suggestion
+    const relatedTarget = e.relatedTarget as HTMLElement
+    if (relatedTarget?.closest?.('#site-search-suggestions')) {
+      return
+    }
+
     setTimeout(() => {
       setShowSuggestions(false)
       setSelectedSuggestionIndex(-1)
-    }, 200)
+    }, 150)
   }
 
   const allSuggestions = [
     ...recentSearches,
-    ...searchSuggestions.filter((s) => !recentSearches.some((r) => r.toLowerCase() === s.toLowerCase())),
+    ...searchSuggestions.filter((s) =>
+      !recentSearches.some((r) => r.toLowerCase() === s.toLowerCase())
+    ),
   ]
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -150,14 +161,16 @@ function SearchInput({
       setSelectedSuggestionIndex(-1)
     } else if (e.key === "ArrowDown") {
       e.preventDefault()
-      if (showSuggestions) {
-        setSelectedSuggestionIndex((prev) => (prev < allSuggestions.length - 1 ? prev + 1 : 0))
-      }
+      setShowSuggestions(true)
+      setSelectedSuggestionIndex((prev) =>
+        prev < allSuggestions.length - 1 ? prev + 1 : 0
+      )
     } else if (e.key === "ArrowUp") {
       e.preventDefault()
-      if (showSuggestions) {
-        setSelectedSuggestionIndex((prev) => (prev > 0 ? prev - 1 : allSuggestions.length - 1))
-      }
+      setShowSuggestions(true)
+      setSelectedSuggestionIndex((prev) =>
+        prev > 0 ? prev - 1 : allSuggestions.length - 1
+      )
     }
   }
 
@@ -218,9 +231,10 @@ function SearchInput({
         <SearchIcon className="w-4 h-4" />
       </button>
 
-      {showSuggestions && (
+      {showSuggestions && allSuggestions.length > 0 && (
         <div
           id="site-search-suggestions"
+          ref={suggestionsRef}
           className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto"
           role="listbox"
           aria-label="Search suggestions"
@@ -237,6 +251,7 @@ function SearchInput({
                   className={`suggestion-item w-full text-left px-4 py-2 text-gray-700 text-sm transition-colors duration-150 ${selectedSuggestionIndex === index ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
                     }`}
                   onClick={() => handleSuggestionClick(search)}
+                  onMouseDown={(e) => e.preventDefault()} // Prevent input blur
                   role="option"
                   aria-selected={selectedSuggestionIndex === index}
                 >
@@ -253,13 +268,17 @@ function SearchInput({
                   </div>
                 </button>
               ))}
-              {searchSuggestions.length > 0 && (
-                <div className="px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-50 border-b border-gray-100">
-                  Suggestions
-                </div>
-              )}
             </>
           )}
+
+          {searchSuggestions.filter((s) =>
+            !recentSearches.some((r) => r.toLowerCase() === s.toLowerCase())
+          ).length > 0 && (
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 bg-gray-50 border-b border-gray-100">
+                Suggestions
+              </div>
+            )}
+
           {searchSuggestions
             .filter((s) => !recentSearches.some((r) => r.toLowerCase() === s.toLowerCase()))
             .map((suggestion, index) => {
@@ -268,10 +287,10 @@ function SearchInput({
                 <button
                   key={`suggestion-${index}`}
                   id={`suggestion-${adjustedIndex}`}
-                  className={`suggestion-item w-full text-left px-4 py-2 text-gray-700 text-sm transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg ${selectedSuggestionIndex === adjustedIndex ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
+                  className={`suggestion-item w-full text-left px-4 py-2 text-gray-700 text-sm transition-colors duration-150 ${selectedSuggestionIndex === adjustedIndex ? "bg-blue-50 text-blue-700" : "hover:bg-gray-50"
                     }`}
-                  data-value={suggestion.toLowerCase()}
-                  onClick={() => handleSuggestionClick(suggestion.toLowerCase())}
+                  onClick={() => handleSuggestionClick(suggestion)}
+                  onMouseDown={(e) => e.preventDefault()} // Prevent input blur
                   role="option"
                   aria-selected={selectedSuggestionIndex === adjustedIndex}
                 >
@@ -448,7 +467,7 @@ const SiteHeader = () => {
             </div>
 
             {/* Bandeau sobre - order 2, full width, centered */}
-            <div className="order-2 w-full text-center ">
+            <div className="order-2 w-full sm:block hidden text-center ">
               <span
                 className="text-xs font-medium"
                 style={{ color: "#ffffff !important", backgroundColor: "transparent !important" }}
@@ -461,17 +480,17 @@ const SiteHeader = () => {
       </div>
 
       {/* Main header - Adjusted height and spacing for compact design */}
-      <header className="bg-white shadow-sm sticky top-0 z-[70] sm:h-20 h-14" >
+      <header className="bg-white shadow-sm sticky top-0 z-[70] py-1" >
         <div className="container mx-auto px-6 lg:px-8 h-full">
           <div className="flex items-center justify-between gap-6 h-full">
             <Link href="/" aria-label="Home page" className="flex items-center gap-2 flex-shrink-0">
               <div className="relative">
                 <Image
-                  src="/images/Logo_anadjytech_transparent.webp"
+                  src="/images/logo-main.webp"
                   alt="AnadjyTech Logo"
                   width={300}
                   height={120}
-                  className="h-20 lg:h-32 w-auto object-contain"
+                  className="h-14 lg:h-20 w-auto object-contain"
                   priority
                   style={{ background: "transparent" }}
                 />
@@ -527,7 +546,7 @@ const SiteHeader = () => {
                 ? "top-[136px] opacity-100 translate-y-0"
                 : "top-[136px] opacity-0 -translate-y-4 pointer-events-none"
                 }`}
-              style={{ top: "160px" }} // Adjusted for both utility bar and header height
+              style={{ top: "100px" }} // Adjusted for both utility bar and header height
               aria-hidden={!isMenuOpen}
             >
               <div className="p-4">
@@ -598,4 +617,4 @@ const SiteHeader = () => {
   )
 }
 
-export default SiteHeader
+export default SiteHeader;

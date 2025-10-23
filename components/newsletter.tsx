@@ -36,7 +36,7 @@ const Newsletter = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
-            Get the latest tech trends & deals in your inbox
+            Get your free Tech Gadget PDF Guide
           </h2>
 
           {/* <p className="text-gray-600 text-lg mb-8">Join our newsletter today and get 10% off your first purchase.</p> */}

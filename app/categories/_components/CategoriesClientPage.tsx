@@ -3,13 +3,13 @@
 import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
-import Footer from "../../components/footer"
-import Newsletter from "../../components/newsletter"
-import FiltersSidebar from "../../components/FiltersSidebar"
-import MobileCTA from "../../components/MobileCTA"
+import Footer from "../../../components/footer"
+import Newsletter from "../../../components/newsletter"
+import FiltersSidebar from "../../../components/FiltersSidebar"
+import MobileCTA from "../../../components/MobileCTA"
 import { ChevronRight, Usb, Home, Headphones, Briefcase, Smartphone, Gamepad2, Grid3X3, List } from "lucide-react"
-import { Button } from "../../components/ui/button"
-import SiteHeader from "../../components/site-header"
+import { Button } from "../../../components/ui/button"
+import SiteHeader from "../../../components/site-header"
 import Link from "next/link"
 import { sampleProducts } from "@/data"
 
@@ -114,7 +114,7 @@ export default function CategoriesClientPage() {
 
   return (
     <div className="min-h-screen pb-20 lg:pb-0">
-      <SiteHeader />
+      {/* <SiteHeader /> */}
 
       <section className="bg-gradient-to-br from-blue-900/98 via-blue-800/95 to-blue-700/92 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,7 +160,7 @@ export default function CategoriesClientPage() {
                     aria-label="Grid view"
                     aria-pressed={viewMode === "grid"}
                   >
-                    <Grid3X3 className="w-4 h-4" aria-hidden="true" />
+                    <Grid3X3 className={`${viewMode === "grid" ? "text-white" : "text-blue-700"} w-4 h-4 text-bl`} aria-hidden="true" />
                   </Button>
                   <Button
                     variant={viewMode === "list" ? "default" : "outline"}
@@ -169,7 +169,7 @@ export default function CategoriesClientPage() {
                     aria-label="List view"
                     aria-pressed={viewMode === "list"}
                   >
-                    <List className="w-4 h-4" aria-hidden="true" />
+                    <List className={`${viewMode === "list" ? "text-white" : "text-blue-700"} w-4 h-4 text-bl`} aria-hidden="true" />
                   </Button>
                 </div>
               </div>
