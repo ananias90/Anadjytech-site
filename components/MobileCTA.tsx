@@ -20,7 +20,7 @@ const  MobileCTA = () => {
           asChild
           aria-label="Subscribe to our newsletter"
           variant="outline"
-          className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 rounded-xl bg-transparent"
+          className="flex-1 border-blue-600 !text-blue-600 hover:!text-white hover:bg-blue-50 font-medium py-3 rounded-xl bg-transparent"
         >
           <Link href="/newsletter" aria-label="Subscribe to our newsletter" className="flex items-center justify-center gap-2">
             <Mail className="w-4 h-4" />

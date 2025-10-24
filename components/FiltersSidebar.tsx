@@ -317,11 +317,11 @@ export default function FiltersSidebar({
       <div className="lg:hidden">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
-            <Button variant="outline" className="w-full mb-4 bg-transparent" aria-label="Open filters">
+            <Button variant="outline" className="w-full mb-4 bg-transparent !text-blue-800" aria-label="Open filters">
               <Filter className="w-4 h-4 mr-2" />
               Filters
               {hasActiveFilters && (
-                <span className="ml-2 bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                <span className="ml-2 bg-blue-100 !text-blue-800 text-xs font-medium px-2 py-0.5 rounded-full">
                   {selectedCategories.length +
                     selectedBrands.length +
                     (currentPriceRange[0] !== priceRange[0] || currentPriceRange[1] !== priceRange[1] ? 1 : 0) +

@@ -34,7 +34,7 @@ const Header = ({ heading, subHeading, subCategory }: HeaderProps) => {
                         }
                     </nav>
 
-                    <div className="text-center mt-20">
+                    <div className="text-center sm:mt-20 mt-14">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-shadow-lg">{heading}</h1>
                         <p className="text-lg sm:text-xl text-white max-w-2xl mx-auto text-shadow">
                             {subHeading}
