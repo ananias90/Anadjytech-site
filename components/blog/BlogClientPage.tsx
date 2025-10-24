@@ -103,7 +103,7 @@ export default function BlogClientPage({ filteredPosts }: any) {
       </section>
 
       {/* USP Strip */}
-      <section className="bg-[#f7f9fc] py-4 sm:py-6">
+      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
@@ -124,7 +124,7 @@ export default function BlogClientPage({ filteredPosts }: any) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Blog Content with Filters */}
       <section className="py-8 bg-gray-50">

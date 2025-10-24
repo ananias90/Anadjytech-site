@@ -95,7 +95,7 @@ export default function NewsletterContent() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#1E90FF] via-[#4169E1] to-[#0066CC] py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <Image priority unoptimized width={300} height={300} src="/futuristic-tech-newsletter-hero-background-with-ga.jpg" alt="" className="w-full h-full object-cover" />
+          <Image priority unoptimized width={300} height={300} src="/futuristic-tech-newsletter-hero-background-with-ga.jpg" alt="News Letter Background" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-blue-600/5 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -230,10 +230,10 @@ export default function NewsletterContent() {
       {/* Limited-Time Offer Banner */}
       <section className="py-16 bg-gradient-to-r from-[#1E90FF] to-[#4169E1] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <Image priority unoptimized width={300} height={300} src="/free-pdf-guide-tech-gadgets-2025-promotional-banne.jpg" alt="" className="w-full h-full object-cover" />
+          <Image priority unoptimized width={300} height={300} src="/free-pdf-guide-tech-gadgets-2025-promotional-banne.jpg" alt="Offer Image" className="w-full h-full object-cover" />
         </div>
 
-        <div className="container mx-auto px-4 text-center">
+        <div className="container relative z-30 mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Gift className="w-8 h-8 text-white" />
@@ -248,7 +248,7 @@ export default function NewsletterContent() {
             </p>
             <Button
               onClick={() => document.querySelector("form")?.scrollIntoView({ behavior: "smooth" })}
-              className="bg-white text-[#1E90FF] hover:bg-gray-50 font-bold px-10 py-4 text-lg shadow-lg transition-all duration-300"
+              className="bg-white !text-[#1E90FF] hover:!text-white hover:bg-gray-50 font-bold px-10 py-4 text-lg shadow-lg transition-all duration-300"
             >
               Claim Your Free PDF Now
             </Button>
@@ -290,53 +290,6 @@ export default function NewsletterContent() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">AnadjyTech Weekly</h3>
-            <p className="text-xl text-gray-300 mb-8">The smart way to tech</p>
-
-            <div className="flex justify-center gap-6 mb-8">
-              <a
-                href="https://www.facebook.com/profile.php?id=61573915410639"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a
-                href="https://twitter.com/anadjytech"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <Twitter className="w-6 h-6" />
-              </a>
-              <a
-                href="https://instagram.com/anadjytech"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <Instagram className="w-6 h-6" />
-              </a>
-            </div>
-
-            <div className="flex justify-center gap-8 mb-8">
-              <a href="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="/terms" className="text-gray-400 hover:text-white transition-colors">
-                Terms & Conditions
-              </a>
-            </div>
-
-            <p className="text-gray-500">&copy; 2025 AnadjyTech. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </main>
   )
 }

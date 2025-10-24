@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import ScrollToTop from "@/components/ui/scrollToTop"
+import { Suspense } from "react"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,8 +36,10 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/interactions.css" />
       </head>
       <body>
-        {children}
-        <ScrollToTop/>
+        <Suspense>
+          {children}
+          <ScrollToTop />
+        </Suspense>
         <script src="/assets/js/app.js"></script>
         <script src="/assets/js/search-autocomplete.js"></script>
       </body>

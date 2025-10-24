@@ -5,6 +5,7 @@ import { ChevronRight, Star } from "lucide-react"
 import Footer from "@/components/footer"
 import Newsletter from "@/components/newsletter"
 import { comparison, faqs, products } from "@/content/usb-data"
+import Header from "../_components/header"
 
 
 export const metadata: Metadata = {
@@ -39,29 +40,12 @@ export default function UsbCCategoriesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-            <Link href="/" className="hover:text-blue-600 transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-4 h-4" />
-            <Link href="/categories" className="hover:text-blue-600 transition-colors">
-              Categories
-            </Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">USB-C Accessories</span>
-          </nav>
+      <Header
+        heading="Top USB-C Accessories"
+        subHeading="Browse curated tech & gadgets by theme."
+        subCategory="USB-C Accessories"
+      />
 
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Top USB-C Accessories</h1>
-            <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto">
-              Chargers, hubs, SSDs & cables for your devices.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Products Grid */}
       <section className="py-16 lg:py-24">

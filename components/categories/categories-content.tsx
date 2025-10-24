@@ -75,7 +75,7 @@ export default function CategoriesContent() {
         <div className="absolute inset-0">
           <Image
             src="/blog-hero-mobile.webp"
-            alt=""
+            alt="Category Hero Mobile Background"
             unoptimized
             fill
             className="object-cover object-center lg:hidden"
@@ -85,7 +85,7 @@ export default function CategoriesContent() {
           />
           <Image
             src="/blog-hero-tablet.webp"
-            alt=""
+            alt="Category Hero Tablet Background"
             fill
             unoptimized
             className="object-cover object-center hidden lg:block xl:hidden"
@@ -95,7 +95,7 @@ export default function CategoriesContent() {
           />
           <Image
             src="/blog-hero-desktop.webp"
-            alt=""
+            alt="Category Hero Desktop Background"
             unoptimized
             fill
             className="object-cover object-center hidden xl:block"
@@ -112,7 +112,7 @@ export default function CategoriesContent() {
           <nav className="flex justify-center mb-8" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-2 text-white/80">
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link href="/" aria-label="Home" className="hover:text-white transition-colors">
                   Home
                 </Link>
               </li>
@@ -130,7 +130,7 @@ export default function CategoriesContent() {
         </div>
       </section>
 
-      <section className="bg-[#f7f9fc] py-4 sm:py-6">
+      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
@@ -151,7 +151,7 @@ export default function CategoriesContent() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="bg-white py-12 sm:py-16">
         <div className="container mx-auto px-4">

@@ -5,7 +5,7 @@ import { Suspense } from "react"
 import Footer from "@/components/footer"
 import Newsletter from "@/components/newsletter"
 import MobileCTA from "@/components/MobileCTA"
-import { SearchResults } from "@/components/search/search-results"
+import SearchResults from "@/components/search/search-results";
 
 function SearchContent() {
   return <SearchResults />

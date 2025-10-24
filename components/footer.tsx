@@ -14,7 +14,7 @@ const Footer = () => {
               alt="AnadjyTech Logo - The smart way to tech"
               width={300}
               height={100}
-              className="h-[70px] md:h-[140px] w-auto object-contain bg-transparent border-0 p-0 shadow-none"
+              className="h-[120px] md:h-[180px] w-auto object-contain bg-transparent border-0 p-0 shadow-none"
               priority
               aria-label="AnadjyTech company logo"
             />
@@ -33,6 +33,18 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm" aria-labelledby="quick-links-heading">
+
+              <li>
+                <Link
+                  href="/newsletter"
+                  className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
+                  aria-label="View Newsletter"
+                >
+                  Subscribe to our newsletter
+                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </Link>
+              </li>
+              
               <li>
                 <Link
                   href="/"
@@ -92,6 +104,7 @@ const Footer = () => {
               Legal
             </h3>
             <ul className="space-y-2 text-sm" aria-labelledby="legal-heading">
+              
               <li>
                 <Link
                   href="/affiliate-disclosure"

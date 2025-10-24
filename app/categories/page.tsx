@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
-import CategoriesClientPage from "./CategoriesClientPage"
+import CategoriesClientPage from "./_components/CategoriesClientPage"
 
 export const metadata: Metadata = {
   title: "Tech Categories – Shop Gadgets by Type | AnadjyTech",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
 export default function CategoriesPage() {
   return (
     <div>
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <CategoriesClientPage />
-    </Suspense>
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+        <CategoriesClientPage />
+      </Suspense>
     </div>
   )
 }

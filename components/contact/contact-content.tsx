@@ -8,7 +8,7 @@ import ContactCards from "./contact-cards"
 import FollowUs from "./followus"
 import MapLocation from "./map-location"
 import Hero from "./hero"
-import UspStrip from "./usp-strip"
+// import UspStrip from "./usp-strip"
 
 export default function ContactContent() {
   const [formData, setFormData] = useState({
@@ -200,7 +200,7 @@ export default function ContactContent() {
       <Hero />
 
       {/* USP Strip */}
-      <UspStrip />
+      {/* <UspStrip /> */}
 
       {/* Contact Cards Section */}
       <ContactCards />

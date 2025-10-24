@@ -5,6 +5,7 @@ import Footer from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
 import { gamingComparisonData, gamingFaqData, gamingProducts } from "@/data"
+import Header from "../_components/header"
 
 export const metadata: Metadata = {
   title: "Gaming Tech Gear – Best Gaming Accessories | AnadjyTech",
@@ -121,30 +122,13 @@ export default function GamingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900/98 via-blue-800/95 to-blue-700/92 text-white py-16 md:py-24">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1920&h=1080&fit=crop')] bg-cover bg-center opacity-20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm mb-8">
-            <Link href="/" className="text-blue-200 hover:text-white transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="h-4 w-4 text-blue-300" />
-            <Link href="/categories" className="text-blue-200 hover:text-white transition-colors">
-              Categories
-            </Link>
-            <ChevronRight className="h-4 w-4 text-blue-300" />
-            <span className="text-white">Gaming Tech</span>
-          </nav>
 
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg">Gaming Tech Gear</h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto text-shadow">
-              Upgrade your setup with the best gaming accessories.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Header
+        heading="Gaming Tech Gear"
+        subHeading="Upgrade your setup with the best gaming accessories."
+        subCategory="Gaming Tech"
+      />
+
 
       {/* Product Grid */}
       <section className="py-16 md:py-20">

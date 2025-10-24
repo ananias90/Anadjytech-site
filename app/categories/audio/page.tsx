@@ -5,6 +5,7 @@ import { ChevronRight } from "lucide-react"
 import Footer from "@/components/footer"
 import Newsletter from "@/components/newsletter"
 import { audioProducts } from "@/content/audioProducts"
+import Header from "../_components/header"
 
 
 export const metadata: Metadata = {
@@ -63,28 +64,11 @@ export default function AudioCategoryPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-white py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-            <Link href="/" className="hover:text-blue-600 transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-4 h-4" />
-            <Link href="/categories" className="hover:text-blue-600 transition-colors">
-              Categories
-            </Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Audio & Entertainment</span>
-          </nav>
-
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1a2b6d] mb-4">Best Audio & Entertainment Picks</h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Headphones, earbuds, speakers & more.</p>
-          </div>
-        </div>
-      </section>
+      <Header
+        heading="Best Audio & Entertainment Picks"
+        subHeading="Headphones, earbuds, speakers & more."
+        subCategory="Audio & Entertainment"
+      />
 
       {/* Products Grid */}
       <section className="py-16 md:py-20">

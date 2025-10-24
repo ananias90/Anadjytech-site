@@ -5,6 +5,7 @@ import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
 import Image from "next/image"
 import { workComparisonItems, workFaqs, workProducts } from "@/data"
+import Header from "../_components/header"
 
 export const metadata: Metadata = {
   title: "Work & Study Essentials - Productivity Tech | AnadjyTech",
@@ -24,36 +25,17 @@ export const metadata: Metadata = {
 }
 
 export default function WorkStudyPage() {
-  
+
 
   return (
     <div className="min-h-screen">
-      <SiteHeader />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900/98 via-blue-800/95 to-blue-700/92 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-blue-100 mb-8">
-            <a href="/" className="hover:text-white transition-colors">
-              Home
-            </a>
-            <ChevronRight className="h-4 w-4" />
-            <a href="/categories" className="hover:text-white transition-colors">
-              Categories
-            </a>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-white">Work & Study</span>
-          </nav>
+      <Header
+        heading="Work & Study Essentials"
+        subHeading="Boost your workflow with smart productivity tools."
+        subCategory="Work & Study"
+      />
 
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-shadow-lg">Work & Study Essentials</h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              Boost your workflow with smart productivity tools and office essentials.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Product Grid */}
       <section className="py-16 bg-gray-50">
@@ -65,7 +47,7 @@ export default function WorkStudyPage() {
                 className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col"
               >
                 <div className="aspect-video overflow-hidden">
-                  <Image  unoptimized width={300} height={300}
+                  <Image unoptimized width={300} height={300}
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"

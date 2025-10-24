@@ -3,6 +3,7 @@ import Newsletter from "@/components/newsletter"
 import { smartHomecomparisonData, smartHomefaqData, smartHomeproducts } from "@/data"
 import type { Metadata } from "next"
 import Image from "next/image"
+import Header from "../_components/header"
 
 
 export const metadata: Metadata = {
@@ -21,15 +22,15 @@ export const metadata: Metadata = {
 }
 
 export default function SmartHomePage() {
-  
+
 
   // Product Card Component
-  const ProductCard = ({ product }:any) => (
+  const ProductCard = ({ product }: any) => (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
       <div className="aspect-square overflow-hidden">
-        <Image 
-          unoptimized 
-          width={300} 
+        <Image
+          unoptimized
+          width={300}
           height={300}
           src={product.image}
           alt={product.name}
@@ -41,7 +42,7 @@ export default function SmartHomePage() {
         <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
         <p className="text-gray-600 mb-4 flex-1">{product.description}</p>
         <ul className="text-sm text-gray-600 mb-4 space-y-1 flex-1">
-          {product.features.map((feature:any, index:any) => (
+          {product.features.map((feature: any, index: any) => (
             <li key={index}>• {feature}</li>
           ))}
         </ul>
@@ -65,7 +66,7 @@ export default function SmartHomePage() {
   )
 
   // Comparison Row Component
-  const ComparisonRow = ({ item, index }:any) => (
+  const ComparisonRow = ({ item, index }: any) => (
     <tr className={`border-b border-gray-200 hover:bg-gray-50 ${index % 2 === 1 ? 'bg-gray-50' : ''}`}>
       <td className="px-6 py-4 font-medium text-gray-900">{item.product}</td>
       <td className="px-6 py-4 text-green-600">{item.voiceControl}</td>
@@ -76,7 +77,7 @@ export default function SmartHomePage() {
   )
 
   // Mobile Comparison Card Component
-  const MobileComparisonCard = ({ item }:any) => (
+  const MobileComparisonCard = ({ item }: any) => (
     <div className="bg-white rounded-2xl shadow-md p-6">
       <h3 className="font-bold text-lg text-gray-900 mb-4">{item.product}</h3>
       <div className="space-y-2 text-sm">
@@ -101,7 +102,7 @@ export default function SmartHomePage() {
   )
 
   // FAQ Item Component
-  const FAQItem = ({ faq, index }:any) => (
+  const FAQItem = ({ faq, index }: any) => (
     <details className="bg-white rounded-2xl shadow-md overflow-hidden group">
       <summary className="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors flex justify-between items-center">
         <span className="font-semibold text-gray-900">{faq.question}</span>
@@ -115,28 +116,13 @@ export default function SmartHomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-            <a href="/" className="hover:text-blue-600 transition-colors">
-              Home
-            </a>
-            <span>/</span>
-            <a href="/categories" className="hover:text-blue-600 transition-colors">
-              Categories
-            </a>
-            <span>/</span>
-            <span className="text-gray-900">Smart Home</span>
-          </nav>
 
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#1a2b6d] mb-4">Smart Home Essentials</h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Make your home smarter with connected devices.</p>
-          </div>
-        </div>
-      </section>
+      <Header
+        heading="Smart Home Essentials"
+        subHeading="Make your home smarter with connected devices."
+        subCategory="Smart Home"
+      />
+
 
       {/* Products Grid */}
       <section className="py-16 bg-gray-50">
