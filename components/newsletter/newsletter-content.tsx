@@ -134,7 +134,7 @@ export default function NewsletterContent() {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full h-14 px-8 bg-white text-[#1E90FF] hover:bg-gray-50 font-bold text-lg shadow-lg transition-all duration-300"
+                    className="w-full h-14 px-8  !text-white hover:!text-white !bg-blue-900 hover:bg-gray-50 font-bold text-lg shadow-lg transition-all duration-300"
                   >
                     {isLoading ? "Subscribing..." : "Subscribe Now"}
                   </Button>
