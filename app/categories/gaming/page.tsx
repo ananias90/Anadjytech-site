@@ -43,7 +43,7 @@ export default function GamingPage() {
   // Product Card Component
   const ProductCard = ({ product }: any) => (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-      <div className="aspect-square overflow-hidden">
+      <div className="aspect-video overflow-hidden">
         <Image
           unoptimized
           width={300}

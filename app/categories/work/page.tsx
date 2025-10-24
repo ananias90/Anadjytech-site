@@ -6,6 +6,7 @@ import Footer from "@/components/footer"
 import Image from "next/image"
 import { workComparisonItems, workFaqs, workProducts } from "@/data"
 import Header from "../_components/header"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Work & Study Essentials - Productivity Tech | AnadjyTech",
@@ -39,42 +40,50 @@ export default function WorkStudyPage() {
 
       {/* Product Grid */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {workProducts.map((product, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <Image unoptimized width={300} height={300}
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4 flex-1">{product.description}</p>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {workProducts.map((product, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col"
+        >
+          <div className="aspect-video overflow-hidden">
+            <Image 
+              unoptimized 
+              width={300} 
+              height={169}
+              src={product.image || "/placeholder.svg"}
+              alt={product.name}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+          <div className="p-6 flex-1 flex flex-col">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
+            <p className="text-gray-600 mb-4 flex-1">{product.description}</p>
 
-                  <div className="flex items-center justify-between mt-auto">
-                    {/* <span className="text-2xl font-bold text-blue-600">{product.price}</span> */}
-                    <a
-                      href={product.amazonUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      Buy on Amazon
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <div className="flex gap-2 mt-auto">
+              <Link
+                href={product.amazonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 bg-[#0066cc] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
+              >
+                Buy on Amazon
+              </Link>
+              <Link
+                href="#"
+                className="flex-1 border border-[#0066cc] text-[#0066cc] px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
+              >
+                Learn More
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Comparison Table */}
       <section className="py-16 bg-white">
@@ -99,14 +108,14 @@ export default function WorkStudyPage() {
                     <td className="p-4 text-center text-gray-700">{item.keyFeature}</td>
                     {/* <td className="p-4 text-center font-bold text-blue-600">{item.price}</td> */}
                     <td className="p-4 text-center">
-                      <a
+                      <Link
                         href={item.buyLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors"
                       >
                         Buy
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -122,14 +131,14 @@ export default function WorkStudyPage() {
                 <p className="text-gray-600 mb-2">{item.keyFeature}</p>
                 <div className="flex items-center justify-between">
                   {/* <span className="text-xl font-bold text-blue-600">{item.price}</span> */}
-                  <a
+                  <Link
                     href={item.buyLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
                   >
                     Buy on Amazon
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

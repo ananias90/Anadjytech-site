@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Truck, RotateCcw, Shield, Star, ChevronRight } from "lucide-react"
+import FeatureBar from "../feature-bar"
 
 export default function CategoriesContent() {
   const categories = [
@@ -130,33 +131,13 @@ export default function CategoriesContent() {
         </div>
       </section>
 
-      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Truck className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">Free Worldwide Shipping</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <RotateCcw className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">30-Day Free Returns</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Shield className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">Secure Checkout</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Star className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">Curated Tech Picks</span>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      {/* USP Strip */}
+      <FeatureBar />
 
       <section className="bg-white py-12 sm:py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {categories.map((category:any, index) => {
+            {categories.map((category: any, index) => {
               const IconComponent = category.icon
               return (
                 <div

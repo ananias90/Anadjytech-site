@@ -12,6 +12,7 @@ import { Button } from "../../../components/ui/button"
 import SiteHeader from "../../../components/site-header"
 import Link from "next/link"
 import { sampleProducts } from "@/data"
+import Header from "./header"
 
 
 
@@ -116,29 +117,15 @@ export default function CategoriesClientPage() {
     <div className="min-h-screen pb-20 lg:pb-0">
       {/* <SiteHeader /> */}
 
-      <section className="bg-gradient-to-br from-blue-900/98 via-blue-800/95 to-blue-700/92 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center space-x-2 text-blue-100 mb-8" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="h-4 w-4" aria-hidden="true" />
-            <span className="text-white" aria-current="page">
-              Categories
-            </span>
-          </nav>
+     <Header
+     heading="Explore Our Categories"
+     subHeading="Browse curated tech & gadgets by theme."
+     />
+     
 
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-shadow-lg">Explore Our Categories</h1>
-            <p className="text-lg sm:text-xl text-white max-w-2xl mx-auto text-shadow">
-              Browse curated tech & gadgets by theme.
-            </p>
-          </div>
-        </div>
-      </section>
 
       <section className="py-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8">
             <FiltersSidebar
               categories={filterOptions.categories}
@@ -202,44 +189,62 @@ export default function CategoriesClientPage() {
               </div>
 
               <div
-                className={`grid gap-6 ${viewMode === "grid" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}
+                className={`grid gap-6 ${viewMode === "grid"
+                    ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                    : "grid-cols-1"
+                  }`}
                 role="region"
                 aria-label="Product listings"
               >
-                {filteredProducts.map((product) => (
+                {filteredProducts.map((product: any) => (
                   <article
                     key={product.id}
-                    className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4"
+                    className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200 p-4 flex flex-col"
                   >
-                    <div className="relative w-full h-48 mb-4">
+                    {/* Image Wrapper with Uniform 16:9 Ratio */}
+                    <div className="relative w-full aspect-[16/9] mb-4 overflow-hidden rounded-lg">
                       <Image
                         src={product.image || "/placeholder.svg"}
                         alt={`${product.name} - ${product.brand} product image`}
                         fill
                         unoptimized
-                        className="object-cover rounded-lg"
+                        className="object-cover hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{product.name}</h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      {product.category} • {product.brand}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <Link
-                        href={product.amazonUrl}
-                        target="_blank"
-                        rel="noreferrer nofollow sponsored noopener"
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"
-                      >
-                        Check price on Amazon
-                      </Link>
-                      <div className="flex items-center gap-1" aria-label={`Rating: ${product.rating} out of 5 stars`}>
-                        <span className="text-yellow-400" aria-hidden="true">
-                          ★
-                        </span>
-                        <span className="text-sm text-gray-600">{product.rating}</span>
+
+                    {/* Product Details */}
+                    <div className="flex flex-col flex-grow">
+                      <h3 className="font-semibold text-gray-900 text-lg mb-1">
+                        {product.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {product.category} • {product.brand}
+                      </p>
+
+                      {/* Footer Section */}
+                      <div className="mt-auto flex items-center justify-between">
+                        <Link
+                          href={product.amazonUrl}
+                          target="_blank"
+                          rel="noreferrer nofollow sponsored noopener"
+                          className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"
+                        >
+                          Check price on Amazon
+                        </Link>
+
+                        <div
+                          className="flex items-center gap-1"
+                          aria-label={`Rating: ${product.rating} out of 5 stars`}
+                        >
+                          <span className="text-yellow-400" aria-hidden="true">
+                            ★
+                          </span>
+                          <span className="text-sm text-gray-600">
+                            {product.rating ?? "N/A"}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </article>

@@ -1,6 +1,6 @@
 import SiteHeader from "@/components/site-header"
 import Hero from "@/components/hero"
-// import FeatureBar from "@/components/feature-bar"
+import FeatureBar from "@/components/feature-bar"
 import FeaturedRows from "@/components/featured-rows"
 import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
@@ -49,7 +49,7 @@ export default function page() {
     <div className=" pb-20 lg:pb-0">
       <SiteHeader />
       <Hero />
-      {/* <FeatureBar /> */}
+      <FeatureBar />
       <FeaturedRows />
       <NewArrivalsCarousel />
       <SmartHomeMustHaves />

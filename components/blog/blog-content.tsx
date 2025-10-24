@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Calendar, User, ChevronLeft, ChevronRight, Truck, RotateCcw, Shield, Star, Search, X } from "lucide-react"
 import { Button } from "../../components/ui/button"
 import { useState, useMemo } from "react"
+import FeatureBar from "../feature-bar"
 
 export default function BlogContent() {
   const [activeCategory, setActiveCategory] = useState("All")
@@ -506,28 +507,7 @@ export default function BlogContent() {
       </section>
 
       {/* USP Strip */}
-      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Truck className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">Free Worldwide Shipping</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <RotateCcw className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">30-Day Free Returns</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Shield className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">Secure Checkout</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Star className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-              <span className="text-sm font-medium text-[#333]">Curated Tech Picks</span>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      <FeatureBar />
 
       {/* Category Filter Bar */}
       <section className="bg-white py-6 sm:py-8 border-b border-gray-200">
