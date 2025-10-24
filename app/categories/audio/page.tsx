@@ -7,7 +7,6 @@ import Newsletter from "@/components/newsletter"
 import { audioProducts } from "@/content/audioProducts"
 import Header from "../_components/header"
 
-
 export const metadata: Metadata = {
   title: "Best Audio & Entertainment Picks - AnadjyTech",
   description:
@@ -19,7 +18,6 @@ export const metadata: Metadata = {
     url: "https://www.anadjytech.com/categories/audio",
   },
 }
-
 
 const comparisonData = [
   {
@@ -72,7 +70,7 @@ export default function AudioCategoryPage() {
 
       {/* Products Grid */}
       <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a2b6d] mb-4">Featured Audio Products</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full"></div>
@@ -82,50 +80,45 @@ export default function AudioCategoryPage() {
             {audioProducts.map((product, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col"
+                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="aspect-video overflow-hidden">
                   <Image
                     unoptimized
+                    width={300}
+                    height={169}
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
                 </div>
 
-                <div className="p-6 flex flex-col flex-1">
+                <div className="p-6 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <p className="text-gray-600 mb-4 flex-1">{product.description}</p>
 
-                  <div className="flex-1">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {product.specs.map((spec, specIndex) => (
-                        <span key={specIndex} className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="text-sm text-gray-600 mb-4 space-y-1 flex-1">
+                    {product.specs?.map((spec: any, specIndex: any) => (
+                      <div key={specIndex}>• {spec}</div>
+                    ))}
                   </div>
 
-                  <div className="mt-auto">
-                    <div className="flex gap-3">
-                      <Link
-                        href={product.amazonUrl}
-                        target="_blank"
-                        rel="nofollow sponsored noopener"
-                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-200 text-center"
-                      >
-                        Check price on Amazon
-                      </Link>
-                      <Link
-                        href={product.reviewUrl}
-                        className="flex-1 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold py-3 px-4 rounded-xl transition-colors duration-200 text-center"
-                      >
-                        Read Review
-                      </Link>
-                    </div>
+                  <div className="flex gap-2 mt-auto">
+                    <Link
+                      href={product.amazonUrl}
+                      target="_blank"
+                      rel="nofollow sponsored noopener"
+                      className="flex-1 bg-[#0066cc] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
+                    >
+                      Buy on Amazon
+                    </Link>
+                    <Link
+                      href={product.reviewUrl}
+                      className="flex-1 border border-[#0066cc] text-[#0066cc] px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
+                    >
+                      Learn More
+                    </Link>
                   </div>
                 </div>
               </div>

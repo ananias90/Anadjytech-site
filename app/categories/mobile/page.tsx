@@ -53,7 +53,7 @@ const MobilePage = () => {
       />
 
 
-      {/* Product Grid */}
+      {/* Product Grid - UPDATED TO MATCH PRODUCTCARD STRUCTURE */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Top Mobile & Charging Products</h2>
@@ -61,22 +61,37 @@ const MobilePage = () => {
             {mobileProducts.map((product, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6"
+                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col"
               >
-                <div className="aspect-square mb-4 overflow-hidden rounded-lg bg-gray-100">
-                  <Image unoptimized width={300} height={300}
+                <div className="aspect-video overflow-hidden">
+                  <Image
+                    unoptimized
+                    width={300}
+                    height={169}
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
-                <p className="text-gray-600 mb-4">{product.description}</p>
-                <div className="flex items-center justify-between">
-                  {/* <span className="text-2xl font-bold text-blue-600">{product.price}</span> */}
-                  <button aria-label={`Buy ${product.name} on Amazon`} className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                    Buy on Amazon
-                  </button>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
+                  <p className="text-gray-600 mb-4 flex-1">{product.description}</p>
+                  {/* <div className="text-2xl font-bold text-[#0066cc] mb-4">{product.price}</div> */}
+                  <div className="flex gap-2 mt-auto">
+                    <a
+                      href="#"
+                      className="flex-1 bg-[#0066cc] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
+                    >
+                      Buy on Amazon
+                    </a>
+                    <a
+                      href="#"
+                      className="flex-1 border border-[#0066cc] text-[#0066cc] px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
+                    >
+                      Learn More
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}

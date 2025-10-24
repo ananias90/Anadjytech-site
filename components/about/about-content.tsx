@@ -6,6 +6,7 @@ import { Truck, RotateCcw, Shield, Star, ChevronDown, Users, Award, Heart, Leaf,
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import FeatureBar from "../feature-bar"
 
 export default function AboutContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -14,13 +15,6 @@ export default function AboutContent() {
     setOpenFaq(openFaq === index ? null : index)
   }
 
-  // Data arrays
-  const uspData = [
-    { icon: Truck, text: "Free Worldwide Shipping" },
-    { icon: RotateCcw, text: "30-Day Free Returns" },
-    { icon: Shield, text: "Secure Checkout" },
-    { icon: Star, text: "Curated Tech Picks" }
-  ]
 
   const whatWeDoData = [
     { icon: Star, title: "Curated Shop", description: "Only gear that passes our checks" },
@@ -36,16 +30,6 @@ export default function AboutContent() {
     { icon: Leaf, title: "Sustainability" }
   ]
 
-  // Reusable Components
-  const USPItem = ({ item }: { item: typeof uspData[0] }) => {
-    const IconComponent = item.icon
-    return (
-      <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-        <IconComponent className="w-5 h-5 text-[#0A67FF] flex-shrink-0" />
-        <span className="text-sm font-medium text-[#333]">{item.text}</span>
-      </div>
-    )
-  }
 
   const MissionStoryCard = ({ item }: { item: typeof missionStoryData[0] }) => (
     <div className="text-left">
@@ -212,15 +196,7 @@ export default function AboutContent() {
       </section>
 
       {/* USP Strip */}
-      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-            {uspData.map((item, index) => (
-              <USPItem key={index} item={item} />
-            ))}
-          </div>
-        </div>
-      </section> */}
+      <FeatureBar />
 
       {/* Mission & Story Section */}
       <SectionContainer>

@@ -27,11 +27,11 @@ export default function SmartHomePage() {
   // Product Card Component
   const ProductCard = ({ product }: any) => (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
-      <div className="aspect-square overflow-hidden">
+      <div className="aspect-video overflow-hidden">
         <Image
           unoptimized
           width={300}
-          height={300}
+          height={169}
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"

@@ -8,6 +8,7 @@ import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar";
 import Button from "@/components/ui/button";
 import { allPosts } from 'contentlayer/generated';
 import InputSearch from "./input-search";
+import FeatureBar from "../feature-bar";
 
 
 export default function BlogClientPage({ filteredPosts }: any) {
@@ -103,28 +104,7 @@ export default function BlogClientPage({ filteredPosts }: any) {
       </section>
 
       {/* USP Strip */}
-      {/* <section className="bg-[#f7f9fc] py-4 sm:py-6">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Truck className="w-5 h-5 text-[#0A67FF] flex-shrink-0" aria-hidden="true" />
-              <span className="text-sm font-medium text-[#333]">Free Worldwide Shipping</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <RotateCcw className="w-5 h-5 text-[#0A67FF] flex-shrink-0" aria-hidden="true" />
-              <span className="text-sm font-medium text-[#333]">30-Day Free Returns</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Shield className="w-5 h-5 text-[#0A67FF] flex-shrink-0" aria-hidden="true" />
-              <span className="text-sm font-medium text-[#333]">Secure Checkout</span>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
-              <Star className="w-5 h-5 text-[#0A67FF] flex-shrink-0" aria-hidden="true" />
-              <span className="text-sm font-medium text-[#333]">Curated Tech Picks</span>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      <FeatureBar />
 
       {/* Blog Content with Filters */}
       <section className="py-8 bg-gray-50">
@@ -228,7 +208,7 @@ export default function BlogClientPage({ filteredPosts }: any) {
                             >
                               <div className="relative aspect-video">
                                 <Image
-                                  src={post.image || post.thumbnail ||  "/placeholder.svg"}
+                                  src={post.image || post.thumbnail || "/placeholder.svg"}
                                   alt={post.alt || `${post.title} thumbnail`}
                                   width={1200}
                                   height={675}

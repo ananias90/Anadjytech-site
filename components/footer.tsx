@@ -14,11 +14,11 @@ const Footer = () => {
               alt="AnadjyTech Logo - The smart way to tech"
               width={300}
               height={100}
-              className="h-[120px] md:h-[180px] w-auto object-contain bg-transparent border-0 p-0 shadow-none"
+              className="sm:h-[120px] h-20  w-auto object-contain bg-transparent border-0 p-0 shadow-none"
               priority
               aria-label="AnadjyTech company logo"
             />
-            <p className="text-white font-medium mb-3 text-lg" aria-label="Company tagline">
+            <p className="text-white font-medium my-3 text-lg" aria-label="Company tagline">
               The smart way to tech
             </p>
             <p className="text-[#f1f1f1] text-sm" aria-label="Company description">
@@ -34,17 +34,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-sm" aria-labelledby="quick-links-heading">
 
-              <li>
-                <Link
-                  href="/newsletter"
-                  className="text-[#f1f1f1] hover:text-[#4da6ff] transition-all duration-300 ease-in-out relative group"
-                  aria-label="View Newsletter"
-                >
-                  Subscribe to our newsletter
-                  <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#4da6ff] transition-all duration-300 ease-in-out group-hover:w-full"></span>
-                </Link>
-              </li>
-              
+
               <li>
                 <Link
                   href="/"
@@ -104,7 +94,7 @@ const Footer = () => {
               Legal
             </h3>
             <ul className="space-y-2 text-sm" aria-labelledby="legal-heading">
-              
+
               <li>
                 <Link
                   href="/affiliate-disclosure"
@@ -193,6 +183,16 @@ const Footer = () => {
               </Link>
             </div>
           </div>
+        </div>
+
+        <div className="flex justify-end md:mt-0 mt-5">
+          <Link
+            href="/newsletter"
+            className="text-white px-6 border border-white p-4 rounded-full hover:bg-[#4da6ff] hover:text-white  transition-all duration-300 ease-in-out relative group"
+            aria-label="View Newsletter"
+          >
+            Subscribe to our newsletter
+          </Link>
         </div>
 
         <div className="border-t border-gray-600 mt-8 pt-6 text-center text-sm text-[#f1f1f1]">
