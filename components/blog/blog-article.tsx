@@ -113,11 +113,12 @@ export default function BlogArticle({ post }: any) {
             width={1600}
             height={900}
             priority
-            className="object-cover"
+            className="object-cover w-full h-[350px]  md:h-[600px] lg:h-[700px]"
             sizes="(max-width:768px) 100vw, (max-width:1200px) 80vw, 1200px"
           />
         </div>
       )}
+
 
 
       {/* Actual Article */}

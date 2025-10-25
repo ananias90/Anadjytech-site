@@ -22,7 +22,7 @@ const Newsletter = () => {
     setTimeout(() => {
       if (email.includes("@")) {
         setStatus("success")
-        setMessage("Thank you! Check your email for your 10% discount code.")
+        setMessage("Thanks! Check your inbox for the free Tech Gadget PDF Guide.")
         setEmail("")
       } else {
         setStatus("error")
@@ -39,7 +39,6 @@ const Newsletter = () => {
             Get your free Tech Gadget PDF Guide
           </h2>
 
-          {/* <p className="text-gray-600 text-lg mb-8">Join our newsletter today and get 10% off your first purchase.</p> */}
 
           <div className="max-w-md mx-auto mb-4">
             <form onSubmit={handleSubmit} className="space-y-4" data-newsletter>
