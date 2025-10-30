@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { allPosts } from 'contentlayer/generated'
-import BlogArticle from "../../../components/blog/blog-article"
+import BlogArticle from "../../../../components/blog/blog-article"
 
 interface PageProps {
   params: { slug: string }

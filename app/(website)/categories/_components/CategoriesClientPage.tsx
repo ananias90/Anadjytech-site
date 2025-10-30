@@ -3,13 +3,13 @@
 import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
-import Footer from "../../../components/footer"
-import Newsletter from "../../../components/newsletter"
-import FiltersSidebar from "../../../components/FiltersSidebar"
-import MobileCTA from "../../../components/MobileCTA"
+import Footer from "../../../../components/footer"
+import Newsletter from "../../../../components/newsletter"
+import FiltersSidebar from "../../../../components/FiltersSidebar"
+import MobileCTA from "../../../../components/MobileCTA"
 import { ChevronRight, Usb, Home, Headphones, Briefcase, Smartphone, Gamepad2, Grid3X3, List } from "lucide-react"
-import { Button } from "../../../components/ui/button"
-import SiteHeader from "../../../components/site-header"
+import { Button } from "../../../../components/ui/button"
+import SiteHeader from "../../../../components/site-header"
 import Link from "next/link"
 import { sampleProducts } from "@/data"
 import Header from "./header"
@@ -125,7 +125,7 @@ export default function CategoriesClientPage() {
 
 
       <section className="py-8 bg-gray-50">
-        <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8">
             <FiltersSidebar
               categories={filterOptions.categories}

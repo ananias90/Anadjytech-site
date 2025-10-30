@@ -11,6 +11,7 @@ import UsbcHubsComparison from "@/components/usb-c-hubs-comparison"
 import EditorsPicks from "@/components/editors-picks"
 import MobileCTA from "@/components/MobileCTA"
 import type { Metadata } from "next"
+import ScrollToTop from "@/components/ui/scrollToTop"
 
 export const metadata: Metadata = {
   title: "AnadjyTech — Smart Tech & Gadgets Picks (2025)",
@@ -60,6 +61,8 @@ export default function page() {
       <Footer />
 
       <MobileCTA />
+
+      <ScrollToTop />
     </div>
   )
 }

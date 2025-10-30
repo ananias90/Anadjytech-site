@@ -2,8 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import ScrollToTop from "@/components/ui/scrollToTop"
 import { Suspense } from "react"
+import { Toaster } from "react-hot-toast"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,8 +38,8 @@ export default function RootLayout({
       <body>
         <Suspense>
           {children}
-          <ScrollToTop />
         </Suspense>
+        <Toaster/>
         <script src="/assets/js/app.js"></script>
         <script src="/assets/js/search-autocomplete.js"></script>
       </body>
