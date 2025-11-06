@@ -357,3 +357,10 @@ a:focus {
 button{
   cursor: pointer;
 }
+
+#anadjy_chat_button {
+  position: fixed;
+  bottom: 96px;
+  right: 30px;
+  z-index: 99999;
+}

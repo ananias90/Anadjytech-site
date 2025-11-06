@@ -75,7 +75,7 @@ export default function NewArrivalsCarousel() {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute sm:-left-12 -left-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-sm shadow-lg rounded-full p-3 hover:bg-white hover:shadow-xl transition-all duration-200"
+            className="absolute 2xl:-left-12 -left-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-sm shadow-lg rounded-full p-3 hover:bg-white hover:shadow-xl transition-all duration-200"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-5 h-5 text-gray-700" />
@@ -83,7 +83,7 @@ export default function NewArrivalsCarousel() {
 
           <button
             onClick={goToNext}
-            className="absolute sm:-right-12 -right-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-sm shadow-lg rounded-full p-3 hover:bg-white hover:shadow-xl transition-all duration-200"
+            className="absolute 2xl:-right-12 -right-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-sm shadow-lg rounded-full p-3 hover:bg-white hover:shadow-xl transition-all duration-200"
             aria-label="Next slide"
           >
             <ChevronRight className="w-5 h-5 text-gray-700" />

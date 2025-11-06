@@ -18,7 +18,8 @@ export default function Hero() {
           src="/images/hero-banner.jpeg"
           alt="Tech gadgets background"
           fill
-          priority
+          loading="lazy"
+          
           quality={75}
           className="object-cover"
           sizes="100vw"
@@ -142,7 +143,7 @@ export default function Hero() {
                     src="/images/image_intro.png"
                     alt="Tech Gadgets Gift Box"
                     className="w-48 sm:w-64 h-48 sm:h-64 object-contain drop-shadow-2xl transition-all duration-500 group-hover:drop-shadow-3xl"
-                    priority
+                    loading="lazy"
                     quality={85}
                     sizes="(max-width: 768px) 192px, 256px"
                   />
