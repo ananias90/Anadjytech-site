@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const { message, referrer } = await req.json()
     if (!message)
       return NextResponse.json({ error: 'Missing message' }, { status: 400 })
-
+ 
     const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
