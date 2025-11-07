@@ -40,20 +40,20 @@ export default function NewsletterContent() {
     return () => clearInterval(timer)
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!email || !name) return
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault()
+  //   if (!email || !name) return
 
-    setIsLoading(true)
+  //   setIsLoading(true)
 
-    // Simulate API call - ready for Brevo integration
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+  //   // Simulate API call - ready for Brevo integration
+  //   await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    setIsSubmitted(true)
-    setIsLoading(false)
-    setEmail("")
-    setName("")
-  }
+  //   setIsSubmitted(true)
+  //   setIsLoading(false)
+  //   setEmail("")
+  //   setName("")
+  // }
 
   const benefits = [
     {
@@ -93,7 +93,7 @@ export default function NewsletterContent() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1E90FF] via-[#4169E1] to-[#0066CC] py-20 lg:py-32 overflow-hidden">
+      <section id="newsletter-section" className="relative bg-gradient-to-br from-[#1E90FF] via-[#4169E1] to-[#0066CC] py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <Image priority unoptimized width={300} height={300} src="/futuristic-tech-newsletter-hero-background-with-ga.jpg" alt="News Letter Background" className="w-full h-full object-cover" />
         </div>
@@ -108,7 +108,7 @@ export default function NewsletterContent() {
             </p>
 
             {/* Email Capture Form */}
-            <div className="max-w-lg mx-auto mb-12">
+            {/* <div className="max-w-lg mx-auto mb-12">
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="flex flex-col gap-3">
@@ -153,6 +153,20 @@ export default function NewsletterContent() {
                   </p>
                 </div>
               )}
+            </div> */}
+
+            {/* Newsletter Iframe */}
+            <div className="flex justify-center xl:h-[560px] sm:h-[510px] h-[680px] overflow-hidden mb-12">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://40f84e00.sibforms.com/serve/MUIFALA4XStPablh7_mjN2GyXIqUw5mKWXBfnEfot0K22knB39RfRy6SdExvJaPJgkmwpXxuZJ1VXvNoIIJp3HTxEpDdQg1vc3CSv-p6df4SbB8k-RjZoXOKm86DYlN5e7VkPT6M6sdCeqDMLXiyVCkb5N1Xn81Bb8l_DTEHnTQu8X2nTEYuDc_wENxr0iqy_uuQbQ2HkkEe-C1Z"
+                frameBorder="0"
+                scrolling="auto"
+                allowFullScreen
+                className="w-full rounded-xl border-0 shadow-sm"
+                style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
+              ></iframe>
             </div>
 
             {/* Countdown Timer */}
@@ -247,7 +261,7 @@ export default function NewsletterContent() {
               reviews and buying recommendations.
             </p>
             <Button
-              onClick={() => document.querySelector("form")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.querySelector("#newsletter-section")?.scrollIntoView({ behavior: "smooth" })}
               className="bg-white !text-[#1E90FF] hover:!text-white hover:bg-gray-50 font-bold px-10 py-4 text-lg shadow-lg transition-all duration-300"
             >
               Claim Your Free PDF Now

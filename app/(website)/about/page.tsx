@@ -1,8 +1,8 @@
-import SiteHeader from "../../components/header"                
-import AboutContent from "../../components/about/about-content"
-import Newsletter from "../../components/newsletter"
-import Footer from "../../components/footer"
-import MobileCTA from "../../components/MobileCTA"
+import SiteHeader from "../../../components/header"                
+import AboutContent from "../../../components/about/about-content"
+import Newsletter from "../../../components/newsletter"
+import Footer from "../../../components/footer"
+import MobileCTA from "../../../components/MobileCTA"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {

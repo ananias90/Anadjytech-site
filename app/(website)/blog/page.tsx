@@ -5,7 +5,7 @@ import Footer from "@/components/footer"
 import Newsletter from "@/components/newsletter"
 import SiteHeader from "@/components/site-header"
 import MobileCTA from "@/components/MobileCTA";
-import BlogClientPage from "../../components/blog/BlogClientPage";
+import BlogClientPage from "../../../components/blog/BlogClientPage";
 import { allPosts } from 'contentlayer/generated';
 
 
