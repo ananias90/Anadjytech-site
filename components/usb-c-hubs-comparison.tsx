@@ -5,8 +5,6 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 import { hubs } from "@/data"
 import Link from "next/link"
 
-
-
 const faqs = [
   {
     question: "What does Power Delivery (PD) mean?",
@@ -22,8 +20,10 @@ const faqs = [
   },
 ]
 
-export default function UsbcHubsComparison() {
+export default function UsbcHubsComparison({ products = [] }: { products?: any[] }) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+
+  console.log(products)
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
