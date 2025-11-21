@@ -64,8 +64,6 @@ export default function BlogClientPage({
     document.getElementById("blog-grid")?.scrollIntoView({ behavior: "smooth" })
   }
 
-  console.log(gridPosts)
-
   return (
     <main className="min-h-screen">
       {/* Blog Hero Section */}

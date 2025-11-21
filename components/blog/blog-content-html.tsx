@@ -14,7 +14,7 @@ interface BlogContentProps {
     excerpt: string;
     content: string;
     image?: string;
-    author?: string;
+    author?: string | { name?: string };
     publishedAt?: string;
     category?: string;
     tags?: string[];
@@ -77,7 +77,7 @@ export default function BlogContentHTML({ post }: BlogContentProps) {
             {post.author && (
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                <span>{typeof post.author === 'object' ? post.author?.name || 'AnadjyTech' : post.author}</span>
+                <span>{typeof post.author === 'object' && post.author !== null ? (post.author as { name?: string }).name ?? 'AnadjyTech' : post.author}</span>
               </div>
             )}
             {post.publishedAt && (
