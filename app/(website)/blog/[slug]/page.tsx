@@ -1,86 +1,122 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { allPosts } from 'contentlayer/generated'
-import BlogArticle from "../../../../components/blog/blog-article"
+import { getBlogBySlug } from "@/lib/api/blogs"
+import BlogContentHTML from "@/components/blog/blog-content-html"
 
 interface PageProps {
   params: { slug: string }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = allPosts.find((post) => post.slug === params.slug)
+  try {
+    const response = await getBlogBySlug(params.slug)
+    const blog = response.blog
 
-  if (!post) {
+    if (!blog) {
+      return {
+        title: "Article Not Found | AnadjyTech",
+        description: "The requested article could not be found.",
+      }
+    }
+
+    return {
+      title: `${blog.title} | AnadjyTech — The smart way to tech`,
+      description: blog.excerpt,
+      openGraph: {
+        title: blog.title,
+        description: blog.excerpt,
+        type: "article",
+        publishedTime: blog.publishedAt,
+        authors: blog.author ? [typeof blog.author === 'object' ? blog.author.name : blog.author] : [],
+        images: blog.hero || blog.image || blog.thumbnail ? [
+          {
+            url: blog.hero || blog.image || blog.thumbnail || "",
+            width: 1200,
+            height: 675,
+            alt: blog.title,
+          },
+        ] : [],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: blog.title,
+        description: blog.excerpt,
+        images: blog.hero || blog.image || blog.thumbnail ? [blog.hero || blog.image || blog.thumbnail || ""] : [],
+      },
+    }
+  } catch (error) {
     return {
       title: "Article Not Found | AnadjyTech",
       description: "The requested article could not be found.",
     }
   }
-
-  return {
-    title: `${post.title} | AnadjyTech — The smart way to tech`,
-    description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      publishedTime: post.publishedAt,
-      authors: [post.author],
-      images: [
-        {
-          url: post.image,
-          width: 1200,
-          height: 675,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-    },
-  }
 }
 
-export default function BlogPostPage({ params }: PageProps) {
-  const post = allPosts.find((post) => post.slug === params.slug)
+export default async function BlogPostPage({ params }: PageProps) {
+  try {
+    const response = await getBlogBySlug(params.slug)
+    const blog = response.blog
 
-  if (!post || !post.published || post.hidden) {
+    if (!blog || !blog.published || blog.hidden) {
+      notFound()
+    }
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: blog.title,
+      description: blog.excerpt,
+      image: blog.hero || blog.image || blog.thumbnail,
+      author: blog.author ? {
+        "@type": "Person",
+        name: typeof blog.author === 'object' ? blog.author.name : blog.author,
+      } : {
+        "@type": "Organization",
+        name: "AnadjyTech",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "AnadjyTech",
+        logo: {
+          "@type": "ImageObject",
+          url: "/logo.png",
+        },
+      },
+      datePublished: blog.publishedAt,
+      dateModified: blog.updatedAt || blog.publishedAt,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id:": `/blog/${blog.slug}`,
+      },
+    }
+
+    // Convert blog to format expected by BlogContentHTML component
+    const post = {
+      title: blog.title,
+      slug: blog.slug,
+      excerpt: blog.excerpt,
+      content: blog.content,
+      image: blog.hero || blog.image || blog.thumbnail,
+      author: blog.author?.name || "AnadjyTech",
+      publishedAt: blog.publishedAt || blog.createdAt,
+      category: blog.category,
+      tags: blog.tags,
+      readTime: blog.readTime || `${blog.readMins || 5} min read`,
+      difficulty: blog.difficulty,
+      badges: blog.badges,
+      keyTakeaways: blog.keyTakeaways,
+      pros: blog.pros,
+      cons: blog.cons,
+      specs: blog.specs,
+    }
+
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <BlogContentHTML post={post} />
+      </>
+    )
+  } catch (error) {
     notFound()
   }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    image: post.image,
-    author: {
-      "@type": "Organization",
-      name: post.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "AnadjyTech",
-      logo: {
-        "@type": "ImageObject",
-        url: "/logo.png",
-      },
-    },
-    datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": post.url,
-    },
-  }
-
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <BlogArticle post={{ ...post, content: post.body.code }} />
-    </>
-  )
 }

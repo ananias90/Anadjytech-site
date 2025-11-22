@@ -1,7 +1,6 @@
 import SiteHeader from "@/components/site-header"
 import Hero from "@/components/hero"
 import FeatureBar from "@/components/feature-bar"
-import FeaturedRows from "@/components/featured-rows"
 import Newsletter from "@/components/newsletter"
 import Footer from "@/components/footer"
 import NewArrivalsCarousel from "@/components/new-arrivals-carousel"
@@ -12,6 +11,10 @@ import EditorsPicks from "@/components/editors-picks"
 import MobileCTA from "@/components/MobileCTA"
 import type { Metadata } from "next"
 import ScrollToTop from "@/components/ui/scrollToTop"
+import { getFeaturedProducts, getProducts } from "@/lib/api/products"
+import Features from "@/components/features"
+import { getFeaturedCategories } from "@/lib/api/categories"
+// import { getFeaturedBlogs } from "@/lib/api/blogs"
 
 export const metadata: Metadata = {
   title: "AnadjyTech — Smart Tech & Gadgets Picks (2025)",
@@ -45,18 +48,109 @@ export const metadata: Metadata = {
   },
 }
 
-export default function page() {
+export default async function Page() {
+  // Fetch data for home page
+  let featuredProducts: any[] = []
+  let newArrivals: any[] = []
+  let featuredCategories: any[] = []
+  // let featuredBlogs: any[] = []
+  let smartHomeProducts: any[] = []
+  let usbcProducts: any[] = []
+  let editorProducts: any[] = []
+
+  try {
+    // Fetch featured products
+    try {
+      const featuredProductsRes = await getFeaturedProducts(10)
+      featuredProducts = featuredProductsRes?.products || []
+    } catch (error) {
+      console.error("Error fetching featured products:", error)
+    }
+
+    // Fetch new arrivals (recent products)
+    try {
+      const newArrivalsRes = await getProducts({
+        published: true,
+        limit: 4,
+        sort: "-createdAt"
+      })
+      newArrivals = newArrivalsRes?.items || []
+    } catch (error) {
+      console.error("Error fetching new arrivals:", error)
+    }
+
+    // Fetch featured categories
+    try {
+      const featuredCategoriesRes = await getFeaturedCategories()
+      featuredCategories = featuredCategoriesRes?.categories || featuredCategoriesRes?.items || []
+    } catch (error) {
+      console.error("Error fetching featured categories:", error)
+    }
+
+    // Fetch featured blogs
+    // try {
+    //   const featuredBlogsRes = await getFeaturedBlogs(6)
+    //   featuredBlogs = featuredBlogsRes?.blogs || []
+    // } catch (error) {
+    //   console.error("Error fetching featured blogs:", error)
+    // }
+
+    // Fetch smart home products (by category)
+    try {
+      const smartHomeCategory = featuredCategories.find((cat: any) =>
+        cat?.name?.toLowerCase().includes('smart') || cat?.slug?.includes('smart-home')
+      )
+
+      console.log(smartHomeCategory)
+      if (smartHomeCategory) {
+        const smartHomeRes = await getProducts({
+          category: smartHomeCategory.slug || smartHomeCategory._id,
+          published: true,
+          limit: 6
+        })
+        smartHomeProducts = smartHomeRes?.items || []
+      }
+    } catch (error) {
+      console.error("Error fetching smart home products:", error)
+    }
+
+    // Fetch USB-C products (by category)
+    try {
+      const usbcCategory = featuredCategories.find((cat: any) =>
+        cat?.name?.toLowerCase().includes('usb') || cat?.slug?.includes('usb-c')
+      )
+      if (usbcCategory) {
+        const usbcRes = await getProducts({
+          category: usbcCategory.slug || usbcCategory._id,
+          published: true,
+          limit: 6
+        })
+        usbcProducts = usbcRes?.items || []
+      }
+    } catch (error) {
+      console.error("Error fetching USB-C products:", error)
+    }
+
+    // Editor's picks (featured products)
+    editorProducts = featuredProducts.slice(0, 6)
+  } catch (error) {
+    console.error("Error fetching home page data:", error)
+  }
+
   return (
     <div className=" pb-20 lg:pb-0">
       <SiteHeader />
       <Hero />
       <FeatureBar />
-      <FeaturedRows />
-      <NewArrivalsCarousel />
-      <SmartHomeMustHaves />
-      <UsbcAccessories />
-      <UsbcHubsComparison />
-      <EditorsPicks />
+      {/* <FeaturedRows
+        featuredCategories={featuredCategories}
+      /> */}
+      <Features />
+      <NewArrivalsCarousel products={newArrivals} />
+      <SmartHomeMustHaves products={smartHomeProducts} />
+      <UsbcAccessories products={usbcProducts} />
+      <UsbcHubsComparison products={usbcProducts} />
+      <EditorsPicks products={editorProducts} />
       <Newsletter />
       <Footer />
 

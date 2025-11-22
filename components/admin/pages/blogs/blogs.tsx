@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Table,
@@ -13,12 +13,14 @@ import {
   Chip,
 } from "@heroui/react";
 import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi";
-import { Plus } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
-import Pagination from "../../shared/pagination";
+import { getBlogs, deleteBlog, Blog } from "@/lib/api/blogs";
+import PaginationShadcn from "../../shared/pagination-shadcn";
 import { formatDate } from "@/lib/utils";
 import DeleteModal from "../../shared/deletemodal";
+import { useDebounce } from "@/lib/hooks/useDebounce";
 
 const Blogs = () => {
   const searchParams = useSearchParams();
@@ -26,68 +28,53 @@ const Blogs = () => {
   const router = useRouter();
   const [showConfirm, setShowConfirm] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState<string | null>(null);
-
-  // Static data for blogs
-  const staticData = {
-    items: [
-      {
-        id: "1",
-        title: "Getting Started with Next.js",
-        description: "A comprehensive guide to starting with Next.js framework",
-        heroImage: "/images/hero-banner.jpeg",
-        content: "<p>This is the full content of the blog post about Next.js...</p>",
-        status: "published",
-        createdAt: "2024-01-15T10:30:00Z",
-        updatedAt: "2024-01-16T14:20:00Z"
-      },
-      {
-        id: "2",
-        title: "React Best Practices in 2024",
-        description: "Learn the latest React patterns and best practices",
-        heroImage: "/about-hero-desktop.webp",
-        content: "<p>React best practices and patterns for modern development...</p>",
-        status: "published",
-        createdAt: "2024-01-10T14:20:00Z",
-        updatedAt: "2024-01-12T09:15:00Z"
-      },
-      {
-        id: "3",
-        title: "TypeScript for JavaScript Developers",
-        description: "Transition from JavaScript to TypeScript smoothly",
-        heroImage: "/anker-powercore-power-bank.jpg",
-        content: "<p>Understanding TypeScript and its benefits for JavaScript developers...</p>",
-        status: "draft",
-        createdAt: "2024-01-05T09:15:00Z",
-        updatedAt: "2024-01-07T11:30:00Z"
-      },
-      {
-        id: "4",
-        title: "Building Scalable APIs with Node.js",
-        description: "Create robust and scalable APIs using Node.js",
-        heroImage: "/about-hero-desktop.webp",
-        content: "<p>Learn how to build scalable APIs with Node.js and Express...</p>",
-        status: "published",
-        createdAt: "2024-01-20T16:45:00Z",
-        updatedAt: "2024-01-22T10:10:00Z"
-      },
-      {
-        id: "5",
-        title: "Modern CSS Techniques",
-        description: "Explore modern CSS features and techniques",
-        heroImage: "/images/hero-banner.jpeg",
-        content: "<p>Discover the latest CSS features and how to use them effectively...</p>",
-        status: "published",
-        createdAt: "2024-01-18T11:00:00Z",
-        updatedAt: "2024-01-19T13:25:00Z"
-      }
-    ],
-    total: 5,
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("");
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
+  const [staticData, setStaticData] = useState<{ items: Blog[]; total: number; limit: number; page: number }>({
+    items: [],
+    total: 0,
     limit: 10,
-    page: 1
+    page: 1,
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchBlogs();
+  }, [currentPage, debouncedSearchQuery, statusFilter]);
+
+  const fetchBlogs = async () => {
+    try {
+      setLoading(true);
+      const params: any = {
+        page: currentPage,
+        limit: 10,
+      };
+      
+      if (debouncedSearchQuery.trim()) {
+        params.search = debouncedSearchQuery.trim();
+      }
+      
+      if (statusFilter) {
+        params.published = statusFilter === "published";
+      }
+      
+      const response = await getBlogs(params);
+      setStaticData({
+        items: response.items || [],
+        total: response.total || 0,
+        limit: response.limit || 10,
+        page: response.page || 1,
+      });
+    } catch (error: any) {
+      toast.error(error.message || "Failed to fetch blogs");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleEdit = (id: any) => {
-    router.push(`/dashboard/blogs/${id}`);
+    router.push(`/admin/blogs/edit/${id}`);
   };
 
   const handleDelete = (id: string) => {
@@ -100,11 +87,12 @@ const Blogs = () => {
 
     const deleteToast = toast.loading("Deleting Blog...");
     try {
-      // Since we're using static data, just simulate deletion
-      console.log("Deleting blog:", blogToDelete);
+      await deleteBlog(blogToDelete);
       toast.success("Blog deleted successfully!", { id: deleteToast });
-      router.refresh();
+      // Refresh the list
+      await fetchBlogs();
     } catch (err: any) {
+      console.error("Error deleting blog:", err);
       toast.error(err.message || "Failed to delete Blog", { id: deleteToast });
     } finally {
       setShowConfirm(false);
@@ -143,16 +131,39 @@ const Blogs = () => {
         <DeleteModal cancelDelete={cancelDelete} label="Blog" confirmDelete={confirmDelete} />
       )}
 
-      <div className="flex items-center justify-between mb-6 sm:mb-8 w-full">
-        <h1 className="text-2xl sm:text-3xl font-bold  text-gray-800 tracking-tight">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 w-full gap-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
           Blogs
         </h1>
-        <Link
-          href="/admin/blogs/create"
-          className="bg-blue-900 hover:bg-blue-950 text-white flex items-center gap-2 rounded-xl p-3"
-        >
-          <Plus /> Add Blog
-        </Link>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+          {/* Search */}
+          <div className="relative min-w-[200px]">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+            <input
+              type="text"
+              placeholder="Search blogs..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          {/* Status Filter */}
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">All Status</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+          <Link
+            href="/admin/blogs/create"
+            className="bg-blue-900 hover:bg-blue-950 text-white flex items-center justify-center gap-2 rounded-xl p-3 whitespace-nowrap"
+          >
+            <Plus /> Add Blog
+          </Link>
+        </div>
       </div>
       <div className="mx-auto bg-white rounded-2xl shadow-md border border-gray-100 p-4 sm:p-6 transition-all duration-300 hover:shadow-lg">
         <div className="relative overflow-x-auto max-w-full w-full scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
@@ -174,10 +185,10 @@ const Blogs = () => {
               <TableColumn className="min-w-[120px] text-center">Actions</TableColumn>
             </TableHeader>
 
-            <TableBody emptyContent="No blogs found">
+            <TableBody emptyContent={loading ? "Loading..." : "No blogs found"}>
               {staticData.items.map((blog: any) => (
                 <TableRow
-                  key={blog.id}
+                  key={blog._id || blog.id}
                   className="transition-all duration-200 hover:bg-gray-50"
                 >
                   {/* Title */}
@@ -187,14 +198,14 @@ const Blogs = () => {
 
                   {/* Description */}
                   <TableCell className="text-gray-600">
-                    {truncateDescription(blog.description)}
+                    {truncateDescription(blog.excerpt || blog.description || "")}
                   </TableCell>
 
                   {/* Hero Image */}
                   <TableCell>
                     <div className="w-16 h-12 rounded-lg overflow-hidden border border-gray-200">
                       <Image
-                        src={blog.heroImage}
+                        src={blog.hero || blog.thumbnail || blog.image || "/images/hero-banner.jpeg"}
                         alt={blog.title}
                         className="w-full h-full object-cover"
                         width={64}
@@ -209,15 +220,15 @@ const Blogs = () => {
                       color="default"
                       variant="solid"
                       size="sm"
-                      className={getStatusStyles(blog.status)}
+                      className={getStatusStyles(blog.published ? "published" : "draft")}
                     >
-                      {blog.status.charAt(0).toUpperCase() + blog.status.slice(1)}
+                      {blog.published ? "Published" : "Draft"}
                     </Chip>
                   </TableCell>
 
                   {/* Date */}
                   <TableCell className="text-gray-600">
-                    {formatDate(blog.createdAt)}
+                    {formatDate(blog.createdAt || blog.publishedAt || new Date().toISOString())}
                   </TableCell>
 
                   {/* Actions */}
@@ -229,7 +240,7 @@ const Blogs = () => {
                         variant="flat"
                         size="sm"
                         className="transition-transform hover:scale-110"
-                        onPress={() => handleEdit(blog.id)}
+                        onPress={() => handleEdit(blog._id || blog.id)}
                         aria-label={`Edit ${blog.title}`}
                       >
                         <HiOutlinePencil className="text-lg text-blue-600" />
@@ -240,9 +251,9 @@ const Blogs = () => {
                         variant="flat"
                         size="sm"
                         className="transition-transform hover:scale-110"
-                        onPress={() => handleDelete(blog.id)}
+                        onPress={() => handleDelete(blog._id || blog.id)}
                         aria-label={`Delete ${blog.title}`}
-                        disabled={blogToDelete === blog.id}
+                        disabled={blogToDelete === (blog._id || blog.id)}
                       >
                         <HiOutlineTrash className="text-lg text-red-600" />
                       </Button>
@@ -254,13 +265,15 @@ const Blogs = () => {
           </Table>
         </div>
 
-        <div className="mt-6 sm:mt-8 flex justify-end">
-          <Pagination
-            totalItems={staticData.total}
-            itemsPerPage={staticData.limit}
-            currentPage={currentPage}
-          />
-        </div>
+        {staticData.total > 0 && (
+          <div className="mt-6 sm:mt-8 flex justify-center">
+            <PaginationShadcn
+              totalItems={staticData.total}
+              itemsPerPage={staticData.limit}
+              currentPage={currentPage}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
