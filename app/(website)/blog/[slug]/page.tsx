@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getBlogBySlug } from "@/lib/api/blogs"

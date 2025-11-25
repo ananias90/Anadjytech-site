@@ -67,7 +67,7 @@ export default async function ProductPage({ params }: PageProps) {
         const categoryId = typeof product.category === 'object' 
           ? product.category._id 
           : product.category
-        const relatedResponse = await getProducts(categoryId, { 
+        const relatedResponse = await getProducts( { 
           published: true, 
           limit: 4 
         })

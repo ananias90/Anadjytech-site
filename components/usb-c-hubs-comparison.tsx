@@ -21,15 +21,12 @@ const faqs = [
 
 export default function UsbcHubsComparison({ products = [] }: { products?: any[] }) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-
-  console.log("Dataaaaaa ", products)
-
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
   }
 
   // Transform the products data to match the hub structure
-  const hubs = products.map(product => ({
+  const hubs = products.slice(0, 3).map(product => ({
     product: product.name,
     ports: extractPortsInfo(product),
     powerDelivery: extractPowerDelivery(product),
