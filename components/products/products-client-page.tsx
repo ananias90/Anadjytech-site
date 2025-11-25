@@ -66,6 +66,8 @@ export default function ProductsClientPage({
         const sort = searchParams.get("sort") || "-createdAt"
         params.sort = sort
 
+        console.log("Params : ", params)
+
         const response = await getProducts(params)
         setProducts(response.items || [])
         setTotal(response.total || 0)
@@ -104,11 +106,11 @@ export default function ProductsClientPage({
 
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Filters Sidebar */}
-        <aside className="lg:w-64 flex-shrink-0">
+        <aside className="lg:w-82 flex-shrink-0 z-50">
           <FiltersSidebar
             categories={categories.map((cat) => ({
               name: cat.name,
-              slug: cat.slug,
+              count: 0,
             }))}
             brands={[]}
             priceRange={[0, 1000]}
@@ -119,7 +121,7 @@ export default function ProductsClientPage({
         {/* Products Grid */}
         <div className="flex-1">
           {/* Search */}
-          <form onSubmit={handleSearch} className="mb-6">
+          <form onSubmit={handleSearch} className="mb-6 ">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
@@ -146,7 +148,7 @@ export default function ProductsClientPage({
                     href={`/products/${product.slug}`}
                     className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow group"
                   >
-                    <div className="relative aspect-square w-full">
+                    <div className="relative h-64 w-full">
                       <Image
                         src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.svg"}
                         alt={product.name}
@@ -161,7 +163,26 @@ export default function ProductsClientPage({
                       <p className="text-sm text-gray-600 mb-2 line-clamp-2">
                         {product.shortDescription || product.description}
                       </p>
-                      {product.amazonUrl || product.amazonLink ? (
+
+                      <div className="flex gap-2 mt-auto">
+                        {(product.amazonUrl || product.amazonLink) ? (
+                          <Link
+                            href={product.amazonUrl || product.amazonLink || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow sponsored"
+                            className="flex-1 bg-[#0066cc] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center text-sm font-medium"
+                          >
+                            Buy on Amazon
+                          </Link>
+                        ) : null}
+                        <Link
+                          href={`/products/${product.slug}`}
+                          className="flex-1 border border-[#0066cc] text-[#0066cc] px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-center text-sm font-medium"
+                        >
+                          Learn More
+                        </Link>
+                      </div>
+                      {/* {product.amazonUrl || product.amazonLink ? (
                         <Link
                           href={product.amazonUrl || product.amazonLink || "#"}
                           target="_blank"
@@ -171,13 +192,13 @@ export default function ProductsClientPage({
                         >
                           Check on Amazon
                         </Link>
-                      ) : null}
-                      {product.rating && (
+                      ) : null} */}
+                      {/* {product.rating && (
                         <div className="flex items-center mt-2">
                           <span className="text-yellow-400 text-sm">★</span>
                           <span className="ml-1 text-sm text-gray-600">{product.rating}</span>
                         </div>
-                      )}
+                      )} */}
                     </div>
                   </Link>
                 ))}

@@ -51,19 +51,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    // Generate static params for published categories
-    const response = await getCategories({ published: true, limit: 100 })
-    const categories = response.items || response.categories || []
-    
-    return categories.map((category) => ({
-      slug: category.slug,
-    }))
-  } catch (error) {
-    return []
-  }
-}
 
 export default async function CategoryPage({ params }: PageProps) {
   try {
@@ -76,8 +63,9 @@ export default async function CategoryPage({ params }: PageProps) {
 
     // Get products in this category
     const categoryId = category._id || category.id
-    const productsResponse = await getProductsByCategory(categoryId, {
+    const productsResponse = await getProductsByCategory({
       published: true,
+      category: category.slug,
       limit: 50,
     })
     const products = productsResponse.items || []
@@ -92,8 +80,9 @@ export default async function CategoryPage({ params }: PageProps) {
 
     return (
       <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        {/* <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} /> */}
         <CategoryDetail category={category} products={products} />
+
       </>
     )
   } catch (error) {

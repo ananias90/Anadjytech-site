@@ -32,10 +32,10 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const sort = searchParams.sort || "-createdAt"
 
   // Fetch products
-  let products = []
+  let products: any = []
   let total = 0
   let totalPages = 0
-  let categories = []
+  let categories: any = []
 
   try {
     const productsParams: any = {
@@ -62,12 +62,14 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   } catch (error) {
     console.error("Error fetching products:", error)
   }
+  
+  
 
   return (
     <div className="min-h-screen">
       <Header />
       <main className="py-16">
-        <ProductsClientPage 
+        <ProductsClientPage
           initialProducts={products}
           initialTotal={total}
           initialTotalPages={totalPages}

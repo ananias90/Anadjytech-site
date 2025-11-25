@@ -86,12 +86,12 @@ const CategoryForm = ({
           </div>
 
           {/* --- Image URL --- */}
-          <SingleImageUploader
+          {/* <SingleImageUploader
             image={formData.image}
             setImage={(image) => setFormData({ ...formData, image })}
             onImageUpload={onImageUpload}
             uploading={uploading}
-          />
+          /> */}
 
           {/* <div className="grid md:grid-cols-2 gap-6">
             <div className="relative">

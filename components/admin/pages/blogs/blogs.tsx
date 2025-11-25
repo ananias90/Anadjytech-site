@@ -9,7 +9,7 @@ import {
   TableRow,
   TableCell,
   Button,
-  Image,
+  // Image,
   Chip,
 } from "@heroui/react";
 import { HiOutlinePencil, HiOutlineTrash } from "react-icons/hi";
@@ -50,15 +50,15 @@ const Blogs = () => {
         page: currentPage,
         limit: 10,
       };
-      
+
       if (debouncedSearchQuery.trim()) {
         params.search = debouncedSearchQuery.trim();
       }
-      
+
       if (statusFilter) {
         params.published = statusFilter === "published";
       }
-      
+
       const response = await getBlogs(params);
       setStaticData({
         items: response.items || [],
@@ -204,13 +204,7 @@ const Blogs = () => {
                   {/* Hero Image */}
                   <TableCell>
                     <div className="w-16 h-12 rounded-lg overflow-hidden border border-gray-200">
-                      <Image
-                        src={blog.hero || blog.thumbnail || blog.image || "/images/hero-banner.jpeg"}
-                        alt={blog.title}
-                        className="w-full h-full object-cover"
-                        width={64}
-                        height={48}
-                      />
+                      <img src={blog.hero} alt={blog.title} className="w-full h-full object-cover" />
                     </div>
                   </TableCell>
 

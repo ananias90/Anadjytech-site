@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
-import { hubs } from "@/data"
 import Link from "next/link"
 
 const faqs = [
@@ -23,10 +22,90 @@ const faqs = [
 export default function UsbcHubsComparison({ products = [] }: { products?: any[] }) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  console.log(products)
+  console.log("Dataaaaaa ", products)
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
+  }
+
+  // Transform the products data to match the hub structure
+  const hubs = products.map(product => ({
+    product: product.name,
+    ports: extractPortsInfo(product),
+    powerDelivery: extractPowerDelivery(product),
+    hdmi: extractHDMIInfo(product),
+    weight: extractWeightInfo(product),
+    buyLink: product.amazonUrl || product.amazonLink || "#"
+  }))
+
+  // Helper functions to extract information from product data
+  function extractPortsInfo(product: any) {
+    if (product.specs && Array.isArray(product.specs)) {
+      const portSpecs = product.specs.filter((spec: string) => 
+        spec.toLowerCase().includes('usb') || 
+        spec.toLowerCase().includes('hdmi') ||
+        spec.toLowerCase().includes('sd') ||
+        spec.toLowerCase().includes('card') ||
+        spec.toLowerCase().includes('port')
+      )
+      if (portSpecs.length > 0) return portSpecs.join(', ')
+    }
+    
+    // Fallback to name analysis
+    const name = product.name.toLowerCase()
+    if (name.includes('8-in-1')) return '8 ports including HDMI, USB, SD'
+    if (name.includes('7-in-1')) return '7 ports including HDMI, USB, SD'
+    if (name.includes('6-in-1')) return '6 ports including HDMI, USB'
+    
+    return 'Multiple ports'
+  }
+
+  function extractPowerDelivery(product: any) {
+    if (product.specs && Array.isArray(product.specs)) {
+      const pdSpec = product.specs.find((spec: string) => 
+        spec.toLowerCase().includes('pd') || 
+        spec.toLowerCase().includes('power delivery') ||
+        spec.toLowerCase().includes('watt') ||
+        spec.toLowerCase().includes('charging')
+      )
+      if (pdSpec) return pdSpec
+    }
+    
+    // Fallback to name analysis
+    const name = product.name.toLowerCase()
+    if (name.includes('100w')) return 'PD 100W'
+    if (name.includes('87w')) return 'PD 87W'
+    if (name.includes('65w')) return 'PD 65W'
+    
+    return 'PD Supported'
+  }
+
+  function extractHDMIInfo(product: any) {
+    if (product.specs && Array.isArray(product.specs)) {
+      const hdmiSpec = product.specs.find((spec: string) => 
+        spec.toLowerCase().includes('hdmi') || 
+        spec.toLowerCase().includes('4k') ||
+        spec.toLowerCase().includes('display')
+      )
+      if (hdmiSpec) return hdmiSpec
+    }
+    
+    // Fallback to name analysis
+    const name = product.name.toLowerCase()
+    if (name.includes('4k')) return '4K HDMI'
+    if (name.includes('hdmi')) return 'HDMI Supported'
+    
+    return 'HDMI Available'
+  }
+
+  function extractWeightInfo(product: any) {
+    // Default weight since this info might not be available
+    return 'Lightweight'
+  }
+
+  // Don't render if no products
+  if (!products || products.length === 0) {
+    return null
   }
 
   return (

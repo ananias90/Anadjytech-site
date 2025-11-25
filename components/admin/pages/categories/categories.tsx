@@ -63,7 +63,8 @@ const Categories = () => {
       const categoriesWithCounts = await Promise.all(
         categories.map(async (category) => {
           try {
-            const productsResponse = await getProducts({ category: category.slug, limit: 1 });
+            // pass a query string to match the getProducts(string) signature
+            const productsResponse = await getProducts(`category=${category.slug}&limit=1`);
             return { ...category, productCount: productsResponse.total || 0 };
           } catch {
             return { ...category, productCount: 0 };
@@ -123,6 +124,7 @@ const Categories = () => {
     setCategoryToDelete(null);
   };
 
+
   return (
     <div className="w-full bg-gray-50 p-3 sm:p-6">
 
@@ -167,7 +169,7 @@ const Categories = () => {
             }}
           >
             <TableHeader>
-              <TableColumn className="min-w-[120px]">Image</TableColumn>
+              {/* <TableColumn className="min-w-[120px]">Image</TableColumn> */}
               <TableColumn className="min-w-[120px]">Name</TableColumn>
               <TableColumn className="min-w-[200px] max-w-[250px]">Products</TableColumn>
               <TableColumn className="min-w-[200px] max-w-[250px]">Date</TableColumn>
@@ -181,7 +183,7 @@ const Categories = () => {
                   className="transition-all duration-200 hover:bg-gray-50"
                 >
                   {/* Image */}
-                  <TableCell>
+                  {/* <TableCell>
                     {category.image ? (
                       <div className="relative w-16 h-16 rounded-md overflow-hidden border border-gray-200">
                         <img
@@ -198,7 +200,7 @@ const Categories = () => {
                         <span className="text-xs text-gray-400">No Image</span>
                       </div>
                     )}
-                  </TableCell>
+                  </TableCell> */}
 
                   {/* Name */}
                   <TableCell className="font-medium text-gray-900">

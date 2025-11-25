@@ -34,7 +34,7 @@ export default function CategoriesClientPage({ categories: apiCategories = [], p
   })) : []
 
   // Get unique brands from products
-  const brands = Array.from(new Set(apiProducts.map((p) => p.brand).filter(Boolean)))
+  const brands = Array.from(new Set(apiProducts.map((p) => p.brand).filter(Boolean))) as string[]
 
   const filterOptions = {
     categories: categories.map((cat) => ({

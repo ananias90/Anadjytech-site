@@ -50,19 +50,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-export async function generateStaticParams() {
-  try {
-    // Generate static params for published products
-    const response = await getProducts({ published: true, limit: 100 })
-    const products = response.items || []
-    
-    return products.map((product) => ({
-      slug: product.slug,
-    }))
-  } catch (error) {
-    return []
-  }
-}
 
 export default async function ProductPage({ params }: PageProps) {
   try {
@@ -74,14 +61,13 @@ export default async function ProductPage({ params }: PageProps) {
     }
 
     // Get related products (same category)
-    let relatedProducts = []
+    let relatedProducts:any = []
     if (product.category) {
       try {
         const categoryId = typeof product.category === 'object' 
           ? product.category._id 
           : product.category
-        const relatedResponse = await getProducts({ 
-          category: categoryId, 
+        const relatedResponse = await getProducts(categoryId, { 
           published: true, 
           limit: 4 
         })

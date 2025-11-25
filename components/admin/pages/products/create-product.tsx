@@ -82,7 +82,7 @@ export default function CreateProductPage() {
     try {
       const imageUrls = await uploadImages(files);
       // Add uploaded Cloudinary URLs to formData
-      setFormData({
+      setFormData({ 
         ...formData,
         images: [...formData.images, ...imageUrls],
       });

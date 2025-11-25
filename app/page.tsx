@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 import SiteHeader from "@/components/site-header"
 import Hero from "@/components/hero"
 import FeatureBar from "@/components/feature-bar"
@@ -15,6 +18,7 @@ import { getFeaturedProducts, getProducts } from "@/lib/api/products"
 import Features from "@/components/features"
 import { getFeaturedCategories } from "@/lib/api/categories"
 // import { getFeaturedBlogs } from "@/lib/api/blogs"
+
 
 export const metadata: Metadata = {
   title: "AnadjyTech — Smart Tech & Gadgets Picks (2025)",
@@ -71,7 +75,7 @@ export default async function Page() {
     try {
       const newArrivalsRes = await getProducts({
         published: true,
-        limit: 4,
+        limit: 6,
         sort: "-createdAt"
       })
       newArrivals = newArrivalsRes?.items || []
@@ -100,11 +104,9 @@ export default async function Page() {
       const smartHomeCategory = featuredCategories.find((cat: any) =>
         cat?.name?.toLowerCase().includes('smart') || cat?.slug?.includes('smart-home')
       )
-
-      console.log(smartHomeCategory)
       if (smartHomeCategory) {
         const smartHomeRes = await getProducts({
-          category: smartHomeCategory.slug || smartHomeCategory._id,
+          category: smartHomeCategory.slug,
           published: true,
           limit: 6
         })
@@ -121,7 +123,7 @@ export default async function Page() {
       )
       if (usbcCategory) {
         const usbcRes = await getProducts({
-          category: usbcCategory.slug || usbcCategory._id,
+          category: usbcCategory.slug,
           published: true,
           limit: 6
         })

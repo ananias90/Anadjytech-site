@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { createBlog } from "@/lib/api/blogs";
 import BlogForm from "./blog-form";
+import { uploadImages } from "@/lib/api/upload";
 
 export default function CreateBlogPage() {
   const router = useRouter();
@@ -34,18 +35,23 @@ export default function CreateBlogPage() {
 
     setUploading(true);
     try {
-      // For now, convert to base64. In production, upload to Cloudinary
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData({ ...formData, heroImage: reader.result as string });
-        setUploading(false);
-      };
-      reader.readAsDataURL(file);
+      // Use the same uploadImages function
+      const uploadedUrls = await uploadImages([file]);
+
+      setFormData({
+        ...formData,
+        heroImage: uploadedUrls[0], // single image
+      });
+
+      toast.success("Hero image uploaded successfully");
     } catch (error: any) {
-      toast.error("Failed to upload image");
+      console.error("Error uploading hero image:", error);
+      toast.error(error.message || "Failed to upload image");
+    } finally {
       setUploading(false);
     }
   };
+
 
   const removeImage = () => {
     setFormData({ ...formData, heroImage: "" });

@@ -7,8 +7,6 @@ import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Product } from "@/lib/api/products"
 import Slider from "react-slick"
-
-// Import slick carousel styles
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
@@ -120,7 +118,7 @@ export default function NewArrivalsCarousel({ products: apiProducts = [] }: NewA
         >
           <Slider ref={sliderRef} {...sliderSettings}>
             {products.map((product) => (
-              <div key={product._id || product.id} className="px-2">
+              <div key={product._id || product.id} className="px-2 py-6">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
                   {/* Product Image */}
                   <div className="h-[200px] md:h-[250px] overflow-hidden">
@@ -141,7 +139,7 @@ export default function NewArrivalsCarousel({ products: apiProducts = [] }: NewA
                   <div className="p-4 flex flex-col flex-grow">
                     {/* Product Title */}
                     <Link href={`/products/${product.slug}`}>
-                      <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2 line-clamp-2 hover:text-blue-900">
+                      <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2 line-clamp-1 hover:text-blue-900">
                         {product.name}
                       </h3>
                     </Link>
@@ -187,7 +185,7 @@ export default function NewArrivalsCarousel({ products: apiProducts = [] }: NewA
         }
         
         .slick-dots.custom-dots li.slick-active div {
-          background-color: #1a2b6d;
+          background-color:#1a2b6d;
           transform: scale(1.1);
         }
         
