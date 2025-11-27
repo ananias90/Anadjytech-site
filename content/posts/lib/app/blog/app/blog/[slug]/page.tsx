@@ -4,12 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllSlugs, getPostBySlug } from "@/content/posts/lib/posts";
 
-export const revalidate = 60 * 60 * 24; // ISR: 24h
-
-export async function generateStaticParams() {
-  const slugs = getAllSlugs();
-  return slugs.map((slug: any) => ({ slug }));
-}
 
 type Props = { params: { slug: string } };
 

@@ -364,3 +364,24 @@ button{
   right: 30px;
   z-index: 99999;
 }
+
+/* Custom styles for slick slider dots and arrows */
+.slick-dots.custom-dots li {
+  width: auto;
+  height: auto;
+  margin: 0 4px;
+}
+
+.slick-dots.custom-dots li.slick-active div {
+  background-color: #1a2b6d !important;
+  transform: scale(1.1) !important;
+}
+
+.slick-dots.custom-dots li button:before {
+  display: none !important;
+}
+
+/* Hide default slick arrows since custom ones are used */
+.slick-prev, .slick-next {
+  display: none !important;
+}

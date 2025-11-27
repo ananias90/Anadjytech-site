@@ -2,18 +2,29 @@
 import React from "react";
 import CustomInput from "../../shared/custom-input";
 import Button from "../../shared/custom-btn";
+import SingleImageUploader from "../../shared/single-image-uplaoder";
 
 interface CategoryFormProps {
   isEditMode: boolean;
+  uploading: boolean;
   submitButtonLabel: string;
+  onImageUpload?: (files: File[]) => Promise<void>;
   handleSubmit: (e: React.FormEvent) => void;
-  formData: { name: string };
-  setFormData: React.Dispatch<React.SetStateAction<{ name: string }>>;
+  formData: {
+    name: string;
+    description?: string;
+    image: string;
+    featured?: boolean;
+    published?: boolean;
+  };
+  setFormData: React.Dispatch<React.SetStateAction<any>>;
   submitting: boolean;
 }
 
 const CategoryForm = ({
   isEditMode,
+  uploading,
+  onImageUpload,
   submitButtonLabel,
   handleSubmit,
   formData,
@@ -45,6 +56,100 @@ const CategoryForm = ({
               }
               disabled={submitting}
             />
+          </div>
+
+          {/* --- Description --- */}
+          <div className="relative">
+            <textarea
+              placeholder="Enter category description (optional)"
+              value={formData.description || ""}
+              onChange={(e) =>
+                setFormData({ ...formData, description: e.target.value })
+              }
+              className="
+                w-full px-4 py-3 border-2 border-[#B0B0B0] rounded-md
+                focus:outline-none focus:ring-[1px] focus:ring-[#1A3447] focus:border-[#1A3447]
+                min-h-[100px] peer
+              "
+              disabled={submitting}
+            />
+            <label
+              className="
+                absolute left-4 top-0 -translate-y-1/2 bg-white px-1 text-sm text-gray-600
+                peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-white 
+                peer-focus:px-1 peer-focus:text-sm peer-focus:text-gray-600
+                pointer-events-none
+              "
+            >
+              Description (Optional)
+            </label>
+          </div>
+
+          {/* --- Image URL --- */}
+          {/* <SingleImageUploader
+            image={formData.image}
+            setImage={(image) => setFormData({ ...formData, image })}
+            onImageUpload={onImageUpload}
+            uploading={uploading}
+          /> */}
+
+          {/* <div className="grid md:grid-cols-2 gap-6">
+            <div className="relative">
+              <CustomInput
+                placeholder="Enter image URL (optional)"
+                value={formData.image || ""}
+                onChange={(e) =>
+                  setFormData({ ...formData, image: e.target.value })
+                }
+                disabled={submitting}
+              />
+              <label className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600">
+                Image URL (Optional)
+              </label>
+            </div>
+            {formData.image && (
+              <div className="relative">
+                <div className="relative w-full h-48 border-2 border-gray-200 rounded-md overflow-hidden">
+                  <img
+                    src={formData.image}
+                    alt="Category preview"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg";
+                    }}
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">Image Preview</p>
+              </div>
+            )}
+          </div> */}
+
+          {/* --- Options --- */}
+          <div className="flex items-center gap-4">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.published !== undefined ? formData.published : true}
+                onChange={(e) =>
+                  setFormData({ ...formData, published: e.target.checked })
+                }
+                disabled={submitting}
+                className="w-4 h-4 text-blue-600 rounded"
+              />
+              <span className="text-sm text-gray-700">Published</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.featured || false}
+                onChange={(e) =>
+                  setFormData({ ...formData, featured: e.target.checked })
+                }
+                disabled={submitting}
+                className="w-4 h-4 text-blue-600 rounded"
+              />
+              <span className="text-sm text-gray-700">Featured</span>
+            </label>
           </div>
 
           {/* --- Submit --- */}
