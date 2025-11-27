@@ -16,7 +16,7 @@ import {
     HiOutlineEyeOff,
 } from "react-icons/hi";
 import { toast } from "react-hot-toast";
-// import { loginUser } from "@/app/actions/auth";
+import { login } from "@/lib/api/auth";
 import Image from "next/image";
 import Button from "../../shared/custom-btn";
 
@@ -38,15 +38,16 @@ const Login = () => {
         try {
             setIsLoading(true);
 
-            // const response = await loginUser(email, password);
+            const response = await login({ email, password });
 
-            toast.success("Login successful!");
-
-            // if (response?.user) {
-            //     localStorage.setItem("user", JSON.stringify(response.user));
-            // }
-
-            router.push("/admin/home");
+            if (response?.user) {
+                // Token is already stored in localStorage by the login function
+                localStorage.setItem("user", JSON.stringify(response.user));
+                toast.success("Login successful!");
+                router.push("/admin/home");
+            } else {
+                toast.error("Login failed. Please try again.");
+            }
         } catch (error: any) {
             toast.error(error?.message || "Invalid email or password");
         } finally {
