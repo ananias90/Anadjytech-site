@@ -18,9 +18,17 @@ interface BlogFormProps {
   formData: {
     title: string;
     description: string;
+    excerpt?: string;
     heroImage: string;
     content: string;
     status: "draft" | "published";
+    category?: string;
+    tags?: string[];
+    difficulty?: "Beginner" | "Intermediate" | "Advanced";
+    badges?: string[];
+    keyTakeaways?: string[];
+    pros?: string[];
+    cons?: string[];
   };
   setFormData: React.Dispatch<React.SetStateAction<any>>;
   fileInputRef: React.RefObject<HTMLInputElement>;
@@ -47,7 +55,7 @@ const BlogForm = ({
       [{ header: [1, 2, 3, false] }],
       ["bold", "italic", "underline", "strike"],
       [{ list: "ordered" }, { list: "bullet" }],
-      ["link", "image"],
+      ["link",],
       [{ align: [] }],
       ["clean"],
     ],
@@ -92,6 +100,23 @@ const BlogForm = ({
             >
               <option value="draft">Draft</option>
               <option value="published">Published</option>
+            </CustomSelect>
+          </div>
+
+          {/* --- Category --- */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <CustomSelect
+              placeholder="Select category"
+              value={formData.category || ""}
+              onChange={(e) =>
+                setFormData({ ...formData, category: e.target.value })
+              }
+              disabled={uploading || submitting}
+            >
+              <option value="">None</option>
+              <option value="Guides">Guides</option>
+              <option value="Reviews">Reviews</option>
+              <option value="How-tos">How-tos</option>
             </CustomSelect>
           </div>
 
