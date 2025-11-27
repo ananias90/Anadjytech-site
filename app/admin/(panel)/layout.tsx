@@ -1,4 +1,6 @@
 import DashboardLayout from '@/components/admin/layout/admin-layout';
+import ProtectedRoute from '@/components/admin/shared/ProtectedRoute';
+import ErrorBoundary from '@/components/admin/shared/ErrorBoundary';
 import React, { ReactNode } from 'react'
 
 interface LayoutProps {
@@ -7,9 +9,13 @@ interface LayoutProps {
 
 const layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <DashboardLayout>
-            {children}
-        </DashboardLayout>
+        // <ErrorBoundary>
+            <ProtectedRoute>
+                <DashboardLayout>
+                    {children}
+                </DashboardLayout>
+            </ProtectedRoute>
+        // </ErrorBoundary>
     )
 }
 

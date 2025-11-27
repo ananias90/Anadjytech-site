@@ -1,9 +1,44 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { featuredCards } from "@/data"
 import Image from "next/image"
 import Link from "next/link"
+import { Category } from "@/lib/api/categories"
+import { Blog } from "@/lib/api/blogs"
 
-export default function FeaturedRows() {
+interface FeaturedRowsProps {
+  featuredCategories?: Category[]
+  featuredBlogs?: Blog[]
+}
+
+export default function FeaturedRows({ featuredCategories = [], featuredBlogs = [] }: FeaturedRowsProps) {
+  // Ensure arrays are valid
+  const safeCategories = Array.isArray(featuredCategories) ? featuredCategories : []
+  const safeBlogs = Array.isArray(featuredBlogs) ? featuredBlogs : []
+
+  // Create featured cards from categories and blogs
+  const featuredCards = [
+    ...safeCategories.slice(0, 2).map((cat) => ({
+      title: cat?.name || "Category",
+      description: cat?.description || `Explore ${cat?.name || "category"} products`,
+      image: cat?.image || "/placeholder.svg",
+      href: `/categories/${cat?.slug || ""}`,
+      buttonText: "Explore Category",
+    })),
+    ...safeBlogs.slice(0, 1).map((blog) => ({
+      title: blog?.title || "Blog Post",
+      description: blog?.excerpt || "",
+      image: blog?.hero || blog?.image || blog?.thumbnail || "/placeholder.svg",
+      href: `/blog/${blog?.slug || ""}`,
+      buttonText: "Read Article",
+    })),
+  ].filter(card => card.href && card.href !== "/categories/" && card.href !== "/blog/")
+
+  // If no data, show placeholder
+  if (featuredCards.length === 0) {
+    return null
+  }
+
   return (
     <section className="py-12 bg-gray-50" data-reveal>
       <div className="container mx-auto px-4">
