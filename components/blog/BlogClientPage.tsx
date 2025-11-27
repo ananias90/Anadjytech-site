@@ -6,14 +6,25 @@ import Link from "next/link"
 import { Calendar, User, ChevronLeft, ChevronRight, Truck, RotateCcw, Shield, Star, Search } from "lucide-react"
 import BlogFiltersSidebar from "@/components/blog/BlogFiltersSidebar";
 import Button from "@/components/ui/button";
-import { allPosts } from 'contentlayer/generated';
 import InputSearch from "./input-search";
 import FeatureBar from "../feature-bar";
+import PaginationShadcn from "@/components/admin/shared/pagination-shadcn";
 
 
-export default function BlogClientPage({ filteredPosts }: any) {
+interface BlogClientPageProps {
+  filteredPosts: any[]
+  total?: number
+  totalPages?: number
+  currentPage?: number
+}
 
-  const [currentPage, setCurrentPage] = useState(1)
+export default function BlogClientPage({ 
+  filteredPosts, 
+  total = 0, 
+  totalPages = 0, 
+  currentPage: initialPage = 1 
+}: BlogClientPageProps) {
+  const [currentPage, setCurrentPage] = useState(initialPage)
   const postsPerPage = 9
 
   const filterOptions = {
@@ -33,12 +44,13 @@ export default function BlogClientPage({ filteredPosts }: any) {
     ],
   }
 
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
+  // Use server-side pagination if available, otherwise client-side
+  const calculatedTotalPages = totalPages > 0 ? totalPages : Math.ceil(filteredPosts.length / postsPerPage)
   const startIndex = (currentPage - 1) * postsPerPage
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + postsPerPage)
+  const paginatedPosts = totalPages > 0 ? filteredPosts : filteredPosts.slice(startIndex, startIndex + postsPerPage)
 
   const featuredPost = filteredPosts[0] || null
-  const gridPosts = paginatedPosts.filter((post: any) => post.id !== featuredPost?.id)
+  const gridPosts = paginatedPosts.filter((post: any) => (post._id || post.id) !== (featuredPost?._id || featuredPost?.id))
 
   const isNewPost = (publishedAt: string) => {
     const publishDate = new Date(publishedAt)
@@ -124,7 +136,7 @@ export default function BlogClientPage({ filteredPosts }: any) {
                 />
                 <div className="flex items-center justify-between mt-4">
                   <p className="text-gray-600" aria-live="polite">
-                    Showing {gridPosts.length} of {allPosts.length} posts
+                    Showing {gridPosts.length} of {total > 0 ? total : filteredPosts.length} posts
                   </p>
                 </div>
               </div>
@@ -171,7 +183,7 @@ export default function BlogClientPage({ filteredPosts }: any) {
                             <div className="md:w-1/2 p-8 flex flex-col justify-center">
                               <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
                                 <User className="w-4 h-4" aria-hidden="true" />
-                                <span>{featuredPost.author}</span>
+                                <span>{featuredPost.author?.name || featuredPost.author || "AnadjyTech"}</span>
                                 <span aria-hidden="true">•</span>
                                 <Calendar className="w-4 h-4" aria-hidden="true" />
                                 <time dateTime={featuredPost.publishedAt}>
@@ -203,25 +215,27 @@ export default function BlogClientPage({ filteredPosts }: any) {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                           {gridPosts.map((post: any) => (
                             <article
-                              key={post.id}
+                              key={post._id || post.id}
                               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col focus-within:ring-2 focus-within:ring-[#0A67FF]"
                             >
                               <div className="relative aspect-video">
-                                <Image
-                                  src={post.image || post.thumbnail || "/placeholder.svg"}
-                                  alt={post.alt || `${post.title} thumbnail`}
-                                  width={1200}
-                                  height={675}
-                                  className="object-cover w-full h-auto"
-                                  loading="lazy"
-                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                  priority={false}
-                                />
+                                <Link href={`/blog/${post.slug}`}>
+                                  <Image
+                                    src={post.hero || post.image || post.thumbnail || "/placeholder.svg"}
+                                    alt={post.title}
+                                    width={1200}
+                                    height={675}
+                                    className="object-cover w-full h-auto"
+                                    loading="lazy"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    priority={false}
+                                  />
+                                </Link>
                                 <div className="absolute top-4 right-4 flex gap-2">
                                   <span className="bg-[#0A67FF] text-white px-2 py-1 rounded-full text-xs font-semibold">
-                                    {post.category}
+                                    {post.category || "Tech"}
                                   </span>
-                                  {isNewPost(post.publishedAt) && (
+                                  {post.publishedAt && isNewPost(post.publishedAt) && (
                                     <span className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                                       New
                                     </span>
@@ -232,14 +246,14 @@ export default function BlogClientPage({ filteredPosts }: any) {
                                 <div className="flex items-center justify-between mb-3">
                                   <div className="flex items-center gap-2 text-xs text-gray-500">
                                     <User className="w-3 h-3  flex-shrink-0" aria-hidden="true" />
-                                    <span>{post.author}</span>
+                                    <span>{post.author?.name || post.author || "AnadjyTech"}</span>
                                     <span aria-hidden="true">•</span>
                                     <Calendar className="w-3 h-3  flex-shrink-0" aria-hidden="true" />
-                                    <time dateTime={post.publishedAt}>
-                                      {new Date(post.publishedAt).toLocaleDateString()}
+                                    <time dateTime={post.publishedAt || post.createdAt}>
+                                      {new Date(post.publishedAt || post.createdAt || Date.now()).toLocaleDateString()}
                                     </time>
                                     <span aria-hidden="true">•</span>
-                                    <span>{post.readMins} min read</span>
+                                    <span>{post.readTime || post.readMins ? `${post.readMins || 5} min read` : "5 min read"}</span>
                                   </div>
                                 </div>
                                 <h3 className="text-lg font-bold text-gray-800 mb-3 line-clamp-2 flex-shrink-0 hover:text-[#0A67FF] transition-colors">
@@ -260,69 +274,14 @@ export default function BlogClientPage({ filteredPosts }: any) {
                     )}
 
                     {/* Pagination */}
-                    {totalPages > 1 && (
-                      <nav className="flex justify-center items-center gap-2 mt-12" aria-label="Blog pagination">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                          disabled={currentPage === 1}
-                          className="flex items-center gap-1 border-[#0A67FF] !text-[#0A67FF] hover:bg-[#0A67FF] hover:text-white rounded-lg bg-transparent disabled:opacity-50"
-                          aria-label="Go to previous page"
-                        >
-                          <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-                          Previous
-                        </Button>
-                        <div className="flex gap-1">
-                          {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                            const page = i + 1
-                            return (
-                              <Button
-                                key={page}
-                                size="sm"
-                                onClick={() => handlePageChange(page)}
-                                className={
-                                  currentPage === page
-                                    ? "bg-[#0A67FF] text-white hover:bg-blue-700 rounded-lg"
-                                    : "border-gray-300 hover:border-[#0A67FF] hover:text-[#0A67FF] rounded-lg bg-transparent !text-gray-700"
-                                }
-                                variant={currentPage === page ? "default" : "outline"}
-                                aria-label={`Go to page ${page}`}
-                                aria-current={currentPage === page ? "page" : undefined}
-                              >
-                                {page}
-                              </Button>
-                            )
-                          })}
-                          {totalPages > 5 && (
-                            <>
-                              <span className="px-2 py-1 !text-gray-500" aria-hidden="true">
-                                ...
-                              </span>
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handlePageChange(totalPages)}
-                                className="border-gray-300 hover:border-[#0A67FF] hover:text-[#0A67FF] rounded-lg bg-transparent !text-gray-700"
-                                aria-label={`Go to page ${totalPages}`}
-                              >
-                                {totalPages}
-                              </Button>
-                            </>
-                          )}
-                        </div>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-                          disabled={currentPage === totalPages}
-                          className="flex items-center gap-1 border-[#0A67FF] !text-[#0A67FF] hover:bg-[#0A67FF] hover:text-white rounded-lg bg-transparent disabled:opacity-50"
-                          aria-label="Go to next page"
-                        >
-                          Next
-                          <ChevronRight className="w-4 h-4" aria-hidden="true" />
-                        </Button>
-                      </nav>
+                    {calculatedTotalPages > 1 && (
+                      <div className="mt-12 flex justify-center">
+                        <PaginationShadcn
+                          totalItems={total > 0 ? total : filteredPosts.length}
+                          itemsPerPage={postsPerPage}
+                          currentPage={currentPage}
+                        />
+                      </div>
                     )}
                   </>
                 )}

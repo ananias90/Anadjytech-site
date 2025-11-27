@@ -3,7 +3,9 @@
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { createBlog } from "@/lib/api/blogs";
 import BlogForm from "./blog-form";
+import { uploadImages } from "@/lib/api/upload";
 
 export default function CreateBlogPage() {
   const router = useRouter();
@@ -14,23 +16,42 @@ export default function CreateBlogPage() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    excerpt: "",
     heroImage: "",
     content: "",
     status: "draft" as "draft" | "published",
+    category: "",
+    tags: [] as string[],
+    difficulty: "Beginner" as "Beginner" | "Intermediate" | "Advanced",
+    badges: [] as string[],
+    keyTakeaways: [] as string[],
+    pros: [] as string[],
+    cons: [] as string[],
   });
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     setUploading(true);
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setFormData({ ...formData, heroImage: reader.result as string });
+    try {
+      // Use the same uploadImages function
+      const uploadedUrls = await uploadImages([file]);
+
+      setFormData({
+        ...formData,
+        heroImage: uploadedUrls[0], // single image
+      });
+
+      toast.success("Hero image uploaded successfully");
+    } catch (error: any) {
+      console.error("Error uploading hero image:", error);
+      toast.error(error.message || "Failed to upload image");
+    } finally {
       setUploading(false);
-    };
-    reader.readAsDataURL(file);
+    }
   };
+
 
   const removeImage = () => {
     setFormData({ ...formData, heroImage: "" });
@@ -45,10 +66,37 @@ export default function CreateBlogPage() {
     }
 
     setSubmitting(true);
-    await new Promise((res) => setTimeout(res, 800)); // simulate API
-    toast.success("Blog created successfully!");
-    setSubmitting(false);
-    router.push("/dashboard/blogs");
+
+    try {
+      const blogData = {
+        title: formData.title,
+        excerpt: formData.excerpt || formData.description,
+        content: formData.content,
+        published: formData.status === "published",
+        category: formData.category || "Guides",
+        tags: formData.tags,
+        difficulty: formData.difficulty,
+        badges: formData.badges,
+        keyTakeaways: formData.keyTakeaways,
+        pros: formData.pros,
+        cons: formData.cons,
+        hero: formData.heroImage || undefined,
+        thumbnail: formData.heroImage || undefined,
+        image: formData.heroImage || undefined,
+        publishedAt: formData.status === "published" ? new Date() : undefined,
+        readTime: `${Math.ceil(formData.content.length / 1000)} min read`,
+        readMins: Math.ceil(formData.content.length / 1000),
+      };
+
+      const response = await createBlog(blogData);
+      toast.success("Blog created successfully!");
+      // Use router.replace to avoid back button issues
+      router.replace("/admin/blogs");
+    } catch (error: any) {
+      toast.error(error.message || "Failed to create blog");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

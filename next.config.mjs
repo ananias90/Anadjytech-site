@@ -20,18 +20,10 @@ const nextConfig = {
   },
 
   async headers() {
-    return [
-      {
-        source: '/(.*)', // applies to all routes and assets
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ]
-  },
+    return [];
+  }
+
+
 }
 
 export default withContentlayer(nextConfig)
