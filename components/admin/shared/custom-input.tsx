@@ -12,10 +12,15 @@ type CustomInputProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   name?: string;
+  step?: number;
+  min?: number;
+  max?: number;
   error?: string | null | false;
   className?: string;
   showLabelOnFocus?: boolean;
   disabled?: boolean;
+  required?: boolean;
+  onKeyDown?: any;
 };
 
 const CustomInput = (props: CustomInputProps) => {
@@ -29,9 +34,14 @@ const CustomInput = (props: CustomInputProps) => {
     onBlur,
     name,
     error,
+    min,
     className,
     showLabelOnFocus = true,
-    disabled
+    disabled,
+    max,
+    required,
+    step,
+    onKeyDown
   } = props;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -45,12 +55,16 @@ const CustomInput = (props: CustomInputProps) => {
     <div className={`relative ${className}`}>
       <div className="relative">
         <input
-          type={isPassword && !showPassword ? "password" : "text"}
+          type={isPassword && !showPassword ? "password" : type || "text"}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          disabled={disabled}
+          step={step}
+          min={min}
+          max={max}
           onFocus={() => setIsFocused(true)}
+          required={required}
+          onKeyDown={onKeyDown}
           onBlur={(e) => {
             setIsFocused(false);
             onBlur?.(e);

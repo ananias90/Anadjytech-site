@@ -8,7 +8,7 @@ export const SidebarData = [
     { name: 'Products', icon: ProductsIcon, src: '/admin/products' },
     { name: 'Categories', icon: CategoriesIcon, src: '/admin/categories' },
     { name: 'Blogs', icon: Notebook, src: '/admin/blogs' },
-    { name: 'Subscribers', icon: Users, src: '/admin/subscribers' },
-    { name: 'Product Filters', icon: Filter, src: '/admin/product-filters' },
-    { name: 'Blog Filters', icon: Filter, src: '/admin/blog-filters' },
+    // { name: 'Subscribers', icon: Users, src: '/admin/subscribers' },
+    // { name: 'Product Filters', icon: Filter, src: '/admin/product-filters' },
+    // { name: 'Blog Filters', icon: Filter, src: '/admin/blog-filters' },
 ]
