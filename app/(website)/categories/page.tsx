@@ -1,6 +1,11 @@
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import CategoriesClientPage from "./_components/CategoriesClientPage"
+import { Category, getCategories } from "@/lib/api/categories"
+import { getProducts, Product } from "@/lib/api/products"
 
 export const metadata: Metadata = {
   title: "Tech Categories – Shop Gadgets by Type | AnadjyTech",
@@ -34,11 +39,29 @@ export const metadata: Metadata = {
   },
 }
 
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+  // Fetch categories and products
+  let categories: Category[] | undefined = []
+  let products: Product[] | undefined = []
+
+  try {
+    const categoriesRes = await getCategories({ published: true, limit: 100 })
+    categories = categoriesRes.items || categoriesRes.categories || []
+
+    // Fetch all published products for filtering
+    const productsRes = await getProducts({ published: true, limit: 100 })
+    products = productsRes.items || []
+  } catch (error) {
+    console.error("Error fetching categories data:", error)
+  }
+
   return (
     <div>
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-        <CategoriesClientPage />
+        <CategoriesClientPage 
+          categories={categories}
+          products={products}
+        />
       </Suspense>
     </div>
   )

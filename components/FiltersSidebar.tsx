@@ -60,9 +60,9 @@ export default function FiltersSidebar({
 
     // Update type parameter
     if (selectedCategories.length > 0) {
-      params.set("type", selectedCategories.join(","))
+      params.set("category", selectedCategories.join(","))
     } else {
-      params.delete("type")
+      params.delete("category")
     }
 
     // Update brand parameter
@@ -132,7 +132,7 @@ export default function FiltersSidebar({
         <div>
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-gray-900">Active Filters</span>
-            <Button aria-label="Clear all filters" variant="ghost" size="sm" onClick={clearAllFilters} className="text-blue-600 hover:text-blue-700">
+            <Button aria-label="Clear all filters" size="sm" onClick={clearAllFilters} className="bg-gray-200 hover:bg-gray-500 text-blue-600 ">
               Clear All
             </Button>
           </div>
@@ -152,7 +152,7 @@ export default function FiltersSidebar({
                 </button>
               </div>
             ))}
-            {selectedBrands.map((brand) => (
+            {selectedBrands.length > 0 && selectedBrands.map((brand) => (
               <div
                 key={brand}
                 className="flex items-center gap-1 bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full"
@@ -212,7 +212,7 @@ export default function FiltersSidebar({
               <label htmlFor={`category-${category.name}`} className="text-sm text-gray-700 cursor-pointer flex-1">
                 {category.name}
               </label>
-              <span className="text-xs text-gray-500">({category.count})</span>
+              {/* <span className="text-xs text-gray-500">({category.count})</span> */}
             </div>
           ))}
         </div>
@@ -296,7 +296,7 @@ export default function FiltersSidebar({
     <>
       {/* Desktop Sidebar */}
       <div className={`hidden lg:block w-80 flex-shrink-0 ${className}`}>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-4">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 z-50 sticky top-4">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-gray-900">Filters</h2>
             {hasActiveFilters && (
@@ -314,7 +314,7 @@ export default function FiltersSidebar({
       </div>
 
       {/* Mobile Filter Button & Sheet */}
-      <div className="lg:hidden">
+      <div className="lg:hidden flex-1">
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
             <Button variant="outline" className="w-full mb-4 bg-transparent !text-blue-800" aria-label="Open filters">
