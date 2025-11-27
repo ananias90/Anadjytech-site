@@ -4,6 +4,7 @@ import React from "react";
 import CustomInput from "../../shared/custom-input";
 import CustomSelect from "../../shared/custom-select";
 import Button from "@/components/ui/button";
+import ImageUploader from "../../shared/image-uploader";
 
 interface ProductFormProps {
   isEditMode: boolean;
@@ -20,6 +21,7 @@ interface ProductFormProps {
   uploading: boolean;
   submitting: boolean;
   loadingCategories: boolean;
+  onImageUpload?: (files: File[]) => Promise<void>;
 }
 
 const ProductForm = ({
@@ -37,7 +39,11 @@ const ProductForm = ({
   uploading,
   submitting,
   loadingCategories,
+  onImageUpload,
 }: ProductFormProps) => {
+
+  console.log(formData)
+
   return (
     <div className="mx-auto shadow-lg border border-gray-200 rounded-2xl bg-white">
       <div className="px-8 pt-8">
@@ -62,6 +68,7 @@ const ProductForm = ({
                 setFormData({ ...formData, name: e.target.value })
               }
               disabled={uploading || submitting || loadingCategories}
+              required
             />
 
             <CustomSelect
@@ -81,6 +88,31 @@ const ProductForm = ({
                 </option>
               ))}
             </CustomSelect>
+
+            <CustomInput
+              placeholder="Enter Amazon Link (e.g., https://amazon.com/dp/...)"
+              type="url"
+              value={formData.amazonLink || formData.amazonUrl || ""}
+              onChange={(e) =>
+                setFormData({ ...formData, amazonLink: e.target.value, amazonUrl: e.target.value })
+              }
+              disabled={uploading || submitting || loadingCategories}
+              required
+            />
+
+            <CustomInput
+              placeholder="Rating (e.g., 4.5)"
+              type="number"
+              max={5}
+              min={0}
+              step={0.1}
+              value={formData.rating}
+              onChange={(e) =>
+                setFormData({ ...formData, rating: Number(e.target.value) })
+              }
+              disabled={uploading || submitting || loadingCategories}
+              required
+            />
 
             <CustomInput
               placeholder="Enter quantity"
@@ -103,6 +135,33 @@ const ProductForm = ({
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
             </CustomSelect>
+
+            <div className="flex items-center gap-4">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={formData.published}
+                  onChange={(e) =>
+                    setFormData({ ...formData, published: e.target.checked })
+                  }
+                  disabled={uploading || submitting || loadingCategories}
+                  className="w-4 h-4 text-blue-600 rounded"
+                />
+                <span className="text-sm text-gray-700">Published</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={formData.featured}
+                  onChange={(e) =>
+                    setFormData({ ...formData, featured: e.target.checked })
+                  }
+                  disabled={uploading || submitting || loadingCategories}
+                  className="w-4 h-4 text-blue-600 rounded"
+                />
+                <span className="text-sm text-gray-700">Featured</span>
+              </label>
+            </div>
           </div>
 
           {/* --- Description --- */}
@@ -119,6 +178,7 @@ const ProductForm = ({
                 min-h-[100px] peer
               "
               disabled={uploading || submitting || loadingCategories}
+              required
             />
             <label
               className="
@@ -131,6 +191,16 @@ const ProductForm = ({
               Description
             </label>
           </div>
+
+          {/* --- Images --- */}
+          <ImageUploader
+            images={formData.images}
+            setImages={(images) => setFormData({ images })}
+            onImageUpload={onImageUpload}
+            maxImages={1}
+            title="Upload Product Image"
+            uploading={uploading}
+          />
 
           {/* --- Tags --- */}
           <section className="w-full ">
@@ -178,7 +248,7 @@ const ProductForm = ({
             <button
               disabled={uploading || submitting || loadingCategories}
               type="submit"
-              className="px-8 py-4! bg-blue-900 text-white font-semibold rounded-md hover:bg-blue-950"
+              className="px-8 py-4 bg-blue-900 text-white font-semibold rounded-md hover:bg-blue-950"
             >
               {submitting ? (isEditMode ? "Updating..." : "Creating...") : submitButtonLabel}
             </button>

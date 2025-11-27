@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TrendingUp,
   TrendingDown,
@@ -13,34 +13,107 @@ import {
   List,
   Settings
 } from 'lucide-react';
+import { getProducts } from '@/lib/api/products';
+import { getCategories } from '@/lib/api/categories';
+import { getBlogs } from '@/lib/api/blogs';
+import { getSubscribers } from '@/lib/api/subscribers';
 
 const Home = () => {
-  // Simplified stats data
-  const statsData = {
+  const [statsData, setStatsData] = useState({
     products: {
-      total: 1247,
-      change: +12.5,
-      active: 984,
-      inactive: 263,
-      featured: 45
+      total: 0,
+      change: 0,
+      active: 0,
+      inactive: 0,
+      featured: 0
     },
     categories: {
-      total: 48,
-      change: +3.2,
-      mainCategories: 12,
-      subCategories: 36
+      total: 0,
+      change: 0,
+      mainCategories: 0,
+      subCategories: 0
     },
     blogs: {
-      total: 324,
-      change: +8.7,
-      published: 298,
-      draft: 26
+      total: 0,
+      change: 0,
+      published: 0,
+      draft: 0
     },
     subscribers: {
-      total: 15420,
-      change: +15.3,
-      active: 14200,
-      inactive: 1220
+      total: 0,
+      change: 0,
+      active: 0,
+      inactive: 0
+    }
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const fetchStats = async () => {
+    try {
+      setLoading(true);
+      
+      // Fetch all stats in parallel
+      const [productsRes, categoriesRes, blogsRes, subscribersRes] = await Promise.all([
+        getProducts({ limit: 1 }),
+        getCategories(),
+        getBlogs({ limit: 1 }),
+        getSubscribers({ limit: 1 }),
+      ]);
+
+      // Get detailed product stats
+      const [activeProducts, inactiveProducts, featuredProducts] = await Promise.all([
+        getProducts({ status: 'active', limit: 1 }),
+        getProducts({ status: 'inactive', limit: 1 }),
+        getProducts({ featured: true, limit: 1 }),
+      ]);
+
+      // Get blog stats
+      const [publishedBlogs, draftBlogs] = await Promise.all([
+        getBlogs({ published: true, limit: 1 }),
+        getBlogs({ published: false, limit: 1 }),
+      ]);
+
+      // Get subscriber stats
+      const [activeSubscribers, inactiveSubscribers] = await Promise.all([
+        getSubscribers({ subscribed: true, limit: 1 }),
+        getSubscribers({ subscribed: false, limit: 1 }),
+      ]);
+
+      setStatsData({
+        products: {
+          total: productsRes.total || 0,
+          change: 0, // You can calculate this based on previous data
+          active: activeProducts.total || 0,
+          inactive: inactiveProducts.total || 0,
+          featured: featuredProducts.total || 0,
+        },
+        categories: {
+          total: categoriesRes.categories?.length || 0,
+          change: 0,
+          mainCategories: categoriesRes.categories?.filter((c: any) => !c.parentCategory)?.length || 0,
+          subCategories: categoriesRes.categories?.filter((c: any) => c.parentCategory)?.length || 0,
+        },
+        blogs: {
+          total: blogsRes.total || 0,
+          change: 0,
+          published: publishedBlogs.total || 0,
+          draft: draftBlogs.total || 0,
+        },
+        subscribers: {
+          total: subscribersRes.total || 0,
+          change: 0,
+          active: activeSubscribers.total || 0,
+          inactive: inactiveSubscribers.total || 0,
+        },
+      });
+    } catch (error: any) {
+      console.error('Failed to fetch stats:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,7 +132,7 @@ const Home = () => {
         </div>
 
         {/* Main Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3  gap-6 mb-8">
           {/* Products Card */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-4">
@@ -149,7 +222,7 @@ const Home = () => {
           </div>
 
           {/* Subscribers Card */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+          {/* <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-orange-100 rounded-xl">
                 <Users className="w-6 h-6 text-orange-600" />
@@ -174,13 +247,13 @@ const Home = () => {
                 <span className="font-medium">{formatNumber(statsData.subscribers.inactive)}</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Quick Actions */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button className="p-4 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors text-center">
               <Package className="w-8 h-8 text-blue-600 mx-auto mb-2" />
               <span className="text-sm font-medium text-gray-700">Add Product</span>
@@ -193,10 +266,10 @@ const Home = () => {
               <FileText className="w-8 h-8 text-purple-600 mx-auto mb-2" />
               <span className="text-sm font-medium text-gray-700">Write Blog</span>
             </button>
-            <button className="p-4 bg-orange-50 rounded-xl hover:bg-orange-100 transition-colors text-center">
+            {/* <button className="p-4 bg-orange-50 rounded-xl hover:bg-orange-100 transition-colors text-center">
               <Users className="w-8 h-8 text-orange-600 mx-auto mb-2" />
               <span className="text-sm font-medium text-gray-700">View Subscribers</span>
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -224,7 +297,7 @@ const Home = () => {
               <span className="text-sm text-gray-500">5 hours ago</span>
             </div>
 
-            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            {/* <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-orange-100 rounded-lg">
                   <Users size={16} className="text-orange-600" />
@@ -232,7 +305,7 @@ const Home = () => {
                 <span className="text-gray-700">25 new subscribers joined</span>
               </div>
               <span className="text-sm text-gray-500">1 day ago</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
